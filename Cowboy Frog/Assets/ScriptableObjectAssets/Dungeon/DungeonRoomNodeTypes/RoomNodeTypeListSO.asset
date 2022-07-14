@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b086584d57d492943ba8072759b3ec20, type: 3}
+  m_Name: RoomNodeTypeListSO
+  m_EditorClassIdentifier: 
+  list:
+  - {fileID: 11400000, guid: cd39601e3a78fda4784df01179be740c, type: 2}
+  - {fileID: 11400000, guid: 50cb4950eed8a0648a0ea6fc27d23ba8, type: 2}
+  - {fileID: 11400000, guid: 37a8379d6557e3149917f7bc20f24c16, type: 2}
+  - {fileID: 11400000, guid: d7b6d7c25eef0d84d9bd2fa491d35aca, type: 2}
+  - {fileID: 11400000, guid: a0375b198b3b33e459a0a011638c38a6, type: 2}
+  - {fileID: 11400000, guid: e0a2331334f4c444ea01e9b539700948, type: 2}
+  - {fileID: 11400000, guid: cd8c666a2423aec45916e82704b213f4, type: 2}
+  - {fileID: 11400000, guid: ef1d07bab3197b442a148be533aae0b2, type: 2}
+  - {fileID: 11400000, guid: 2abeca58757f2b845bd15f8fa0fdf456, type: 2}
+  - {fileID: 11400000, guid: 8116fdc774141ee4cb84a1ed934f901e, type: 2}
