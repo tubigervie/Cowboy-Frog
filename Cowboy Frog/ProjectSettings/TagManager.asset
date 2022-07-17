@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - grid
+  - collisionTilemap
+  - minimapTilemap
+  - groundTilemap
+  - decoration2Tilemap
+  - decoration1Tilemap
+  - frontTilemap
+  - roomTilemap
+  - miniMapPlayer
+  - playerWeapon
   layers:
   - Default
   - TransparentFX
