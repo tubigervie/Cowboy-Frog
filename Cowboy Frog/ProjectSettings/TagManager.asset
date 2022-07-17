@@ -12,20 +12,20 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - IgnoreAmmo
+  - Camera 1
+  - Camera 2
+  - Player
+  - Minimap
+  - Room
+  - Wall
+  - PlayerAmmo
+  - Enemy
+  - EnemyAmmo
+  - Environment
+  - PlayerWeapon
+  - EnemyWeapon
+  - Camera 3
   - 
   - 
   - 
@@ -40,4 +40,25 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 1502980545
+    locked: 0
+  - name: Ground Decoration 1
+    uniqueID: 1256738893
+    locked: 0
+  - name: Ground Decoration 2
+    uniqueID: 1084350817
+    locked: 0
+  - name: Instances
+    uniqueID: 1437650807
+    locked: 0
+  - name: Front
+    uniqueID: 1217657327
+    locked: 0
+  - name: Collision
+    uniqueID: 1490509829
+    locked: 0
+  - name: Minimap
+    uniqueID: 366767783
     locked: 0
