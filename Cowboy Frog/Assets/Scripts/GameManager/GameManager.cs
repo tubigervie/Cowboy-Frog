@@ -41,6 +41,8 @@ public class GameManager : SingletonMonobehaviour<GameManager>
                 gameState = GameState.playingLevel;
                 break;
             case GameState.playingLevel:
+                if (Input.GetKeyDown(KeyCode.R))
+                    PlayDungeonLevel(currentDungeonLevelListIndex);
                 break;
             case GameState.engagingEnemies:
                 break;
@@ -65,7 +67,12 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     private void PlayDungeonLevel(int currentDungeonLevelListIndex)
     {
-        
+        bool dungeonBuiltSuccessfully = DungeonBuilder.Instance.GenerateDungeon(dungeonLevelList[currentDungeonLevelListIndex]);
+
+        if(!dungeonBuiltSuccessfully)
+        {
+            Debug.LogError("Couldn't build dungeon from specified rooms and node graphs");
+        }
     }
 
     #region Validation

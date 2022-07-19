@@ -372,7 +372,7 @@ public class RoomNodeGraphEditor : EditorWindow
                 //iterate through child room nodes ids
                 foreach(string childRoomNodeID in roomNode.childrenRoomNodeIDList)
                 {
-                    RoomNodeSO childRoomNode = currentRoomNodeGraph.GetRoomnode(childRoomNodeID);
+                    RoomNodeSO childRoomNode = currentRoomNodeGraph.GetRoomNode(childRoomNodeID);
                     if(childRoomNode != null)
                     {
                         childRoomNode.RemoveParentRoomNodeIDFromRoomNode(roomNode.id);
@@ -382,7 +382,7 @@ public class RoomNodeGraphEditor : EditorWindow
                 //iterate through parent room nodes ids
                 foreach (string parentRoomId in roomNode.parentRoomNodeIDList)
                 {
-                    RoomNodeSO parentRoomNode = currentRoomNodeGraph.GetRoomnode(parentRoomId);
+                    RoomNodeSO parentRoomNode = currentRoomNodeGraph.GetRoomNode(parentRoomId);
                     if (parentRoomNode != null)
                     {
                         parentRoomNode.RemoveChildRoomNodeIDFromRoomNode(roomNode.id);
@@ -414,7 +414,7 @@ public class RoomNodeGraphEditor : EditorWindow
             {
                 for (int i = 0; i < roomNode.childrenRoomNodeIDList.Count; i++)
                 {
-                    RoomNodeSO childRoomNode = currentRoomNodeGraph.GetRoomnode(roomNode.childrenRoomNodeIDList[i]);
+                    RoomNodeSO childRoomNode = currentRoomNodeGraph.GetRoomNode(roomNode.childrenRoomNodeIDList[i]);
                     if (childRoomNode != null && childRoomNode.isSelected)
                     {
                         roomNode.RemoveChildRoomNodeIDFromRoomNode(childRoomNode.id);

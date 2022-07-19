@@ -60,7 +60,7 @@ public class RoomNodeSO : ScriptableObject
                 {
                     for (int i = childrenRoomNodeIDList.Count - 1; i >= 0; i--)
                     {
-                        RoomNodeSO childRoomNode = roomNodeGraph.GetRoomnode(childrenRoomNodeIDList[i]);
+                        RoomNodeSO childRoomNode = roomNodeGraph.GetRoomNode(childrenRoomNodeIDList[i]);
                         if (childRoomNode != null)
                         {
                             RemoveChildRoomNodeIDFromRoomNode(childRoomNode.id);
@@ -152,11 +152,11 @@ public class RoomNodeSO : ScriptableObject
         }
 
         //if the child node has a type of boss room and there is already a connected boss room node
-        if (roomNodeGraph.GetRoomnode(childID).roomNodeType.isBossRoom && isConnectedBossNodeAlready)
+        if (roomNodeGraph.GetRoomNode(childID).roomNodeType.isBossRoom && isConnectedBossNodeAlready)
             return false;
 
         //If the child node has a type of none 
-        if (roomNodeGraph.GetRoomnode(childID).roomNodeType.isNone)
+        if (roomNodeGraph.GetRoomNode(childID).roomNodeType.isNone)
             return false;
 
         //If the node already has a child with this child Id
@@ -172,27 +172,27 @@ public class RoomNodeSO : ScriptableObject
             return false;
 
         //If the child node already has a parent (design constraint)
-        if (roomNodeGraph.GetRoomnode(childID).parentRoomNodeIDList.Count > 0)
+        if (roomNodeGraph.GetRoomNode(childID).parentRoomNodeIDList.Count > 0)
             return false;
 
         //If child is a corridor and this node is a corridor
-        if (roomNodeGraph.GetRoomnode(childID).roomNodeType.isCorridor && roomNodeType.isCorridor)
+        if (roomNodeGraph.GetRoomNode(childID).roomNodeType.isCorridor && roomNodeType.isCorridor)
             return false;
 
         //If child is not a corridor and this node is not a corridor
-        if (!roomNodeGraph.GetRoomnode(childID).roomNodeType.isCorridor && !roomNodeType.isCorridor)
+        if (!roomNodeGraph.GetRoomNode(childID).roomNodeType.isCorridor && !roomNodeType.isCorridor)
             return false;
 
         //if adding a corridor check that this node has < the maximum permitted child corridors
-        if (roomNodeGraph.GetRoomnode(childID).roomNodeType.isCorridor && childrenRoomNodeIDList.Count >= Settings.maxChildCorridors)
+        if (roomNodeGraph.GetRoomNode(childID).roomNodeType.isCorridor && childrenRoomNodeIDList.Count >= Settings.maxChildCorridors)
             return false;
 
         //entrance must always be the top level parent node
-        if (roomNodeGraph.GetRoomnode(childID).roomNodeType.isEntrance)
+        if (roomNodeGraph.GetRoomNode(childID).roomNodeType.isEntrance)
             return false;
 
         //if adding a room to a corridor check that this corridor node doesn't already have a room added
-        if (!roomNodeGraph.GetRoomnode(childID).roomNodeType.isCorridor && childrenRoomNodeIDList.Count > 0)
+        if (!roomNodeGraph.GetRoomNode(childID).roomNodeType.isCorridor && childrenRoomNodeIDList.Count > 0)
             return false;
 
         return true;
