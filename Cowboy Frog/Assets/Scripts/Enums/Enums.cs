@@ -7,6 +7,16 @@
     none
 }
 
+public enum AimDirection
+{
+    Up,
+    UpRight,
+    UpLeft,
+    Left,
+    Right,
+    Down
+}
+
 public enum GameState
 {
     gameStarted,

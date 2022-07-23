@@ -20,6 +20,14 @@ public class InstantiatedRoom : MonoBehaviour
 
     private BoxCollider2D boxCollider2D;
 
+    private const string groundTag = "groundTilemap";
+    private const string decoration1Tag = "decoration1Tilemap";
+    private const string decoration2Tag = "decoration2Tilemap";
+    private const string frontTag = "frontTilemap";
+    private const string collisionTag = "collisionTilemap";
+    private const string minimapTag = "minimapTilemap";
+
+
     private void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
@@ -135,17 +143,17 @@ public class InstantiatedRoom : MonoBehaviour
 
         foreach(Tilemap tilemap in tilemaps)
         {
-            if (tilemap.gameObject.tag == "groundTilemap")
+            if (tilemap.gameObject.CompareTag(groundTag))
                 groundTilemap = tilemap;
-            else if (tilemap.gameObject.tag == "decoration1Tilemap")
+            else if (tilemap.gameObject.CompareTag(decoration1Tag))
                 decoration1Tilemap = tilemap;
-            else if (tilemap.gameObject.tag == "decoration2Tilemap")
+            else if (tilemap.gameObject.CompareTag(decoration2Tag))
                 decoration2Tilemap = tilemap;
-            else if (tilemap.gameObject.tag == "frontTilemap")
+            else if (tilemap.gameObject.CompareTag(frontTag))
                 frontTilemap = tilemap;
-            else if (tilemap.gameObject.tag == "collisionTilemap")
+            else if (tilemap.gameObject.CompareTag(collisionTag)) //change tags to static strings
                 collisionTilemap = tilemap;
-            else if (tilemap.gameObject.tag == "minimapTilemap")
+            else if (tilemap.gameObject.CompareTag(minimapTag))
                 minimapTilemap = tilemap;
         }
     }
