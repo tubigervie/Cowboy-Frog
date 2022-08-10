@@ -17,6 +17,10 @@ public class PlayerControl : MonoBehaviour
 
     private Player player;
     private float moveSpeed;
+    private Coroutine playerRollCoroutine;
+    private WaitForFixedUpdate waitForFixedUpdate; //dealing with physics only move with fixed update intervals
+    private bool isPlayerRolling = false;
+    private float playerRollCooldownTimer = 0f;
 
     private void Awake()
     {
@@ -24,13 +28,28 @@ public class PlayerControl : MonoBehaviour
         moveSpeed = movementDetails.moveSpeed;
     }
 
+    private void Start()
+    {
+        waitForFixedUpdate = new WaitForFixedUpdate();
+    }
+
     private void Update()
     {
+        if (isPlayerRolling) return;
+
         //Process player movement input
         MovementInput();
 
         //Process player weapon input
         WeaponInput();
+
+        PlayerRollCooldownTimer();
+    }
+
+    private void PlayerRollCooldownTimer()
+    {
+        if(playerRollCooldownTimer >= 0f)
+           playerRollCooldownTimer -= Time.deltaTime;
     }
 
     private void WeaponInput()
@@ -40,6 +59,20 @@ public class PlayerControl : MonoBehaviour
         AimDirection playerAimDirection;
 
         AimWeaponInput(out weaponDirection, out weaponAngleDegrees, out playerAngleDegrees, out playerAimDirection);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        StopPlayerRollRoutine();
+    }
+
+    private void StopPlayerRollRoutine()
+    {
+        if(playerRollCoroutine != null)
+        {
+            StopCoroutine(playerRollCoroutine);
+            isPlayerRolling = false;
+        }
     }
 
     private void AimWeaponInput(out Vector3 weaponDirection, out float weaponAngleDegrees, out float playerAngleDegrees, out AimDirection playerAimDirection)
@@ -63,6 +96,7 @@ public class PlayerControl : MonoBehaviour
     {
         float horizontalMovement = Input.GetAxisRaw("Horizontal");
         float verticalMovement = Input.GetAxisRaw("Vertical");
+        bool rightMouseButtonDown = Input.GetMouseButtonDown(1);
 
         Vector2 direction = new Vector2(horizontalMovement, verticalMovement);
 
@@ -74,9 +108,44 @@ public class PlayerControl : MonoBehaviour
 
         if(direction != Vector2.zero)
         {
-            player.movementByVelocityEvent.CallMovementByVelocityEvent(direction, moveSpeed);
+            if(!rightMouseButtonDown)
+                player.movementByVelocityEvent.CallMovementByVelocityEvent(direction, moveSpeed);
+            else if (playerRollCooldownTimer <= 0f)
+            {
+                PlayerRoll((Vector3) direction);
+            }
         }
         else
             player.idleEvent.CallIdleEvent();
+    }
+
+    private void PlayerRoll(Vector3 direction)
+    {
+        playerRollCoroutine = StartCoroutine(PlayerRollRoutine(direction));
+    }
+
+    private IEnumerator PlayerRollRoutine(Vector3 direction)
+    {
+        // minDistance used to decide when to exit coroutine loop
+        float maxExitTime = .4f;
+        float minDistance = 0.2f;
+        isPlayerRolling = true;
+        Vector3 targetPosition = player.transform.position + (Vector3)direction * movementDetails.rollDistance;
+        while(Vector3.Distance(player.transform.position, targetPosition) > minDistance)
+        {
+            if (maxExitTime < 0f)
+            {
+                StopPlayerRollRoutine();
+                yield return waitForFixedUpdate;
+            }
+            maxExitTime -= Time.fixedDeltaTime;
+            player.movementToPositionEvent.CallMovementToPositionEvent(targetPosition, player.transform.position, movementDetails.rollSpeed,
+                direction, isPlayerRolling);
+            yield return waitForFixedUpdate;
+        }
+        isPlayerRolling = false;
+
+        playerRollCooldownTimer = movementDetails.rollCooldownTime;
+        player.transform.position = targetPosition;
     }
 }
