@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MovementDetails_Scientist
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  rollSpeed: 10
-  rollDistance: 8
+  rollSpeed: 15
+  rollDistance: 5
   rollCooldownTime: 0.2

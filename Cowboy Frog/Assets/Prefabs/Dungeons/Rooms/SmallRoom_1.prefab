@@ -16614,6 +16614,7 @@ GameObject:
   - component: {fileID: 3518921820222143271}
   - component: {fileID: 3518921820222143268}
   - component: {fileID: -3536868821051503109}
+  - component: {fileID: -2749893068830357362}
   m_Layer: 12
   m_Name: SmallRoom_1
   m_TagString: Untagged
@@ -16686,3 +16687,15 @@ MonoBehaviour:
   roomColliderBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
+--- !u!114 &-2749893068830357362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3518921820222143270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8891881ba52104daed559eaa200c93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
