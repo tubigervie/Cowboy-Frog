@@ -39,11 +39,19 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         InstantiatePlayer();
     }
 
-    private void InstantiatePlayer()
+    private void OnEnable()
     {
-        GameObject playerGameObject = Instantiate(playerDetails.playerPrefab);
-        player = playerGameObject.GetComponent<Player>();
-        player.Initialize(playerDetails);
+        StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
+    }
+
+    private void OnDisable()
+    {
+        StaticEventHandler.OnRoomChanged -= StaticEventHandler_OnRoomChanged;
+    }
+
+    private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs roomChangedEventArgs)
+    {
+        SetCurrentRoom(roomChangedEventArgs.room);
     }
 
     private void Start()
@@ -87,6 +95,13 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             case GameState.restartGame:
                 break;
         }
+    }
+
+    private void InstantiatePlayer()
+    {
+        GameObject playerGameObject = Instantiate(playerDetails.playerPrefab);
+        player = playerGameObject.GetComponent<Player>();
+        player.Initialize(playerDetails);
     }
 
     public void SetCurrentRoom(Room room)
