@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 8867092355733785743}
   - component: {fileID: 6779261544901701339}
   - component: {fileID: 114759756535976142}
+  - component: {fileID: 3132419824490499524}
+  - component: {fileID: 2274260312201353124}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -220,6 +222,7 @@ MonoBehaviour:
   health: {fileID: 0}
   idleEvent: {fileID: 0}
   movementByVelocityEvent: {fileID: 0}
+  movementToPositionEvent: {fileID: 0}
   aimWeaponEvent: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
@@ -320,6 +323,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc473bb1ea0eb4942a3a9e363dfd7120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3132419824490499524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772686690905673023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20105dde78d7b5b489c9271a7c54dab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2274260312201353124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772686690905673023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a37fff9b1db7843bd02a990204873c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6772686691618878188
@@ -462,7 +489,7 @@ SpriteRenderer:
   m_SortingLayerID: 1437650807
   m_SortingLayer: 4
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: abbe40c4d6a803f42a7c4f53404a484d, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -470,7 +497,7 @@ SpriteRenderer:
   m_Size: {x: 1.125, y: 0.6875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!60 &6772686692064118391
