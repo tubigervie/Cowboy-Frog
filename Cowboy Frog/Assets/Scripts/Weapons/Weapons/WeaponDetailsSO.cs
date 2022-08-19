@@ -65,6 +65,8 @@ public class WeaponDetailsSO : ScriptableObject
     #endregion
     public float weaponReloadTime = 0f;
 
+    public bool isAutomatic = true;
+
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()

@@ -89,15 +89,20 @@ public class ReloadWeapon : MonoBehaviour
         {
             weapon.weaponClipRemainingAmmo = weapon.weaponDetails.weaponClipAmmoCapacity;
         }
-        else if(weapon.weaponRemainingAmmo >= weapon.weaponDetails.weaponClipAmmoCapacity)
-        {
-            weapon.weaponClipRemainingAmmo = weapon.weaponDetails.weaponClipAmmoCapacity;
-            weapon.weaponRemainingAmmo -= weapon.weaponDetails.weaponClipAmmoCapacity;
-        }
         else
         {
-            weapon.weaponClipRemainingAmmo = weapon.weaponRemainingAmmo;
-            weapon.weaponRemainingAmmo = 0;
+            int amountToReload = weapon.weaponDetails.weaponClipAmmoCapacity - weapon.weaponClipRemainingAmmo;
+            int remainingAmmoDiff = weapon.weaponRemainingAmmo - amountToReload;
+            if (weapon.weaponRemainingAmmo < amountToReload)
+            {
+                weapon.weaponClipRemainingAmmo += weapon.weaponRemainingAmmo;
+                weapon.weaponRemainingAmmo = 0;
+            }
+            else
+            {
+                weapon.weaponClipRemainingAmmo += amountToReload;
+                weapon.weaponRemainingAmmo = remainingAmmoDiff;
+            }
         }
         weapon.weaponReloadTimer = 0f;
         weapon.isWeaponReloading = false;

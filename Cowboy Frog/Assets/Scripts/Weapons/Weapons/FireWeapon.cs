@@ -10,6 +10,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class FireWeapon : MonoBehaviour
 {
+    private float firePreChargeTimer = 0f;
     private float firerateCoolDownTimer = 0f;
     private ActiveWeapon activeWeapon;
     private WeaponFiredEvent weaponFiredEvent;
@@ -46,6 +47,7 @@ public class FireWeapon : MonoBehaviour
 
     private void WeaponFire(FireWeaponEventArgs fireWeaponEventArgs)
     {
+        WeaponPreCharge(fireWeaponEventArgs);
         if(fireWeaponEventArgs.fire)
         {
             if(IsWeaponReadyToFire())
@@ -53,6 +55,23 @@ public class FireWeapon : MonoBehaviour
                 FireAmmo(fireWeaponEventArgs.aimAngle, fireWeaponEventArgs.weaponAimAngle, fireWeaponEventArgs.weaponAimDirectionVector);
                 ResetCooldownTimer();
             }
+        }
+    }
+
+    private void ResetPrechargeTimer()
+    {
+        firePreChargeTimer = activeWeapon.GetCurrentWEapon().weaponDetails.weaponPrechargeTime;
+    }
+
+    private void WeaponPreCharge(FireWeaponEventArgs fireWeaponEventArgs)
+    {
+        if(fireWeaponEventArgs.firePreviousFrame)
+        {
+            firePreChargeTimer -= Time.deltaTime;
+        }
+        else
+        {
+            ResetPrechargeTimer();
         }
     }
 
@@ -84,7 +103,7 @@ public class FireWeapon : MonoBehaviour
     {
         if (activeWeapon.GetCurrentWEapon().isWeaponReloading)
             return false;
-        if (firerateCoolDownTimer > 0f)
+        if (firePreChargeTimer > 0f || firerateCoolDownTimer > 0f)
             return false;
         if (!activeWeapon.GetCurrentWEapon().weaponDetails.hasInfiniteClipCapacity && activeWeapon.GetCurrentWEapon().weaponClipRemainingAmmo <= 0)
         {

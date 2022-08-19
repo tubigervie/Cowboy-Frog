@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private MovementDetailsSO movementDetails;
 
     private Player player;
+    private bool leftMouseDownPreviousFrame = false;
     private int currentWeaponIndex = 1;
     private float moveSpeed;
     private Coroutine playerRollCoroutine;
@@ -70,7 +71,7 @@ public class PlayerControl : MonoBehaviour
         {
             Weapon currentWeapon = player.activeWeapon.GetCurrentWEapon();
             if (currentWeapon.isWeaponReloading) return;
-            if (currentWeapon.weaponRemainingAmmo < currentWeapon.weaponDetails.weaponClipAmmoCapacity && !currentWeapon.weaponDetails.hasInfiniteAmmo) return;
+            if (currentWeapon.weaponRemainingAmmo <= 0 && !currentWeapon.weaponDetails.hasInfiniteAmmo) return;
             if (currentWeapon.weaponClipRemainingAmmo == currentWeapon.weaponDetails.weaponClipAmmoCapacity) return;
             Debug.Log("Call reload");
             player.reloadWeaponEvent.CallReloadWeaponEvent(player.activeWeapon.GetCurrentWEapon(), 0);
@@ -81,7 +82,13 @@ public class PlayerControl : MonoBehaviour
     {
         if(Input.GetMouseButton(0))
         {
-            player.fireWeaponEvent.CallSetFireWeaponEvent(true, playerAimDirection, playerAngleDegrees, weaponAngleDegrees, weaponDirection);
+            Weapon currentWeapon = player.activeWeapon.GetCurrentWEapon();
+            if (!currentWeapon.weaponDetails.isAutomatic && leftMouseDownPreviousFrame) return;
+            player.fireWeaponEvent.CallSetFireWeaponEvent(true, leftMouseDownPreviousFrame, playerAimDirection, playerAngleDegrees, weaponAngleDegrees, weaponDirection);
+            leftMouseDownPreviousFrame = true;
+        }
+        else {
+            leftMouseDownPreviousFrame = false;
         }
     }
 
