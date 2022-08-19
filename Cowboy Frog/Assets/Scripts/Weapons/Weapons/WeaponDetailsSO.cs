@@ -26,10 +26,10 @@ public class WeaponDetailsSO : ScriptableObject
     [Tooltip("Weapon Shoot Position - the offset position for the end of the weapon from the sprite pivot point")]
     #endregion
     public Vector3 weaponShootPosition; //for figuring out where to place ammo
-    //#region Toolip
-    //[Tooltip("Weapon current ammo")]
-    //#endregion
-    //public AmmoDetailsSO weaponCurrentAmmo; 
+    #region Toolip
+    [Tooltip("Weapon current ammo")]
+    #endregion
+    public AmmoDetailsSO weaponCurrentAmmo;
 
     #region Header WEAPON OPERATING VALUES
     [Space(10)]
@@ -70,7 +70,7 @@ public class WeaponDetailsSO : ScriptableObject
     private void OnValidate()
     {
         HelperUtilities.ValidateCheckEmptyString(this, nameof(weaponName), weaponName);
-        //HelperUtilities.ValidateCheckNullValue(this, nameof(weaponCurrentAmmo), weaponCurrentAmmo);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(weaponCurrentAmmo), weaponCurrentAmmo);
         HelperUtilities.ValidateCheckPositiveValue(this, nameof(weaponFireRate), weaponFireRate, false);
         HelperUtilities.ValidateCheckPositiveValue(this, nameof(weaponPrechargeTime), weaponPrechargeTime, true);
 

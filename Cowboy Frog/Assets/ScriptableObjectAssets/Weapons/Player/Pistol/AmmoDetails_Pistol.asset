@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88c64c49be4c87946a23a78078beeb31, type: 3}
+  m_Name: AmmoDetails_Pistol
+  m_EditorClassIdentifier: 
+  ammoName: Pistol
+  isPlayerAmmo: 1
+  ammoSprite: {fileID: 21300000, guid: 4df9cc7131cd27f4288bca5e76c82034, type: 3}
+  ammoPrefabArray:
+  - {fileID: 4555858420671037347, guid: 8137f95c38b24b2499aa2fb7f9cd6c87, type: 3}
+  ammoMaterial: {fileID: 2100000, guid: 5c86445c1f630c141ab88b05539eca5d, type: 2}
+  ammoChargeTime: 0
+  ammoChargeMaterial: {fileID: 0}
+  ammoDamage: 6
+  ammoSpeed: 15
+  ammoRange: 12
+  ammoRotationSpeed: 1
+  ammoSpread: 2
+  ammoSpawnAmount: 1
+  ammoSpawnInterval: 0
+  isAmmoTrail: 0
+  ammoTrailTime: 0
+  ammoTrailMaterial: {fileID: 0}
+  ammoTrailStartWidth: 0
+  ammoTrailEndWidth: 0

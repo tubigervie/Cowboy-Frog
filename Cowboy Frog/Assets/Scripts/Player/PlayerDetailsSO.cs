@@ -33,6 +33,15 @@ public class PlayerDetailsSO : ScriptableObject
     #endregion
     public int playerHealthAmount;
 
+    #region HEADER WEAPON
+    [Space(10)]
+    [Header("WEAPON")]
+    #endregion
+    [Tooltip("Player initial starting weapon")]
+    public WeaponDetailsSO startingWeapon;
+    [Tooltip("Populate with the list of starting weapons")]
+    public List<WeaponDetailsSO> startingWeaponList;
+
     #region Header OTHER
     [Space(10)]
     [Header("OTHER")]
@@ -57,6 +66,8 @@ public class PlayerDetailsSO : ScriptableObject
         HelperUtilities.ValidateCheckNullValue(this, nameof(playerMiniMapIcon), playerMiniMapIcon);
         HelperUtilities.ValidateCheckNullValue(this, nameof(playerHandSprite), playerHandSprite);
         HelperUtilities.ValidateCheckNullValue(this, nameof(runtimeAnimatorController), runtimeAnimatorController);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(startingWeapon), startingWeapon);
+        HelperUtilities.ValidateCheckEnumerableValues(this, nameof(startingWeaponList), startingWeaponList);
     }
 #endif
     #endregion
