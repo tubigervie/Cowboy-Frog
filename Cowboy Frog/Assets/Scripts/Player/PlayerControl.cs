@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Player))]
+[DisallowMultipleComponent]
 public class PlayerControl : MonoBehaviour
 {
     #region Tooltip
@@ -10,12 +12,8 @@ public class PlayerControl : MonoBehaviour
     #endregion
     [SerializeField] private MovementDetailsSO movementDetails;
 
-    #region Tooltip
-    [Tooltip("The player WeaponShootPosition gameObject in the hierarchy")]
-    #endregion
-    [SerializeField] private Transform weaponShootPosition;
-
     private Player player;
+    private int currentWeaponIndex = 1;
     private float moveSpeed;
     private Coroutine playerRollCoroutine;
     private WaitForFixedUpdate waitForFixedUpdate; //dealing with physics only move with fixed update intervals
@@ -31,6 +29,7 @@ public class PlayerControl : MonoBehaviour
     private void Start()
     {
         waitForFixedUpdate = new WaitForFixedUpdate();
+        SetStartingWeapon();
     }
 
     private void Update()
@@ -59,6 +58,54 @@ public class PlayerControl : MonoBehaviour
         AimDirection playerAimDirection;
 
         AimWeaponInput(out weaponDirection, out weaponAngleDegrees, out playerAngleDegrees, out playerAimDirection);
+
+        FireWeaponInput(weaponDirection, weaponAngleDegrees, playerAngleDegrees, playerAimDirection);
+
+        ReloadWeaponInput();
+    }
+
+    private void ReloadWeaponInput()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            Weapon currentWeapon = player.activeWeapon.GetCurrentWEapon();
+            if (currentWeapon.isWeaponReloading) return;
+            if (currentWeapon.weaponRemainingAmmo < currentWeapon.weaponDetails.weaponClipAmmoCapacity && !currentWeapon.weaponDetails.hasInfiniteAmmo) return;
+            if (currentWeapon.weaponClipRemainingAmmo == currentWeapon.weaponDetails.weaponClipAmmoCapacity) return;
+            Debug.Log("Call reload");
+            player.reloadWeaponEvent.CallReloadWeaponEvent(player.activeWeapon.GetCurrentWEapon(), 0);
+        }
+    }
+
+    private void FireWeaponInput(Vector3 weaponDirection, float weaponAngleDegrees, float playerAngleDegrees, AimDirection playerAimDirection)
+    {
+        if(Input.GetMouseButton(0))
+        {
+            player.fireWeaponEvent.CallSetFireWeaponEvent(true, playerAimDirection, playerAngleDegrees, weaponAngleDegrees, weaponDirection);
+        }
+    }
+
+    private void SetStartingWeapon()
+    {
+        int index = 1;
+        foreach(Weapon weapon in player.weaponList)
+        {
+            if(weapon.weaponDetails == player.playerDetails.startingWeapon)
+            {
+                SetWeaponByIndex(index);
+                break;
+            }
+            index++;
+        }
+    }
+
+    private void SetWeaponByIndex(int index)
+    {
+        if(index - 1 < player.weaponList.Count)
+        {
+            currentWeaponIndex = index;
+            player.setActiveWeaponEvent.CallSetActiveWeaponEvent(player.weaponList[currentWeaponIndex - 1]);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -79,7 +126,7 @@ public class PlayerControl : MonoBehaviour
     {
         Vector3 mouseWorldPosition = HelperUtilities.GetMouseWorldPosition();
 
-        weaponDirection = (mouseWorldPosition - weaponShootPosition.position);
+        weaponDirection = (mouseWorldPosition - player.activeWeapon.GetShootPosition());
 
         Vector3 playerDirection = (mouseWorldPosition - transform.position);
 
