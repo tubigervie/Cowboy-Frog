@@ -72,6 +72,7 @@ public class GameResources : MonoBehaviour
     [Header("SOUNDS")]
     #endregion SOUNDS
     public AudioMixerGroup soundsMasterMixerGroup;
+    public SoundEffectSO doorOpenCloseSoundEffect;
 
 
     #region Validation
@@ -84,6 +85,7 @@ public class GameResources : MonoBehaviour
         HelperUtilities.ValidateCheckNullValue(this, nameof(litMaterial), litMaterial);
         HelperUtilities.ValidateCheckNullValue(this, nameof(variableLitShader), variableLitShader);
         HelperUtilities.ValidateCheckNullValue(this, nameof(ammoIconPrefab), ammoIconPrefab);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(doorOpenCloseSoundEffect), doorOpenCloseSoundEffect);
     }
 #endif
     #endregion

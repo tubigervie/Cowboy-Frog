@@ -104,6 +104,11 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         player.Initialize(playerDetails);
     }
 
+    public Sprite GetPlayerIcon()
+    {
+        return playerDetails.playerMiniMapIcon;
+    }
+
     public void SetCurrentRoom(Room room)
     {
         previousRoom = currentRoom;
