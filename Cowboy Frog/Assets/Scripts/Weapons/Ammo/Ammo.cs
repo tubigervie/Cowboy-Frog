@@ -118,11 +118,11 @@ public class Ammo : MonoBehaviour, IFireable
     {
         //Get a random spread toggle of 1 or -1
         int spreadToggle = UnityEngine.Random.Range(0, 2) * 2 - 1;
-
+        float spread = UnityEngine.Random.Range(ammoDetails.minSpread, ammoDetails.maxSpread);
         fireDirectionAngle = (weaponAimDirectionVector.magnitude < Settings.useAimAngleDistance) ? aimAngle : weaponAimAngle;
 
         //Adjust ammo fire angle by random spread
-        fireDirectionAngle += spreadToggle * ammoDetails.ammoSpread;
+        fireDirectionAngle += spreadToggle * spread;
 
         //Set ammo rotation
         transform.eulerAngles = new Vector3(0f, 0f, fireDirectionAngle);

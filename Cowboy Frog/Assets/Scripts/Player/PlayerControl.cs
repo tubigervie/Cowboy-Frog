@@ -62,7 +62,49 @@ public class PlayerControl : MonoBehaviour
 
         FireWeaponInput(weaponDirection, weaponAngleDegrees, playerAngleDegrees, playerAimDirection);
 
+        SwitchWeaponInput();
+
         ReloadWeaponInput();
+    }
+
+    private void SwitchWeaponInput()
+    {
+        if(Input.mouseScrollDelta.y < 0f)
+        {
+            PreviousWeapon();
+        }
+        else if(Input.mouseScrollDelta.y > 0f)
+        {
+            NextWeapon();
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SetWeaponByIndex(1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SetWeaponByIndex(2);
+        }
+    }
+
+    private void NextWeapon()
+    {
+        currentWeaponIndex++;
+        if(currentWeaponIndex > player.weaponList.Count)
+        {
+            currentWeaponIndex = 1;
+        }
+        SetWeaponByIndex(currentWeaponIndex);
+    }
+
+    private void PreviousWeapon()
+    {
+        currentWeaponIndex--;
+        if (currentWeaponIndex < 1)
+        {
+            currentWeaponIndex = player.weaponList.Count;
+        }
+        SetWeaponByIndex(currentWeaponIndex);
     }
 
     private void ReloadWeaponInput()

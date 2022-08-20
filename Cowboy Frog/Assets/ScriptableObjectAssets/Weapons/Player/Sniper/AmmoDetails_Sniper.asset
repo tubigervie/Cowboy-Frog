@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88c64c49be4c87946a23a78078beeb31, type: 3}
+  m_Name: AmmoDetails_Sniper
+  m_EditorClassIdentifier: 
+  ammoName: Sniper Ammo
+  isPlayerAmmo: 1
+  ammoSprite: {fileID: 21300000, guid: c3be09077243891458bdbf46a57d2e8a, type: 3}
+  ammoPrefabArray:
+  - {fileID: 4555858420671037347, guid: 26826a90ba2ca76458b08c7916f5e081, type: 3}
+  ammoMaterial: {fileID: 2100000, guid: 33a55999e44f4724191171c59fc64319, type: 2}
+  ammoChargeTime: 0
+  ammoChargeMaterial: {fileID: 0}
+  ammoDamage: 35
+  ammoSpeed: 50
+  ammoRange: 20
+  ammoRotationSpeed: 1
+  ammoSpread: 0.5
+  ammoSpawnAmount: 1
+  ammoSpawnInterval: 0
+  isAmmoTrail: 0
+  ammoTrailTime: 0
+  ammoTrailMaterial: {fileID: 0}
+  ammoTrailStartWidth: 0
+  ammoTrailEndWidth: 0

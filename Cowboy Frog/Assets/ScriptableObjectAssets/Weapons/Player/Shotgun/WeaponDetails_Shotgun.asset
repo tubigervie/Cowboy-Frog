@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af52d3bffa12db64f8a58929b92afcea, type: 3}
-  m_Name: WeaponDetails_Pistol
+  m_Name: WeaponDetails_Shotgun
   m_EditorClassIdentifier: 
-  weaponName: Pistol
-  weaponSprite: {fileID: 21300000, guid: abbe40c4d6a803f42a7c4f53404a484d, type: 3}
-  weaponShootPosition: {x: 1.115, y: 0.277, z: 0}
-  weaponCurrentAmmo: {fileID: 11400000, guid: 4194214077f557b45947642a58f576c9, type: 2}
-  hasInfiniteAmmo: 1
+  weaponName: Shotgun
+  weaponSprite: {fileID: 21300000, guid: 957e7c5a4532c7b4fa28cd31bf5aee5d, type: 3}
+  weaponShootPosition: {x: 1.376, y: 0.208, z: 0}
+  weaponCurrentAmmo: {fileID: 11400000, guid: 09a9e067496b4e146a9b9d2e3016405e, type: 2}
+  hasInfiniteAmmo: 0
   hasInfiniteClipCapacity: 0
-  weaponClipAmmoCapacity: 10
-  weaponAmmoCapacity: 20
-  weaponFireRate: 0.3
+  weaponClipAmmoCapacity: 4
+  weaponAmmoCapacity: 30
+  weaponFireRate: 0.7
   weaponPrechargeTime: 0
-  weaponReloadTime: 1.2
+  weaponReloadTime: 1.5
   isAutomatic: 0

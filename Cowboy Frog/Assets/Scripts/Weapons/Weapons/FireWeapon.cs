@@ -48,9 +48,9 @@ public class FireWeapon : MonoBehaviour
     private void WeaponFire(FireWeaponEventArgs fireWeaponEventArgs)
     {
         WeaponPreCharge(fireWeaponEventArgs);
-        if(fireWeaponEventArgs.fire)
+        if (fireWeaponEventArgs.fire)
         {
-            if(IsWeaponReadyToFire())
+            if (IsWeaponReadyToFire())
             {
                 FireAmmo(fireWeaponEventArgs.aimAngle, fireWeaponEventArgs.weaponAimAngle, fireWeaponEventArgs.weaponAimDirectionVector);
                 ResetCooldownTimer();
@@ -65,7 +65,7 @@ public class FireWeapon : MonoBehaviour
 
     private void WeaponPreCharge(FireWeaponEventArgs fireWeaponEventArgs)
     {
-        if(fireWeaponEventArgs.firePreviousFrame)
+        if (fireWeaponEventArgs.firePreviousFrame)
         {
             firePreChargeTimer -= Time.deltaTime;
         }
@@ -83,20 +83,30 @@ public class FireWeapon : MonoBehaviour
     private void FireAmmo(float aimAngle, float weaponAimAngle, Vector3 weaponAimDirectionVector)
     {
         AmmoDetailsSO currentAmmo = activeWeapon.GetCurrentAmmo();
-        if(currentAmmo != null)
+        if (currentAmmo != null)
         {
+            StartCoroutine(FireAmmoRoutine(currentAmmo, aimAngle, weaponAimAngle, weaponAimDirectionVector));
+        }
+    }
+
+    private IEnumerator FireAmmoRoutine(AmmoDetailsSO currentAmmo, float aimAngle, float weaponAimAngle, Vector3 weaponAimDirectionVector)
+    {
+        int ammoCounter = 0;
+        while(ammoCounter < currentAmmo.ammoSpawnAmount)
+        {
+            ammoCounter++;
             GameObject ammoPrefab = currentAmmo.ammoPrefabArray[UnityEngine.Random.Range(0, currentAmmo.ammoPrefabArray.Length)];
             float ammoSpeed = currentAmmo.ammoSpeed;
             IFireable ammo = (IFireable)PoolManager.Instance.ReuseComponent(ammoPrefab, activeWeapon.GetShootPosition(), Quaternion.identity);
             ammo.InitializeAmmo(currentAmmo, aimAngle, weaponAimAngle, ammoSpeed, weaponAimDirectionVector);
-
-            if(!activeWeapon.GetCurrentWEapon().weaponDetails.hasInfiniteClipCapacity)
-            {
-                activeWeapon.GetCurrentWEapon().weaponClipRemainingAmmo--;
-            }
-
-            weaponFiredEvent.CallWeaponFiredEvent(activeWeapon.GetCurrentWEapon());
+            yield return new WaitForSeconds(currentAmmo.ammoSpawnInterval);
         }
+        if (!activeWeapon.GetCurrentWEapon().weaponDetails.hasInfiniteClipCapacity)
+        {
+            activeWeapon.GetCurrentWEapon().weaponClipRemainingAmmo--;
+        }
+
+        weaponFiredEvent.CallWeaponFiredEvent(activeWeapon.GetCurrentWEapon());
     }
 
     private bool IsWeaponReadyToFire()

@@ -69,7 +69,11 @@ public class AmmoDetailsSO : ScriptableObject
     #region Toolip
     [Tooltip("The spread angle of the ammo. A higher spread means less accuracy")]
     #endregion
-    public float ammoSpread = 0f;
+    public float minSpread = 0f;
+    #region Toolip
+    [Tooltip("The spread angle of the ammo. A higher spread means less accuracy")]
+    #endregion
+    public float maxSpread = 0f;
 
     #region Header AMMO SPAWN DETAILS
     [Space(10)]
@@ -113,7 +117,7 @@ public class AmmoDetailsSO : ScriptableObject
         HelperUtilities.ValidateCheckPositiveValue(this, nameof(ammoDamage), ammoDamage, false);
         HelperUtilities.ValidateCheckPositiveValue(this, nameof(ammoSpeed), ammoSpeed, false);
         HelperUtilities.ValidateCheckPositiveValue(this, nameof(ammoRange), ammoRange, false);
-        HelperUtilities.ValidateCheckPositiveValue(this, nameof(ammoSpread), ammoSpread, true);
+        HelperUtilities.ValidateCheckPositiveValue(this, nameof(minSpread), minSpread, true);
         HelperUtilities.ValidateCheckPositiveValue(this, nameof(ammoSpawnAmount), ammoSpawnAmount, false);
         HelperUtilities.ValidateCheckPositiveValue(this, nameof(ammoSpawnInterval), ammoSpawnInterval, true);
         if(isAmmoTrail)
