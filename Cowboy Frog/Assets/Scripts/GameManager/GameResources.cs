@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 /// <summary>
 /// Essentially a resources repository. Any resources (SOs) we want accessible by multiple components can be added to this script. (e.g. GameResources.Instance.roomNodeTypeList)
@@ -65,6 +66,12 @@ public class GameResources : MonoBehaviour
     #region Tooltip
     #endregion
     public GameObject ammoIconPrefab;
+
+    #region Header SOUNDS
+    [Space(10)]
+    [Header("SOUNDS")]
+    #endregion SOUNDS
+    public AudioMixerGroup soundsMasterMixerGroup;
 
 
     #region Validation

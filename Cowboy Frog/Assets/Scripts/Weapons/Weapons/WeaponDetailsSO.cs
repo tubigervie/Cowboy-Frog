@@ -30,6 +30,8 @@ public class WeaponDetailsSO : ScriptableObject
     [Tooltip("Weapon current ammo")]
     #endregion
     public AmmoDetailsSO weaponCurrentAmmo;
+    public SoundEffectSO weaponFiringSoundEffect;
+    public SoundEffectSO weaponReloadSoundEffect;
 
     #region Header WEAPON OPERATING VALUES
     [Space(10)]
@@ -64,7 +66,6 @@ public class WeaponDetailsSO : ScriptableObject
     [Tooltip("Weapon Reload Time - in seconds")]
     #endregion
     public float weaponReloadTime = 0f;
-
     public bool isAutomatic = true;
 
     #region Validation

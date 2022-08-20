@@ -233,4 +233,11 @@ public static class HelperUtilities
         }
         return nearestSpawnPosition;
     }
+
+    public static float LinearToDecibels(int linear)
+    {
+        float linearScaleRange = 20f;
+        //formula to convert from linear scale to the logarithmic decibel scale
+        return Mathf.Log10((float)linear / linearScaleRange) * 20f;
+    }
 }
