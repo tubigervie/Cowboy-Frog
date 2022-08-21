@@ -12,6 +12,7 @@ public class ReloadWeapon : MonoBehaviour
     private ReloadWeaponEvent reloadWeaponEvent;
     private WeaponReloadedEvent weaponReloadedEvent;
     private SetWeaponActiveEvent setWeaponActiveEvent;
+    //private MovementToPositionEvent movementToPositionEvent;
     private Coroutine reloadWeaponCoroutine;
 
     private void Awake()
@@ -19,18 +20,21 @@ public class ReloadWeapon : MonoBehaviour
         reloadWeaponEvent = GetComponent<ReloadWeaponEvent>();
         weaponReloadedEvent = GetComponent<WeaponReloadedEvent>();
         setWeaponActiveEvent = GetComponent<SetWeaponActiveEvent>();
+        //movementToPositionEvent = GetComponent<MovementToPositionEvent>();
     }
 
     private void OnEnable()
     {
         reloadWeaponEvent.OnReloadWeapon += ReloadWeaponEvent_OnReloadWeapon;
         setWeaponActiveEvent.OnSetActiveWeapon += SetActiveWeaponEvent_OnSetActiveWeapon;
+        //movementToPositionEvent.OnMovementToPosition += CancelReload;
     }
 
     private void OnDisable()
     {
         reloadWeaponEvent.OnReloadWeapon -= ReloadWeaponEvent_OnReloadWeapon;
         setWeaponActiveEvent.OnSetActiveWeapon -= SetActiveWeaponEvent_OnSetActiveWeapon;
+        //movementToPositionEvent.OnMovementToPosition -= CancelReload;
     }
 
     private void SetActiveWeaponEvent_OnSetActiveWeapon(SetWeaponActiveEvent setWeaponActiveEvent, SetActiveWeaponEventArgs setActiveWeaponEventArgs)
@@ -58,6 +62,16 @@ public class ReloadWeapon : MonoBehaviour
         }
         reloadWeaponCoroutine = StartCoroutine(ReloadWeaponRoutine(reloadWeaponEventArgs.weapon, reloadWeaponEventArgs.topUpAmmoPercent)); 
     }
+
+    //private void CancelReload(MovementToPositionEvent movementToPositionEvent, MovementToPositionArgs movementToPositionArgs)
+    //{
+    //    if(reloadWeaponCoroutine != null)
+    //    {
+    //        StopCoroutine(reloadWeaponCoroutine);
+    //    }
+    //    reloadWeaponCoroutine = null;
+    //    weapon.isWeaponReloading = false;
+    //}
 
     private IEnumerator ReloadWeaponRoutine(Weapon weapon, int topUpAmmoPercent)
     {

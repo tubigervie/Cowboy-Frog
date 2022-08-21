@@ -44,6 +44,7 @@ public class WeaponStatusUI : MonoBehaviour
         player.weaponFiredEvent.OnWeaponFired += WeaponFiredEvent_OnWeaponFired;
         player.reloadWeaponEvent.OnReloadWeapon += ReloadWeaponEvent_OnWeaponReload;
         player.weaponReloadedEvent.OnWeaponReloaded += WeaponReloadedEvent_OnWeaponReloaded;
+        //player.movementToPositionEvent.OnMovementToPosition += MovementToPositionEvent_OnMovementToPosition;
     }
 
     private void OnDisable()
@@ -52,7 +53,15 @@ public class WeaponStatusUI : MonoBehaviour
         player.weaponFiredEvent.OnWeaponFired -= WeaponFiredEvent_OnWeaponFired;
         player.reloadWeaponEvent.OnReloadWeapon -= ReloadWeaponEvent_OnWeaponReload;
         player.weaponReloadedEvent.OnWeaponReloaded -= WeaponReloadedEvent_OnWeaponReloaded;
+        //player.movementToPositionEvent.OnMovementToPosition -= MovementToPositionEvent_OnMovementToPosition;
     }
+
+    private void MovementToPositionEvent_OnMovementToPosition(MovementToPositionEvent arg1, MovementToPositionArgs arg2)
+    {
+        ResetWeaponReloadBar();
+        StopBlinkingReloadText();
+    }
+
 
     private void WeaponReloadedEvent_OnWeaponReloaded(WeaponReloadedEvent weaponReloadedEvent, WeaponReloadedEventArgs weaponReloadedEventArgs)
     {

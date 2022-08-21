@@ -32,6 +32,7 @@ public class WeaponDetailsSO : ScriptableObject
     public AmmoDetailsSO weaponCurrentAmmo;
     public SoundEffectSO weaponFiringSoundEffect;
     public SoundEffectSO weaponReloadSoundEffect;
+    public WeaponShootEffectSO weaponShootEffect;
 
     #region Header WEAPON OPERATING VALUES
     [Space(10)]

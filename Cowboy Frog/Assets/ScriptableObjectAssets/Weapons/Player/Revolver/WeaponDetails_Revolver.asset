@@ -18,11 +18,12 @@ MonoBehaviour:
   weaponCurrentAmmo: {fileID: 11400000, guid: 16dda817a32e0584c98d7719b4c85ef4, type: 2}
   weaponFiringSoundEffect: {fileID: 11400000, guid: ab6b557e86dfb174b896eb45beafe641, type: 2}
   weaponReloadSoundEffect: {fileID: 11400000, guid: 3080621e387015f478250c52ce87bc61, type: 2}
+  weaponShootEffect: {fileID: 11400000, guid: 3f571d495e0e1a24e86ec9b61dc27e85, type: 2}
   hasInfiniteAmmo: 0
   hasInfiniteClipCapacity: 0
   weaponClipAmmoCapacity: 6
   weaponAmmoCapacity: 18
-  weaponFireRate: 0.2
+  weaponFireRate: 0.15
   weaponPrechargeTime: 0
   weaponReloadTime: 1.8
   isAutomatic: 0

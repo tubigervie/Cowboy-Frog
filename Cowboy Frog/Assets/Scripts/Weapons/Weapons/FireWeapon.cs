@@ -108,7 +108,21 @@ public class FireWeapon : MonoBehaviour
 
         weaponFiredEvent.CallWeaponFiredEvent(activeWeapon.GetCurrentWEapon());
 
+        WeaponShootEffect(aimAngle);
         WeaponSoundEffect();
+    }
+
+    private void WeaponShootEffect(float aimAngle)
+    {
+        if (activeWeapon.GetCurrentWEapon().weaponDetails.weaponShootEffect != null && activeWeapon.GetCurrentWEapon().weaponDetails.weaponShootEffect.weaponShootEffectPrefab != null)
+        {
+            WeaponShootEffect weaponShootEffect = (WeaponShootEffect)PoolManager.Instance.ReuseComponent(activeWeapon.GetCurrentWEapon().weaponDetails.weaponShootEffect.weaponShootEffectPrefab,
+                activeWeapon.GetShootEffectPosition(), Quaternion.identity);
+
+            weaponShootEffect.SetShootEffect(activeWeapon.GetCurrentWEapon().weaponDetails.weaponShootEffect, aimAngle);
+
+            weaponShootEffect.gameObject.SetActive(true);
+        }
     }
 
     private void WeaponSoundEffect()
