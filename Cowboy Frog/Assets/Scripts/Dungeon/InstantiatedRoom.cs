@@ -33,13 +33,13 @@ public class InstantiatedRoom : MonoBehaviour
     {
         PopulateTilemapMemberVariables(roomGameObject);
         BlockOffUnusedDoorways();
-        AddObstacles();
+        AddObstaclesAndPreferredPaths();
         AddDoorsToRooms();
         DisableCollisionTilemapRenderer();
     }
 
     //Update obsctacles by AStar pathfinding
-    private void AddObstacles()
+    private void AddObstaclesAndPreferredPaths()
     {
         aStarMovementPenalty = new int[room.templateUpperBounds.x - room.templateLowerBounds.x + 1, room.templateUpperBounds.y - room.templateLowerBounds.y + 1];
 
@@ -53,6 +53,12 @@ public class InstantiatedRoom : MonoBehaviour
                 //Add obstacles for collision tiles the enemy can't walk on
                 TileBase tile = collisionTilemap.GetTile(new Vector3Int(x + room.templateLowerBounds.x, y + room.templateLowerBounds.y, 0));
             
+                if(tile == GameResources.Instance.preferredEnemyPathTile)
+                {
+                    aStarMovementPenalty[x, y] = Settings.preferredPathAStarMovementPenalty;
+                    continue;
+                }
+
                 foreach(TileBase collisionTile in GameResources.Instance.enemyUnwalkableCollisionTilesArray)
                 {
                     if(tile == collisionTile)
