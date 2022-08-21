@@ -17,15 +17,9 @@ public class InstantiatedRoom : MonoBehaviour
     [HideInInspector] public Tilemap collisionTilemap;
     [HideInInspector] public Tilemap minimapTilemap;
     [HideInInspector] public Bounds roomColliderBounds;
+    [HideInInspector] public int[,] aStarMovementPenalty;
 
     private BoxCollider2D boxCollider2D;
-
-    private const string groundTag = "groundTilemap";
-    private const string decoration1Tag = "decoration1Tilemap";
-    private const string decoration2Tag = "decoration2Tilemap";
-    private const string frontTag = "frontTilemap";
-    private const string collisionTag = "collisionTilemap";
-    private const string minimapTag = "minimapTilemap";
 
 
     private void Awake()
@@ -39,8 +33,36 @@ public class InstantiatedRoom : MonoBehaviour
     {
         PopulateTilemapMemberVariables(roomGameObject);
         BlockOffUnusedDoorways();
+        AddObstacles();
         AddDoorsToRooms();
         DisableCollisionTilemapRenderer();
+    }
+
+    //Update obsctacles by AStar pathfinding
+    private void AddObstacles()
+    {
+        aStarMovementPenalty = new int[room.templateUpperBounds.x - room.templateLowerBounds.x + 1, room.templateUpperBounds.y - room.templateLowerBounds.y + 1];
+
+        for(int x = 0; x < (room.templateUpperBounds.x - room.templateLowerBounds.x + 1); x++)
+        {
+            for(int y = 0; y < (room.templateUpperBounds.y - room.templateLowerBounds.y + 1); y++)
+            {
+                //Set default movement penalty for grid squares
+                aStarMovementPenalty[x, y] = Settings.defaultAStarMovementPenalty;
+
+                //Add obstacles for collision tiles the enemy can't walk on
+                TileBase tile = collisionTilemap.GetTile(new Vector3Int(x + room.templateLowerBounds.x, y + room.templateLowerBounds.y, 0));
+            
+                foreach(TileBase collisionTile in GameResources.Instance.enemyUnwalkableCollisionTilesArray)
+                {
+                    if(tile == collisionTile)
+                    {
+                        aStarMovementPenalty[x, y] = 0;
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     private void AddDoorsToRooms()
@@ -185,17 +207,17 @@ public class InstantiatedRoom : MonoBehaviour
 
         foreach(Tilemap tilemap in tilemaps)
         {
-            if (tilemap.gameObject.CompareTag(groundTag))
+            if (tilemap.gameObject.CompareTag(Settings.groundTag))
                 groundTilemap = tilemap;
-            else if (tilemap.gameObject.CompareTag(decoration1Tag))
+            else if (tilemap.gameObject.CompareTag(Settings.decoration1Tag))
                 decoration1Tilemap = tilemap;
-            else if (tilemap.gameObject.CompareTag(decoration2Tag))
+            else if (tilemap.gameObject.CompareTag(Settings.decoration2Tag))
                 decoration2Tilemap = tilemap;
-            else if (tilemap.gameObject.CompareTag(frontTag))
+            else if (tilemap.gameObject.CompareTag(Settings.frontTag))
                 frontTilemap = tilemap;
-            else if (tilemap.gameObject.CompareTag(collisionTag)) //change tags to static strings
+            else if (tilemap.gameObject.CompareTag(Settings.collisionTag))
                 collisionTilemap = tilemap;
-            else if (tilemap.gameObject.CompareTag(minimapTag))
+            else if (tilemap.gameObject.CompareTag(Settings.minimapTag))
                 minimapTilemap = tilemap;
         }
     }

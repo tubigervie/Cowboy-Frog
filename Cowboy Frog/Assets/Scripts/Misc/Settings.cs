@@ -8,7 +8,6 @@ public static class Settings
     public const float pixelsPerUnit = 16f;
     public const float tileSizePixels = 16f;
     #endregion
-
     #region DUNGEON BUILD SETTINGS
     public const int maxDungeonRebuildAttemptsForRoomGraph = 1000;
     public const int maxDungeonBuildAttempts = 10;
@@ -41,10 +40,20 @@ public static class Settings
     #region GAMEOBJECT TAGS
     public const string playerTag = "Player";
     public const string playerWeapon = "playerWeapon";
+    public const string groundTag = "groundTilemap";
+    public const string decoration1Tag = "decoration1Tilemap";
+    public const string decoration2Tag = "decoration2Tilemap";
+    public const string frontTag = "frontTilemap";
+    public const string collisionTag = "collisionTilemap";
+    public const string minimapTag = "minimapTilemap";
     #endregion
 
     #region FIRING CONTROL
     public const float useAimAngleDistance = 3.5f; //if the target distance is less than this then the aim angle will be used (calculated from player) else the weapon aim angle will be used
+    #endregion
+
+    #region ASTAR PATHFINDING PARAMETERS
+    public const int defaultAStarMovementPenalty = 40;
     #endregion
 
     #region UI PARAMETERS

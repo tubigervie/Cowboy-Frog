@@ -73,7 +73,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
                 gameState = GameState.playingLevel;
                 break;
             case GameState.playingLevel:
-                if (Input.GetKeyDown(KeyCode.P))
+                if (Input.GetKeyDown(KeyCode.T))
                     PlayDungeonLevel(currentDungeonLevelListIndex);
                 break;
             case GameState.engagingEnemies:
