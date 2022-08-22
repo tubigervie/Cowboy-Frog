@@ -19,6 +19,7 @@ public class EnemyMovementAI : MonoBehaviour
     private WaitForFixedUpdate waitForFixedUpdate;
     [HideInInspector] public float moveSpeed;
     private bool chasePlayer = false;
+    [HideInInspector] public int updateFrameNumber = 1; //default value. This is set by the enemy spawner
 
     private void Awake()
     {
@@ -44,6 +45,9 @@ public class EnemyMovementAI : MonoBehaviour
 
         //Not close enough to chase player then return
         if (!chasePlayer) return;
+
+        //Only process A Star path rebuild on certain frames to spread the load between enemies
+        if (Time.frameCount % Settings.targetFrameRateToSpreadPathFindingOver != updateFrameNumber) return;
 
         //if the movement cooldown timer reached or player has moved more than required distance
         //then rebuild the enemy path and move the enemy
@@ -123,6 +127,11 @@ public class EnemyMovementAI : MonoBehaviour
             }
         }
         return playerCellPosition;
+    }
+
+    public void SetUpdateFrameNumber(int updateFrameNumber)
+    {
+        this.updateFrameNumber = updateFrameNumber;
     }
 
     private IEnumerator MoveEnemyRoutine(Stack<Vector3> movementSteps)
