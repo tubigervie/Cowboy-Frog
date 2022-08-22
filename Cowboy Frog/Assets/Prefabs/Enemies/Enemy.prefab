@@ -429,6 +429,7 @@ GameObject:
   - component: {fileID: 4958837394044435723}
   - component: {fileID: 7748721230108700786}
   - component: {fileID: 1177667931425960060}
+  - component: {fileID: 5506648483286338036}
   m_Layer: 15
   m_Name: Enemy
   m_TagString: Untagged
@@ -469,6 +470,9 @@ MonoBehaviour:
   enemyMovementAI: {fileID: 0}
   movementToPositionEvent: {fileID: 0}
   idleEvent: {fileID: 0}
+  circleCollider2D: {fileID: 0}
+  polygonCollider2D: {fileID: 0}
+  animator: {fileID: 0}
   spriteRendererArray: []
 --- !u!210 &5689675301723975908
 SortingGroup:
@@ -680,5 +684,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d01167e5747a51b469265c90167b1f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5506648483286338036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9161779826827169859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b981b353e3558a044a00a4be27507992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
