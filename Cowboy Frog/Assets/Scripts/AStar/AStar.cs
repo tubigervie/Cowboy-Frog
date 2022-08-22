@@ -20,7 +20,7 @@ public static class AStar
         endGridPosition -= (Vector3Int)room.templateLowerBounds;
 
         //Create open list and closed hashset
-        NativeHeap minHeap = new NativeHeap(); //change this to be a binary heap
+        NativeHeap minHeap = new NativeHeap(400); //change this to be a binary heap
         HashSet<Node> closedNodeHashSet = new HashSet<Node>();
 
         //Create gridnodes for path finding
@@ -58,7 +58,6 @@ public static class AStar
 
             nextNode = nextNode.parentNode;
         }
-
         return movementPathStack;
     }
 

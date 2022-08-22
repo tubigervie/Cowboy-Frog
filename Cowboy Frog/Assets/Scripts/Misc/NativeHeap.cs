@@ -12,93 +12,101 @@ using UnityEngine;
 /// </summary>
 public class NativeHeap
 {
-    private List<Node> heap = new List<Node>();
+    private Node[] heap;
+    int currentItemCount;
 
-    public bool Contains(Node value)
+    public NativeHeap(int maxHeapSize)
     {
-        return heap.Contains(value);
+        heap = new Node[maxHeapSize];
+        currentItemCount = 0;
     }
 
     public int GetCount()
     {
-        return heap.Count;
+        return currentItemCount;
+    }
+
+    public bool Contains(Node value)
+    {
+        return value == heap[value.heapIndex];
     }
 
     public void Enqueue(Node value)
     {
-        heap.Add(value);
-        HeapifyFromEndToBeginning(heap.Count - 1);
+        value.heapIndex = currentItemCount;
+        heap[currentItemCount] = value;
+        SortUp(value);
+        currentItemCount++;
     }
 
-    private int HeapifyFromEndToBeginning(int pos)
+    void SortUp(Node item)
     {
-        if (pos >= heap.Count) return -1;
-        while(pos > 0)
+        int parentIndex = (item.heapIndex - 1) / 2;
+        while(true)
         {
-            int parentPos = (pos - 1) / 2;
-            if (heap[parentPos].CompareTo(heap[pos]) > 0)
+            Node parentItem = heap[parentIndex];
+            if(item.CompareTo(parentItem) < 0)
             {
-                ExchangeElements(parentPos, pos);
-                pos = parentPos;
+                Swap(item, parentItem);
             }
             else
+            {
                 break;
+            }
+            parentIndex = (item.heapIndex - 1) / 2;
         }
-        return pos;
     }
 
-    private void ExchangeElements(int pos1, int pos2)
+    void Swap(Node itemA, Node itemB)
     {
-        Node val = heap[pos1];
-        heap[pos1] = heap[pos2];
-        heap[pos2] = val;
+        heap[itemA.heapIndex] = itemB;
+        heap[itemB.heapIndex] = itemA;
+        int itemAIndex = itemA.heapIndex;
+        itemA.heapIndex = itemB.heapIndex;
+        itemB.heapIndex = itemAIndex;
     }
 
     public Node Dequeue()
     {
-        if (heap.Count == 0) return null;
+        if (currentItemCount == 0) return null;
         else
         {
-            Node result = heap[0];
-            DeleteRoot();
-            return result;
+            Node firstTime = heap[0];
+            currentItemCount--;
+            heap[0] = heap[currentItemCount];
+            heap[0].heapIndex = 0;
+            SortDown(heap[0]);
+            return firstTime;
         }
     }
 
-    private void DeleteRoot()
+    void SortDown(Node item)
     {
-        if(heap.Count <= 1)
-        {
-            heap.Clear();
-            return;
-        }
-
-        heap[0] = heap[heap.Count - 1];
-        heap.RemoveAt(heap.Count - 1);
-
-        HeapifyFromBeginningToEnd(0);
-    }
-
-    private void HeapifyFromBeginningToEnd(int pos)
-    {
-        if (pos >= heap.Count) return;
         while (true)
         {
-            // on each iteration exchange element with its smallest child
-            int smallest = pos;
-            int left = 2 * pos + 1;
-            int right = 2 * pos + 2;
-            if (left < heap.Count && heap[smallest].CompareTo(heap[left]) > 0)
-                smallest = left;
-            if (right < heap.Count && heap[smallest].CompareTo(heap[right]) > 0)
-                smallest = right;
-
-            if (smallest != pos)
+            int childIndexLeft = item.heapIndex * 2 + 1;
+            int childIndexRight = item.heapIndex * 2 + 2;
+            int swapIndex = 0;
+            if (childIndexLeft < currentItemCount)
             {
-                ExchangeElements(smallest, pos);
-                pos = smallest;
+                swapIndex = childIndexLeft;
+                if (childIndexRight < currentItemCount)
+                {
+                    if (heap[childIndexLeft].CompareTo(heap[childIndexRight]) > 0)
+                    {
+                        swapIndex = childIndexRight;
+                    }
+                }
+                if (item.CompareTo(heap[swapIndex]) > 0)
+                {
+                    Swap(item, heap[swapIndex]);
+                }
+                else
+                    return;
             }
-            else break;
+            else
+                return;
         }
     }
+
 }

@@ -9,7 +9,7 @@ public class Node : IComparable<Node>
     public int gCost = 0; //distance from starting node;
     public int hCost = 0; //distance from finishing node
     public Node parentNode;
-
+    public int heapIndex;
     public Node(Vector2Int gridPosition)
     {
         this.gridPosition = gridPosition;
