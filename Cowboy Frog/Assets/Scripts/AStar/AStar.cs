@@ -20,7 +20,7 @@ public static class AStar
         endGridPosition -= (Vector3Int)room.templateLowerBounds;
 
         //Create open list and closed hashset
-        List<Node> openNodeList = new List<Node>(); //change this to be a binary heap
+        NativeHeap minHeap = new NativeHeap(); //change this to be a binary heap
         HashSet<Node> closedNodeHashSet = new HashSet<Node>();
 
         //Create gridnodes for path finding
@@ -29,7 +29,7 @@ public static class AStar
         Node startNode = gridNodes.GetGridNode(startGridPosition.x, startGridPosition.y);
         Node targetNode = gridNodes.GetGridNode(endGridPosition.x, endGridPosition.y);
 
-        Node endPathNode = FindShortestPath(startNode, targetNode, gridNodes, openNodeList, closedNodeHashSet, room.instantiatedRoom);
+        Node endPathNode = FindShortestPath(startNode, targetNode, gridNodes, minHeap, closedNodeHashSet, room.instantiatedRoom);
         if(endPathNode != null)
         {
             return CreatePathStack(endPathNode, room);
@@ -73,16 +73,14 @@ public static class AStar
     /// <param name="instantiatedRoom1"></param>
     /// <param name="instantiatedRoom2"></param>
     /// <returns></returns>
-    private static Node FindShortestPath(Node startNode, Node targetNode, GridNodes gridNodes, List<Node> openNodeList, HashSet<Node> closedNodeHashSet, InstantiatedRoom instantiatedRoom)
+    private static Node FindShortestPath(Node startNode, Node targetNode, GridNodes gridNodes, NativeHeap openNodeHeap, HashSet<Node> closedNodeHashSet, InstantiatedRoom instantiatedRoom)
     {
-        openNodeList.Add(startNode);
-        while(openNodeList.Count > 0)
+        openNodeHeap.Enqueue(startNode);
+        while(openNodeHeap.GetCount() > 0)
         {
-            openNodeList.Sort();
 
             //current node = node in the open list withh the lowest fCost
-            Node currentNode = openNodeList[0];
-            openNodeList.RemoveAt(0);
+            Node currentNode = openNodeHeap.Dequeue();
 
             if(currentNode == targetNode)
             {
@@ -91,12 +89,12 @@ public static class AStar
             
             closedNodeHashSet.Add(currentNode);
 
-            EvaluateCurrentNodeNeighbors(currentNode, targetNode, gridNodes, openNodeList, closedNodeHashSet, instantiatedRoom);
+            EvaluateCurrentNodeNeighbors(currentNode, targetNode, gridNodes, openNodeHeap, closedNodeHashSet, instantiatedRoom);
         }
         return null;
     }
 
-    private static void EvaluateCurrentNodeNeighbors(Node currentNode, Node targetNode, GridNodes gridNodes, List<Node> openNodeList, HashSet<Node> closedNodeHashSet, InstantiatedRoom instantiatedRoom)
+    private static void EvaluateCurrentNodeNeighbors(Node currentNode, Node targetNode, GridNodes gridNodes, NativeHeap openNodeHeap, HashSet<Node> closedNodeHashSet, InstantiatedRoom instantiatedRoom)
     {
         Vector2Int currentNodeGridPosition = currentNode.gridPosition;
         Node validNeighborNode;
@@ -119,7 +117,7 @@ public static class AStar
                     int movementPenaltyForGridSpace = instantiatedRoom.aStarMovementPenalty[validNeighborNode.gridPosition.x, validNeighborNode.gridPosition.y];
 
                     newCostToNeighbor = currentNode.gCost + GetDistance(currentNode, validNeighborNode) + movementPenaltyForGridSpace;
-                    bool isValidNeighborNodeInOpenList = openNodeList.Contains(validNeighborNode);
+                    bool isValidNeighborNodeInOpenList = openNodeHeap.Contains(validNeighborNode);
                     if(newCostToNeighbor < validNeighborNode.gCost || !isValidNeighborNodeInOpenList)
                     {
                         validNeighborNode.gCost = newCostToNeighbor;
@@ -128,7 +126,7 @@ public static class AStar
 
                         if(!isValidNeighborNodeInOpenList)
                         {
-                            openNodeList.Add(validNeighborNode);
+                            openNodeHeap.Enqueue(validNeighborNode);
                         }
                     }
                 }

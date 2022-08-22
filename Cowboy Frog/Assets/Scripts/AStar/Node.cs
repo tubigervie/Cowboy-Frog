@@ -29,7 +29,6 @@ public class Node : IComparable<Node>
         // compare will be < 0 if this instance Fcost is less than nodeToCompare.FCost
         // compare will be >0 if this instance Fcost is greater than nodeToCompare.FCost
         // compare will be == 0 if the values are the same
-
         int compare = FCost.CompareTo(nodeToCompare.FCost);
         if(compare == 0)
         {
@@ -40,4 +39,11 @@ public class Node : IComparable<Node>
         //add nodes to list and then sort list by icomparable using compareto method
         return compare;
     }
+
+    public int EqualsTo(Node nodeToCompare)
+    {
+        if (this == nodeToCompare) return 0;
+        return -1;
+    }
+
 }
