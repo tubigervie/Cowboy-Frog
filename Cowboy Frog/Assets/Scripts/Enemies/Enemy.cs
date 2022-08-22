@@ -14,11 +14,12 @@ using UnityEngine;
 [RequireComponent(typeof(MovementToPosition))]
 [RequireComponent(typeof(IdleEvent))]
 [RequireComponent(typeof(Idle))]
+[RequireComponent(typeof(AnimateEnemy))]
 #endregion REQUIRE COMPONENTS
 [DisallowMultipleComponent]
 public class Enemy : MonoBehaviour
 {
-    public EnemyDetailsSO enemyDetails;
+    [HideInInspector] public EnemyDetailsSO enemyDetails;
     public EnemyMovementAI enemyMovementAI;
     public MovementToPositionEvent movementToPositionEvent;
     public IdleEvent idleEvent;
@@ -37,5 +38,10 @@ public class Enemy : MonoBehaviour
         movementToPositionEvent = GetComponent<MovementToPositionEvent>();
         spriteRendererArray = GetComponentsInChildren<SpriteRenderer>();
         animator = GetComponent<Animator>();
+    }
+
+    public void Initialization(EnemyDetailsSO enemyDetails, int enemySpawnNumber, DungeonLevelSO dungeonLevel)
+    {
+        this.enemyDetails = enemyDetails;
     }
 }

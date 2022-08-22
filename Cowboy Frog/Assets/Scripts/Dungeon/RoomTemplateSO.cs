@@ -81,6 +81,7 @@ public class RoomTemplateSO : ScriptableObject
         "of this enemy type that will be spawned.")]
     #endregion Tooltip
     public List<SpawnableObjectsByLevel<EnemyDetailsSO>> enemiesByLevelList;
+    public List<RoomEnemySpawnParameters> roomEnemySpawnParametersList;
     /// <summary>
     /// Returns the list of Entrances for the room template
     /// </summary>
@@ -105,6 +106,12 @@ public class RoomTemplateSO : ScriptableObject
         }
 
         HelperUtilities.ValidateCheckEnumerableValues(this, nameof(doorwayList), doorwayList);
+
+        if(enemiesByLevelList.Count > 0 || roomEnemySpawnParametersList.Count > 0)
+        {
+            HelperUtilities.ValidateCheckEnumerableValues(this, nameof(enemiesByLevelList), enemiesByLevelList);
+            HelperUtilities.ValidateCheckEnumerableValues(this, nameof(roomEnemySpawnParametersList), roomEnemySpawnParametersList);
+        }
 
         // Check spawn positions populated
         HelperUtilities.ValidateCheckEnumerableValues(this, nameof(spawnPositionArray), spawnPositionArray);

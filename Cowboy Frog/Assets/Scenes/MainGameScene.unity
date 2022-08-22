@@ -2838,7 +2838,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 940a9a11734d256498956e8b6c75f31e, type: 2}
   - {fileID: 11400000, guid: ddd00cce305819944991e758a3271889, type: 2}
   - {fileID: 11400000, guid: fa49fc731a5c7754484c929b0b486778, type: 2}
-  currentDungeonLevelListIndex: 2
+  currentDungeonLevelListIndex: 5
   gameState: 0
 --- !u!4 &1960329410
 Transform:
@@ -2870,12 +2870,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960329408}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0efb0d05f909e3b4eb631c5927e901c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomTemplateSO: {fileID: 11400000, guid: 5ec7c3fd29261984abd0f0a91400645d, type: 2}
 --- !u!1 &2093191747
 GameObject:
   m_ObjectHideFlags: 0

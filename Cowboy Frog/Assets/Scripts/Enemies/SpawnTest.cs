@@ -1,34 +1,59 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnTest : MonoBehaviour
 {
-    public RoomTemplateSO roomTemplateSO;
     private List<SpawnableObjectsByLevel<EnemyDetailsSO>> testLevelSpawnList;
     private RandomSpawnableObject<EnemyDetailsSO> randomEnemyHelperClass;
-    private GameObject instantiatedEnemy;
+    private List<GameObject> instantiatedEnemies = new List<GameObject>();
+
+    private void OnEnable()
+    {
+        StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
+    }
+
+    private void OnDisable()
+    {
+        StaticEventHandler.OnRoomChanged -= StaticEventHandler_OnRoomChanged;
+    }
 
     private void Start()
     {
-        testLevelSpawnList = roomTemplateSO.enemiesByLevelList;
         randomEnemyHelperClass = new RandomSpawnableObject<EnemyDetailsSO>(testLevelSpawnList);
+    }
+
+    private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs roomChangedEventArgs)
+    {
+        if(instantiatedEnemies != null && instantiatedEnemies.Count > 0)
+        {
+            foreach(GameObject enemy in instantiatedEnemies)
+            {
+                Destroy(enemy);
+            }
+            instantiatedEnemies.Clear();
+        }
+
+        RoomTemplateSO roomTemplate = DungeonBuilder.Instance.GetRoomTemplate(roomChangedEventArgs.room.templateID);
+
+        if(roomTemplate != null)
+        {
+            testLevelSpawnList = roomTemplate.enemiesByLevelList;
+            randomEnemyHelperClass = new RandomSpawnableObject<EnemyDetailsSO>(testLevelSpawnList);
+        }
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.E))
         {
-            if(instantiatedEnemy != null)
-            {
-                Destroy(instantiatedEnemy);
-            }
 
             EnemyDetailsSO enemyDetails = randomEnemyHelperClass.GetItem();
 
             if(enemyDetails != null)
             {
-                instantiatedEnemy = Instantiate(enemyDetails.enemyPrefab, HelperUtilities.GetSpawnPositionNearestToPlayer(HelperUtilities.GetMouseWorldPosition()), Quaternion.identity);
+                instantiatedEnemies.Add(Instantiate(enemyDetails.enemyPrefab, HelperUtilities.GetSpawnPositionNearestToPlayer(HelperUtilities.GetMouseWorldPosition()), Quaternion.identity));
             }
         }
     }
