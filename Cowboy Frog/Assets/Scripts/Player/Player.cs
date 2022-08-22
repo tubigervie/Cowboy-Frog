@@ -74,6 +74,11 @@ public class Player : MonoBehaviour
         CreatePlayerStartingWeapons();
     }
 
+    public Vector3 GetPlayerPosition()
+    {
+        return transform.position;
+    }
+
     private void SetPlayerHealth()
     {
         health.SetStartingHealth(playerDetails.playerHealthAmount);

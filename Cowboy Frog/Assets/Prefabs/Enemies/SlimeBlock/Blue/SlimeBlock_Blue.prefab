@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.41568628
       objectReference: {fileID: 0}
+    - target: {fileID: 4324500235929621247, guid: 8e45f4cee1a49c74bb7da96901f8dd01, type: 3}
+      propertyPath: movementDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 9e073917ae76ab240bf988f567cee59c, type: 2}
     - target: {fileID: 5116067578625680793, guid: 8e45f4cee1a49c74bb7da96901f8dd01, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -91,6 +95,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.41304737
       objectReference: {fileID: 0}
+    - target: {fileID: 7623795803856442518, guid: 8e45f4cee1a49c74bb7da96901f8dd01, type: 3}
+      propertyPath: enemyDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 064219763ea072f49a1dc0d73ffc1d50, type: 2}
     - target: {fileID: 9161779826827169859, guid: 8e45f4cee1a49c74bb7da96901f8dd01, type: 3}
       propertyPath: m_Name
       value: SlimeBlock_Blue

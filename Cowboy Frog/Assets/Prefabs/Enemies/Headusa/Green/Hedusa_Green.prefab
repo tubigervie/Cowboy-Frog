@@ -27,6 +27,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4324500235929621247, guid: 8e45f4cee1a49c74bb7da96901f8dd01, type: 3}
+      propertyPath: movementDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 02f6d57eeb7449a46a7dcb1c9b63856b, type: 2}
     - target: {fileID: 5116067578625680793, guid: 8e45f4cee1a49c74bb7da96901f8dd01, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -183,6 +187,10 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[8].y
       value: 1.261231
       objectReference: {fileID: 0}
+    - target: {fileID: 7623795803856442518, guid: 8e45f4cee1a49c74bb7da96901f8dd01, type: 3}
+      propertyPath: enemyDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 62721a4feeacd574993a120efad861ae, type: 2}
     - target: {fileID: 9161779826827169859, guid: 8e45f4cee1a49c74bb7da96901f8dd01, type: 3}
       propertyPath: m_Name
       value: Hedusa_Green

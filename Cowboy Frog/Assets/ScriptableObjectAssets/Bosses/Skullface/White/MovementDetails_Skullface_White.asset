@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb7673ffcb99a9e4abb8a611b69485ae, type: 3}
-  m_Name: EnemyDetails_SlimeBlockKing_Green 1
+  m_Script: {fileID: 11500000, guid: c6ba8f3e885384847b2ed7bf4bcb335d, type: 3}
+  m_Name: MovementDetails_Skullface_White
   m_EditorClassIdentifier: 
-  enemyName: Slime Block King Green
-  enemyPrefab: {fileID: 4137002996471561505, guid: caa19df34cd0283409040f6a75ff3e1e, type: 3}
+  moveSpeed: 5
+  rollSpeed: 0
+  rollDistance: 0
+  rollCooldownTime: 0
