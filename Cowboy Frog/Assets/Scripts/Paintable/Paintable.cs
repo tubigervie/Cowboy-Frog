@@ -9,7 +9,7 @@ public class Paintable : MonoBehaviour
     private Tilemap paintMap;
     private TileBase playerPaintTile;
     private InstantiatedRoom instantiatedRoom;
-    private bool canPaint;
+    //private bool canPaint;
     private List<PaintTimers> activePaintTimers = new List<PaintTimers>();
 
     public bool TileIsPainted(Vector3 pos)
@@ -23,7 +23,7 @@ public class Paintable : MonoBehaviour
         instantiatedRoom = GetComponentInParent<InstantiatedRoom>();
         paintMap = GetComponent<Tilemap>();
         playerPaintTile = GameResources.Instance.paintableTileBase;
-        canPaint = true;
+        //canPaint = true;
         StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
     }
 
@@ -36,11 +36,11 @@ public class Paintable : MonoBehaviour
     {
         if(roomChangedEventArgs.room == instantiatedRoom.room)
         {
-            canPaint = true;
+            //canPaint = true;
         }
         else
         {
-            canPaint = false;
+            //canPaint = false;
         }
     }
 

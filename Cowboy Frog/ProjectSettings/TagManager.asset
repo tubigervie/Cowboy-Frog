@@ -59,11 +59,11 @@ TagManager:
   - name: Ground Decoration 1
     uniqueID: 1256738893
     locked: 0
-  - name: Ground Decoration 2
-    uniqueID: 1084350817
-    locked: 0
   - name: Puddle
     uniqueID: 3000981359
+    locked: 0
+  - name: Ground Decoration 2
+    uniqueID: 1084350817
     locked: 0
   - name: Instances
     uniqueID: 1437650807

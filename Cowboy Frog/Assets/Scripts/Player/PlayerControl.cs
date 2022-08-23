@@ -204,14 +204,14 @@ public class PlayerControl : MonoBehaviour
 
         if(direction != Vector2.zero)
         {
-            Paintable room = GameManager.Instance.GetCurrentRoom().instantiatedRoom.paintMap;
-            float variableMoveSpeed = moveSpeed;
-            if(room != null && room.TileIsPainted(transform.position))
-            {
-                variableMoveSpeed *= 1.5f;
-            }
+            //Paintable room = GameManager.Instance.GetCurrentRoom().instantiatedRoom.paintMap;
+            //float variableMoveSpeed = moveSpeed;
+            //if(room != null && room.TileIsPainted(transform.position))
+            //{
+            //    variableMoveSpeed *= 1.5f;
+            //}
             if(!rightMouseButtonDown)
-                player.movementByVelocityEvent.CallMovementByVelocityEvent(direction, variableMoveSpeed);
+                player.movementByVelocityEvent.CallMovementByVelocityEvent(direction, moveSpeed);
             else if (playerRollCooldownTimer <= 0f)
             {
                 PlayerRoll((Vector3) direction);

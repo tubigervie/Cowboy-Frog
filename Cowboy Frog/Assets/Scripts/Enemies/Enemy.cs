@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine.Rendering;
 using UnityEngine;
+using System;
 
 #region REQUIRE COMPONENTS
 [RequireComponent(typeof(SortingGroup))]
@@ -15,6 +16,7 @@ using UnityEngine;
 [RequireComponent(typeof(IdleEvent))]
 [RequireComponent(typeof(Idle))]
 [RequireComponent(typeof(AnimateEnemy))]
+[RequireComponent(typeof(MaterializeEffect))]
 #endregion REQUIRE COMPONENTS
 [DisallowMultipleComponent]
 public class Enemy : MonoBehaviour
@@ -23,7 +25,12 @@ public class Enemy : MonoBehaviour
     public EnemyMovementAI enemyMovementAI;
     public MovementToPositionEvent movementToPositionEvent;
     public IdleEvent idleEvent;
+    public HealthEvent healthEvent;
+    public DestroyedEvent destroyedEvent;
+    public Health health;
+    public Destroyed destroyed;
 
+    [HideInInspector] public MaterializeEffect materializeEffect;
     [HideInInspector] public CircleCollider2D circleCollider2D;
     [HideInInspector] public PolygonCollider2D polygonCollider2D;
     [HideInInspector] public Animator animator;
@@ -31,18 +38,84 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
+        healthEvent = GetComponent<HealthEvent>();
+        health = GetComponent<Health>();
+        destroyed = GetComponent<Destroyed>();
+        destroyedEvent = GetComponent<DestroyedEvent>();
         circleCollider2D = GetComponent<CircleCollider2D>();
         polygonCollider2D = GetComponent<PolygonCollider2D>();
         enemyMovementAI = GetComponent<EnemyMovementAI>();
         idleEvent = GetComponent<IdleEvent>();
+        materializeEffect = GetComponent<MaterializeEffect>();
         movementToPositionEvent = GetComponent<MovementToPositionEvent>();
         spriteRendererArray = GetComponentsInChildren<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }
 
+    private void OnEnable()
+    {
+        healthEvent.OnHealthChanged += HealthEvent_OnHealthLost;
+    }
+
+    private void OnDisable()
+    {
+        healthEvent.OnHealthChanged -= HealthEvent_OnHealthLost;
+    }
+
+    private void HealthEvent_OnHealthLost(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
+    {
+        if(healthEventArgs.healthAmount <= 0)
+        {
+            EnemyDestroyed();
+        }
+    }
+
+    private void EnemyDestroyed()
+    {
+        destroyedEvent.CallDestroyedEvent();
+    }
+
     public void Initialization(EnemyDetailsSO enemyDetails, int enemySpawnNumber, DungeonLevelSO dungeonLevel)
     {
+        Debug.Log("should be spawning");
         this.enemyDetails = enemyDetails;
+        SetEnemyMovementUpdateFrame(enemySpawnNumber);
+        SetEnemyStartingHealth(dungeonLevel);
+        StartCoroutine(MaterializeEnemy());
+    }
+
+    private void SetEnemyStartingHealth(DungeonLevelSO dungeonLevel)
+    {
+        foreach(EnemyHealthDetails enemyHealthDetails in enemyDetails.enemyHealthDetailsArray)
+        {
+            if(enemyHealthDetails.dungeonLevel == dungeonLevel)
+            {
+                health.SetStartingHealth(enemyHealthDetails.enemyHealthAmount);
+                return;
+            }
+        }
+        health.SetStartingHealth(Settings.defaultEnemyHealth);
+    }
+
+    private void SetEnemyMovementUpdateFrame(int enemySpawnNumber)
+    {
         this.enemyMovementAI.SetUpdateFrameNumber(enemySpawnNumber % Settings.targetFrameRateToSpreadPathFindingOver);
+    }
+
+    private IEnumerator MaterializeEnemy()
+    {
+        EnemyEnable(false);
+
+        yield return StartCoroutine(materializeEffect.MaterialiseRoutine(enemyDetails.enemyMaterializeShader, enemyDetails.enemyMaterializeColor,
+            enemyDetails.enemyMaterializeTime, spriteRendererArray, enemyDetails.enemyStandardMaterial));
+        EnemyEnable(true);
+    }
+
+    private void EnemyEnable(bool isEnabled)
+    {
+        circleCollider2D.enabled = isEnabled;
+        polygonCollider2D.enabled = isEnabled;
+
+        enemyMovementAI.enabled = isEnabled;
     }
 }

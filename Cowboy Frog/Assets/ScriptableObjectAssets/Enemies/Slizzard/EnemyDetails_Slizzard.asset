@@ -14,3 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Slizzard
   enemyPrefab: {fileID: 74079250963202075, guid: 5d74f01d9f17c9a4b876602179128364, type: 3}
+  chaseDistance: 50
+  enemyStandardMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  enemyMaterializeTime: 2
+  enemyMaterializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}
+  enemyMaterializeColor: {r: 1, g: 0.3537736, b: 0.3537736, a: 1}
+  enemyHealthDetailsArray:
+  - dungeonLevel: {fileID: 11400000, guid: e82f066453cf28a478c7ce04a411c419, type: 2}
+    enemyHealthAmount: 20
+  - dungeonLevel: {fileID: 11400000, guid: e3336bff00318d743a3a4a4e587d0a35, type: 2}
+    enemyHealthAmount: 40
+  - dungeonLevel: {fileID: 11400000, guid: aea548e0d781aa842a868bb7e028abbe, type: 2}
+    enemyHealthAmount: 60
+  - dungeonLevel: {fileID: 11400000, guid: 940a9a11734d256498956e8b6c75f31e, type: 2}
+    enemyHealthAmount: 60
+  - dungeonLevel: {fileID: 11400000, guid: ddd00cce305819944991e758a3271889, type: 2}
+    enemyHealthAmount: 60
+  - dungeonLevel: {fileID: 11400000, guid: fa49fc731a5c7754484c929b0b486778, type: 2}
+    enemyHealthAmount: 75
+  isImmuneAfterHit: 0
+  hitImmunityTime: 0

@@ -28,6 +28,13 @@ GameObject:
   - component: {fileID: 2274260312201353124}
   - component: {fileID: 7896533218108244491}
   - component: {fileID: 6384113626232936291}
+  - component: {fileID: 5797103710127310049}
+  - component: {fileID: 789678763509449352}
+  - component: {fileID: 7590635296601709885}
+  - component: {fileID: 3901592579625294903}
+  - component: {fileID: 4661652704986837102}
+  - component: {fileID: 5314608849048731210}
+  - component: {fileID: -7418400562688785480}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -73,7 +80,7 @@ SortingGroup:
   m_GameObject: {fileID: 6772686690905673023}
   m_Enabled: 1
   m_SortingLayerID: 1437650807
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
 --- !u!212 &6772686690905672992
 SpriteRenderer:
@@ -114,7 +121,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1437650807
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 2
   m_Sprite: {fileID: -420035388, guid: 00852a4d2d6b9564fad0ca424c3e0d21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -226,9 +233,15 @@ MonoBehaviour:
   movementByVelocityEvent: {fileID: 0}
   movementToPositionEvent: {fileID: 0}
   setActiveWeaponEvent: {fileID: 0}
+  fireWeaponEvent: {fileID: 0}
+  weaponFiredEvent: {fileID: 0}
   aimWeaponEvent: {fileID: 0}
+  reloadWeaponEvent: {fileID: 0}
+  weaponReloadedEvent: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
+  activeWeapon: {fileID: 0}
+  weaponList: []
 --- !u!114 &6020925939236640688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,7 +255,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementDetails: {fileID: 11400000, guid: 227389dd6bb2c034595d97c6126efb62, type: 2}
-  weaponShootPosition: {fileID: 6772686692502233189}
 --- !u!114 &7815171281429096287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +392,97 @@ MonoBehaviour:
   weaponPolygonCollider2D: {fileID: 6772686692064118391}
   weaponShootPositionTransform: {fileID: 6772686692502233189}
   weaponEffectPositionTransform: {fileID: 6772686692854568915}
+  currentWeapon:
+    weaponDetails: {fileID: 0}
+    weaponListPosition: 0
+    weaponReloadTimer: 0
+    weaponClipRemainingAmmo: 0
+    weaponRemainingAmmo: 0
+    isWeaponReloading: 0
+--- !u!114 &5797103710127310049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772686690905673023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820615468ef16db469cb2f33fd3fdd4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &789678763509449352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772686690905673023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc367e38475d87c4593731a0eac3c555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7590635296601709885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772686690905673023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b706df86ba0e6c44cb5f842ab9653e9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3901592579625294903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772686690905673023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d5850f58df8ce74589ba6d74aa99f1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4661652704986837102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772686690905673023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54be577e89839cf4db1d75f46cf20061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5314608849048731210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772686690905673023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53814698b78c40746b3784937a3cb00c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7418400562688785480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772686690905673023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb21bfdbef37442b16e6ccbb90bf49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6772686691618878188
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,7 +621,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1437650807
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 5
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -628,7 +731,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1437650807
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 10
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -712,7 +815,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1437650807
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

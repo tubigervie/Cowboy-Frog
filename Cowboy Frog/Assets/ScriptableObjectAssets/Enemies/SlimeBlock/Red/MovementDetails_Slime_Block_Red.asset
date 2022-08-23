@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ba8f3e885384847b2ed7bf4bcb335d, type: 3}
   m_Name: MovementDetails_Slime_Block_Red
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 4
   rollSpeed: 0
   rollDistance: 0
   rollCooldownTime: 0
