@@ -17,6 +17,7 @@ using System;
 [RequireComponent(typeof(Idle))]
 [RequireComponent(typeof(AnimateEnemy))]
 [RequireComponent(typeof(MaterializeEffect))]
+[RequireComponent(typeof(DealContactDamage))]
 #endregion REQUIRE COMPONENTS
 [DisallowMultipleComponent]
 public class Enemy : MonoBehaviour
@@ -72,7 +73,7 @@ public class Enemy : MonoBehaviour
 
     private void EnemyDestroyed()
     {
-        destroyedEvent.CallDestroyedEvent();
+        destroyedEvent.CallDestroyedEvent(false);
     }
 
     public void Initialization(EnemyDetailsSO enemyDetails, int enemySpawnNumber, DungeonLevelSO dungeonLevel)

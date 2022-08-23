@@ -18,8 +18,9 @@ public class PlayerControl : MonoBehaviour
     private float moveSpeed;
     private Coroutine playerRollCoroutine;
     private WaitForFixedUpdate waitForFixedUpdate; //dealing with physics only move with fixed update intervals
-    private bool isPlayerRolling = false;
     private float playerRollCooldownTimer = 0f;
+
+    public bool isPlayerRolling = false;
 
     private void Awake()
     {
