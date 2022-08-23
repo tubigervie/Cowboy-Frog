@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: PixelGameboy
+  m_Shader: {fileID: 4800000, guid: 318a31a7cc140ae479b77cbf90c3bb17, type: 3}
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA PIXELSNAP_ON _GAMEBOY_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FlowMap:
+        m_Texture: {fileID: 2800000, guid: c819ce785dbfa4f508027941183c9bd0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 1
+    - _Cutoff: 0.5
+    - _EmissionStrength: 0
+    - _EnableExternalAlpha: 0
+    - _FlowIntensity: 0.5
+    - _FlowSpeed: 0.5
+    - _Gameboy: 1
+    - _Layer0AutoScrollSpeed: 0
+    - _Layer0ScrollingX: 0
+    - _Layer0ScrollingY: 0
+    - _Pixels: 0.002
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 0.984, a: 1}
+    - _Dark: {r: 0.188235, g: 0.38431, b: 0.188235, a: 1}
+    - _Darkest: {r: 0.0588235, g: 0.21961, b: 0.0588235, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _Ligt: {r: 0.545098, g: 0.6745098, b: 0.0588235, a: 1}
+    - _Ligtest: {r: 0.607843, g: 0.7372549, b: 0.0588235, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}

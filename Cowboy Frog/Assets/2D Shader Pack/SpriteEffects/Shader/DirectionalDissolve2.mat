@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DirectionalDissolve2
+  m_Shader: {fileID: 4800000, guid: 07e3d0eadf06c184396e4f07b658dc74, type: 3}
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA PIXELSNAP_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 2800000, guid: ddb42da7b0b91c44ea1d4ad59fbcfe80, type: 3}
+        m_Scale: {x: 64, y: 64}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 1
+    - _GlowStrength: 1.4
+    - _Progress: 0.32
+    - _Width: 0.15
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Direction: {r: 0, g: 1, b: 0, a: 0}
+    - _GlowColor: {r: 0, g: 0.5, b: 1, a: 1}

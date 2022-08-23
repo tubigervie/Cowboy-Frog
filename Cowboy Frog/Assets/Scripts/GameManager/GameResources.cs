@@ -73,6 +73,13 @@ public class GameResources : MonoBehaviour
     #endregion Tooltip
     public TileBase preferredEnemyPathTile;
 
+    #region Tooltip
+    [Tooltip("Tilebase which can be painted over")]
+    #endregion Tooltip
+    public TileBase paintableTileBase;
+
+    public ContactFilter2D paintContactFilter;
+
     #region Header UI
     [Space(10)]
     [Header("UI")]

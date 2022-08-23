@@ -8596,7 +8596,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1490509829
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -8763,6 +8763,7 @@ GameObject:
   - component: {fileID: 1462120759972737929}
   - component: {fileID: 65355043523559916}
   - component: {fileID: -5918247855016455925}
+  - component: {fileID: 2115855674167570405}
   m_Layer: 12
   m_Name: SmallRoom_Catacombs_1
   m_TagString: Untagged
@@ -8845,6 +8846,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b8891881ba52104daed559eaa200c93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2115855674167570405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4327421925113694216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2b5b32be7a4bb49b778928d066ad8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4561116449979205807
@@ -22991,7 +23004,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 366767783
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -27135,7 +27148,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1217657327
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sea
+  m_Shader: {fileID: 4800000, guid: 36ae548a5e88b42459ff7dc410296073, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - ETC1_EXTERNAL_ALPHA
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpTex:
+        m_Texture: {fileID: 2800000, guid: 9ba7d0c2568b1be4ea4a09fc788bfef8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ColorTex:
+        m_Texture: {fileID: 2800000, guid: d19ec1e695c77b34ca817f5f6c385702, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: d19ec1e695c77b34ca817f5f6c385702, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecTex:
+        m_Texture: {fileID: 2800000, guid: a24297a1954cfe7429d220367a121f23, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _SpecIntensity: 1.5
+    - _WaveSpeed: 0.6
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _LitDir: {r: 1, g: 9, b: 1, a: 0}
+    - _WaveOffset: {r: 0.1, g: 0.3, b: 0.3, a: 0}
+    - _WaveTiling: {r: 8, g: 12, b: 16.75, a: 10}
+  m_BuildTextureStacks: []

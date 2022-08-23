@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 [DisallowMultipleComponent]
 public class Ammo : MonoBehaviour, IFireable
@@ -17,10 +18,18 @@ public class Ammo : MonoBehaviour, IFireable
     private float ammoChargeTimer;
     private bool isAmmoMaterialSet = false;
     private bool overrideAmmoMovement;
+    private InstantiatedRoom currentRoom;
+
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        currentRoom = GameManager.Instance.GetCurrentRoom().instantiatedRoom;
+        
     }
 
     private void Update()
@@ -39,6 +48,9 @@ public class Ammo : MonoBehaviour, IFireable
         //Calculate distance vector to move ammo (small ammount each frame)
         Vector3 distanceVector = fireDirectionVector * ammoSpeed * Time.deltaTime;
         transform.position += distanceVector;
+
+        //if(currentRoom.paintMap != null)
+        //    currentRoom.paintMap.PaintTile(transform.position);
 
         ammoRange -= distanceVector.magnitude;
         if(ammoRange < 0f)

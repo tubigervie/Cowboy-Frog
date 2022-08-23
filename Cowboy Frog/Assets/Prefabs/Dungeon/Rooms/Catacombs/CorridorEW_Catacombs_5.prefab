@@ -5286,7 +5286,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 366767783
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -9462,6 +9462,7 @@ GameObject:
   - component: {fileID: 7061706898141806551}
   - component: {fileID: 552909229608386780}
   - component: {fileID: -5642078449306695127}
+  - component: {fileID: 6179554675149443185}
   m_Layer: 12
   m_Name: CorridorEW_Catacombs_5
   m_TagString: Untagged
@@ -9544,6 +9545,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b8891881ba52104daed559eaa200c93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6179554675149443185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5351491626515514454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2b5b32be7a4bb49b778928d066ad8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6714043297886329097
@@ -15951,7 +15964,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1490509829
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}

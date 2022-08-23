@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CloudsRealistic
+  m_Shader: {fileID: 4800000, guid: b216b21ce3957e14cbd92a82c899f9cb, type: 3}
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Channel0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Channel1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Channel2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Channel3:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _CloudAlpha: 8
+    - _CloudCover: 0.2
+    - _CloudDark: 0.5
+    - _CloudScale: 3.15
+    - _SkyTint: 0.5
+    - _Speed: 0.04
+    - cloudalpha: 8
+    - cloudcover: 0.2
+    - clouddark: 0.5
+    - cloudlight: 0.3
+    - cloudscale: 1.1
+    - skytint: 0.5
+    - speed: 0.01
+    m_Colors:
+    - _SkyColorBottom: {r: 0.4, g: 0.7, b: 1, a: 1}
+    - _SkyColorTop: {r: 0.2, g: 0.4, b: 0.6, a: 1}
+    - _SkyColourBottom: {r: 0.4, g: 0.7, b: 1, a: 1}
+    - _SkyColourTop: {r: 0.2, g: 0.4, b: 0.6, a: 1}
+    - iMouse: {r: 0, g: 0, b: 0, a: 0}
+    - skycolour1: {r: 0.2, g: 0.4, b: 0.6, a: 1}
+    - skycolour2: {r: 0.4, g: 0.7, b: 1, a: 1}

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Fire
+  m_Shader: {fileID: 4800000, guid: d39bb969987181c4eb11efd9bcf37b78, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _NoiseTex
+        second:
+          m_Texture: {fileID: 2800000, guid: a29ac8b50882bee4297d83852976f7f8, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BaseTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 5dc993bb25b80534ab21ccb352186362, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _OpacityTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 0bdbe7d073cd5b140ae331bda2ed64c1, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _BlendSrc
+        second: 5
+      data:
+        first:
+          name: _BlendDst
+        second: 10
+    m_Colors:
+      data:
+        first:
+          name: _LayerSpeed
+        second: {r: .680000007, g: .519999981, b: .75, a: 1}
+      data:
+        first:
+          name: _DistortionStrength
+        second: {r: .372999996, g: .162, b: .108000003, a: 1}
+      data:
+        first:
+          name: _HeightAttenuation
+        second: {r: .620000005, g: 0, b: 0, a: 1}

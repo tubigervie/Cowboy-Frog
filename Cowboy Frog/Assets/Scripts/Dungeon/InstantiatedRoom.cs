@@ -9,6 +9,7 @@ using UnityEngine.Tilemaps;
 public class InstantiatedRoom : MonoBehaviour
 {
     [HideInInspector] public Room room;
+    [HideInInspector] public Paintable paintMap;
     [HideInInspector] public Grid grid;
     [HideInInspector] public Tilemap groundTilemap;
     [HideInInspector] public Tilemap decoration1Tilemap;
@@ -16,6 +17,7 @@ public class InstantiatedRoom : MonoBehaviour
     [HideInInspector] public Tilemap frontTilemap;
     [HideInInspector] public Tilemap collisionTilemap;
     [HideInInspector] public Tilemap minimapTilemap;
+    [HideInInspector] public Tilemap puddleTilemap;
     [HideInInspector] public Bounds roomColliderBounds;
     [HideInInspector] public int[,] aStarMovementPenalty;
 
@@ -225,6 +227,11 @@ public class InstantiatedRoom : MonoBehaviour
                 collisionTilemap = tilemap;
             else if (tilemap.gameObject.CompareTag(Settings.minimapTag))
                 minimapTilemap = tilemap;
+            else if (tilemap.gameObject.CompareTag("puddleTilemap"))
+            {
+                puddleTilemap = tilemap;
+                paintMap = puddleTilemap.gameObject.GetComponent<Paintable>();
+            }
         }
     }
 
