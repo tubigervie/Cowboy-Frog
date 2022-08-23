@@ -15,7 +15,7 @@ MonoBehaviour:
   playerCharacterName: Scientist
   playerPrefab: {fileID: 2222680461046650276, guid: 02e529413d8d36f40b01645ba858a9dc, type: 3}
   runtimeAnimatorController: {fileID: 9100000, guid: e52ed9234b488b0449570da9e57ce474, type: 2}
-  playerHealthAmount: 100
+  playerHealthAmount: 5
   startingWeapon: {fileID: 11400000, guid: 02faf2890ecd67e43937e7fb66ce4cc2, type: 2}
   startingWeaponList:
   - {fileID: 11400000, guid: 7fc40a9cf9e81a945ab2a9b57efffaa9, type: 2}

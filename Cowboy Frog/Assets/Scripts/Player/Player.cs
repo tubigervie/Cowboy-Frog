@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public PlayerDetailsSO playerDetails;
     [HideInInspector] public Health health;
     [HideInInspector] public IdleEvent idleEvent;
+    [HideInInspector] public HealthEvent healthEvent;
     [HideInInspector] public MovementByVelocityEvent movementByVelocityEvent;
     [HideInInspector] public MovementToPositionEvent movementToPositionEvent;
     [HideInInspector] public SetWeaponActiveEvent setActiveWeaponEvent;
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
         health = GetComponent<Health>();
         idleEvent = GetComponent<IdleEvent>();
         aimWeaponEvent = GetComponent<AimWeaponEvent>();
+        healthEvent = GetComponent<HealthEvent>();
         activeWeapon = GetComponent<ActiveWeapon>();
         movementByVelocityEvent = GetComponent<MovementByVelocityEvent>();
         movementToPositionEvent = GetComponent<MovementToPositionEvent>();

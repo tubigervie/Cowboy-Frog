@@ -68,5 +68,10 @@ public static class Settings
 
     #region UI PARAMETERS
     public const float uiAmmoIconSpacing = 4f;
+    public const float uiHeartIconSpacing = 16f;
+    #endregion
+
+    #region CONTACT DAMAGE PARAMETERS
+    public const float contactDamageCollisionResetDelay = 0.5f;
     #endregion
 }
