@@ -22,6 +22,8 @@ public class PlayerControl : MonoBehaviour
 
     public bool isPlayerRolling = false;
 
+    private bool isPlayerMovementDisabled;
+
     private void Awake()
     {
         player = GetComponent<Player>();
@@ -36,6 +38,8 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
+        if (isPlayerMovementDisabled) return;
+
         if (isPlayerRolling) return;
 
         //Process player movement input
@@ -225,6 +229,17 @@ public class PlayerControl : MonoBehaviour
     private void PlayerRoll(Vector3 direction)
     {
         playerRollCoroutine = StartCoroutine(PlayerRollRoutine(direction));
+    }
+
+    public void EnablePlayer()
+    {
+        isPlayerMovementDisabled = false;
+    }
+
+    public void DisablePlayer()
+    {
+        isPlayerMovementDisabled = true;
+        player.idleEvent.CallIdleEvent();
     }
 
     private IEnumerator PlayerRollRoutine(Vector3 direction)

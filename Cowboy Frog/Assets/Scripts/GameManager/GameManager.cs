@@ -2,11 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 [DisallowMultipleComponent]
 public class GameManager : SingletonMonobehaviour<GameManager>
 {
+    #region Header GAMEOBJECT REFS
+    [Header("GAMEOBJECT REFS")]
+    #endregion
+    [Tooltip("Populate with the MessageText textmeshpro component in FadeScreenUI")]
+    [SerializeField] private TextMeshProUGUI messageTextTMP;
+    [Tooltip("Populate with the CanvasGroup component in FadeScreenUI")]
+    [SerializeField] private CanvasGroup canvasGroup;
+
     #region Header DUNGEON LEVELS
     [Space(10)]
     [Header("DUNGEON LEVELS")]
@@ -62,6 +72,33 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         player.destroyedEvent.OnDestroyed -= Player_OnDestroyed;
     }
 
+    private void Start()
+    {
+        previousGameState = GameState.gameStarted;
+        gameState = GameState.gameStarted;
+        StartCoroutine(Fade(0f, 1f, 0f, Color.black));
+    }
+
+    private IEnumerator Fade(float startAlpha, float targetAlpha, float fadeSeconds, Color backgroundColor)
+    {
+        Image image = canvasGroup.GetComponent<Image>();
+        image.color = backgroundColor;
+
+        float time = 0;
+        while(time <= fadeSeconds)
+        {
+            time += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, time / fadeSeconds);
+            yield return null;
+        }
+        canvasGroup.alpha = targetAlpha;
+    }
+
+    private void Update()
+    {
+        HandleGameState();
+    }
+
     private void Player_OnDestroyed(DestroyedEvent destroyedEvent, DestroyedEventArgs destroyedEventArgs)
     {
         previousGameState = gameState;
@@ -78,24 +115,24 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         bool isDungeonClearOfRegularEnemies = true;
         bossRoom = null;
 
-        foreach(KeyValuePair<string, Room> keyValuePair in DungeonBuilder.Instance.dungeonBuilderRoomDictionary)
+        foreach (KeyValuePair<string, Room> keyValuePair in DungeonBuilder.Instance.dungeonBuilderRoomDictionary)
         {
-            if(keyValuePair.Value.roomNodeType.isBossRoom)
+            if (keyValuePair.Value.roomNodeType.isBossRoom)
             {
                 bossRoom = keyValuePair.Value.instantiatedRoom;
                 continue;
             }
 
-            if(!keyValuePair.Value.isClearedOfEnemies)
+            if (!keyValuePair.Value.isClearedOfEnemies)
             {
                 isDungeonClearOfRegularEnemies = false;
                 break;
             }
         }
 
-        if((isDungeonClearOfRegularEnemies && bossRoom == null) || (isDungeonClearOfRegularEnemies && bossRoom.room.isClearedOfEnemies))
+        if ((isDungeonClearOfRegularEnemies && bossRoom == null) || (isDungeonClearOfRegularEnemies && bossRoom.room.isClearedOfEnemies))
         {
-            if(currentDungeonLevelListIndex < dungeonLevelList.Count - 1)
+            if (currentDungeonLevelListIndex < dungeonLevelList.Count - 1)
             {
                 gameState = GameState.levelCompleted;
             }
@@ -104,7 +141,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
                 gameState = GameState.gameWon;
             }
         }
-        else if(isDungeonClearOfRegularEnemies)
+        else if (isDungeonClearOfRegularEnemies)
         {
             gameState = GameState.bossStage;
             StartCoroutine(BossStage());
@@ -118,24 +155,15 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         bossRoom.UnlockDoors(0f);
 
         yield return new WaitForSeconds(2f);
+        ClearMessageText();
+        yield return StartCoroutine(Fade(0f, 1f, .5f, new Color(0f, 0f, 0f, 0.4f)));
 
-        Debug.Log("Boss stage - find and destroy boss");
+        yield return StartCoroutine(DisplayMessageRoutine("DEFEAT THE BOSS...", Color.white, 5f));
     }
 
     private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs roomChangedEventArgs)
     {
         SetCurrentRoom(roomChangedEventArgs.room);
-    }
-
-    private void Start()
-    {
-        previousGameState = GameState.gameStarted;
-        gameState = GameState.gameStarted;
-    }
-
-    private void Update()
-    {
-        HandleGameState();
     }
 
     private void HandleGameState()
@@ -191,13 +219,14 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         gameState = GameState.playingLevel;
 
         yield return new WaitForSeconds(2f);
+        ClearMessageText();
+        yield return StartCoroutine(Fade(0f, 1f, .5f, new Color(0f, 0f, 0f, 0.4f)));
 
-        Debug.Log("Level completed! - Press Return to progress to the next level.");
+        yield return StartCoroutine(DisplayMessageRoutine("YOU SURVIVED...", Color.white, 2f));
 
-        while(!Input.GetKeyDown(KeyCode.Return))
-        {
-            yield return null;
-        }
+        yield return StartCoroutine(DisplayMessageRoutine("PRESS RETURN TO DESCEND FURTHER.", Color.white, 0f));
+        
+        yield return StartCoroutine(Fade(1f, 0f, 2f, new Color(0f, 0f, 0f, 0.4f)));
 
         currentDungeonLevelListIndex++;
 
@@ -208,9 +237,13 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     {
         previousGameState = GameState.gameWon;
 
-        Debug.Log("Game won! Game will restart in 10 seconds");
+        GetPlayer().playerControl.DisablePlayer();
+        ClearMessageText();
+        yield return StartCoroutine(Fade(0f, 1f, 1f, Color.black));
 
-        yield return new WaitForSeconds(10f);
+        yield return StartCoroutine(DisplayMessageRoutine("YOU BEAT THE DUNGEON...", Color.white, 5f));
+
+        yield return StartCoroutine(DisplayMessageRoutine("PRESS RETURN TO RESTART THE GAME.", Color.white, 0f));
 
         gameState = GameState.restartGame;
     }
@@ -219,12 +252,23 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     {
         previousGameState = GameState.gameLost;
 
-        Debug.Log("Game lost! Press Return to restart game.");
+        GetPlayer().playerControl.DisablePlayer();
+        ClearMessageText();
+        yield return new WaitForSeconds(1f);
 
-        while (!Input.GetKeyDown(KeyCode.Return))
+        yield return StartCoroutine(Fade(0f, 1f, 1f, Color.black));
+
+        //Resource hungry but ok since end game state
+        Enemy[] enemyArray = GameObject.FindObjectsOfType<Enemy>();
+        
+        foreach(Enemy enemy in enemyArray)
         {
-            yield return null;
+            enemy.gameObject.SetActive(false);
         }
+
+        yield return StartCoroutine(DisplayMessageRoutine("YOU HAVE BEEN SLAYED...", Color.white, 5f));
+
+        yield return StartCoroutine(DisplayMessageRoutine("PRESS RETURN TO RESTART THE GAME.", Color.white, 0f));
 
         currentDungeonLevelListIndex = 0;
 
@@ -268,6 +312,52 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         player.gameObject.transform.position = new Vector3((currentRoom.lowerBounds.x + currentRoom.upperBounds.x) / 2f, (currentRoom.lowerBounds.y + currentRoom.upperBounds.y) / 2f, 0f);
 
         player.gameObject.transform.position = HelperUtilities.GetSpawnPositionNearestToPlayer(player.gameObject.transform.position);
+
+        StartCoroutine(DisplayDungeonLevelText());
+    }
+
+    private IEnumerator DisplayDungeonLevelText()
+    {
+        StartCoroutine(Fade(0f, 1f, 0f, Color.black));
+
+        GetPlayer().playerControl.DisablePlayer();
+
+        string messageText = "LEVEL " + (currentDungeonLevelListIndex + 1).ToString();
+
+        yield return StartCoroutine(DisplayMessageRoutine(messageText, Color.white, 2f));
+
+        GetPlayer().playerControl.EnablePlayer();
+
+        yield return StartCoroutine(Fade(1f, 0f, 2f, Color.black));
+    }
+
+    private IEnumerator DisplayMessageRoutine(string messageText, Color messageColor, float displaySeconds)
+    {
+        messageTextTMP.SetText(messageText);
+        messageTextTMP.color = messageColor;
+
+        if(displaySeconds > 0f)
+        {
+            float timer = displaySeconds;
+            while(timer > 0f && !Input.GetKeyDown(KeyCode.Return))
+            {
+                timer -= Time.deltaTime;
+                yield return null;
+            }
+        }
+        else
+        {
+            //else display the message until the return button is pressed
+            while(!Input.GetKeyDown(KeyCode.Return))
+            {
+                yield return null;
+            }
+        }
+    }
+
+    private void ClearMessageText()
+    {
+        messageTextTMP.SetText("");
     }
 
     public Room GetCurrentRoom()
