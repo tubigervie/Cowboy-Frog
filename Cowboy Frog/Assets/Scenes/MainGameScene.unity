@@ -637,7 +637,7 @@ Camera:
     x: 0
     y: 0
     width: 1
-    height: 0.9998636
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -969,7 +969,7 @@ MonoBehaviour:
     ModeOverride: 1
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777891, y: 1}
+    m_SensorSize: {x: 1.777027, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3103,7 +3103,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 940a9a11734d256498956e8b6c75f31e, type: 2}
   - {fileID: 11400000, guid: ddd00cce305819944991e758a3271889, type: 2}
   - {fileID: 11400000, guid: fa49fc731a5c7754484c929b0b486778, type: 2}
-  currentDungeonLevelListIndex: 2
+  currentDungeonLevelListIndex: 0
   gameState: 0
   previousGameState: 0
 --- !u!4 &1960329410
