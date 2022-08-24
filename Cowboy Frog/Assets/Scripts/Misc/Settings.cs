@@ -41,6 +41,7 @@ public static class Settings
 
     #region GAMEOBJECT TAGS
     public const string playerTag = "Player";
+    public const string enemyTag = "Enemy";
     public const string playerWeapon = "playerWeapon";
     public const string groundTag = "groundTilemap";
     public const string decoration1Tag = "decoration1Tilemap";

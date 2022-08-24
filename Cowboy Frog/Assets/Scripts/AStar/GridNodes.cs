@@ -29,7 +29,7 @@ public class GridNodes
         }
         else
         {
-            Debug.Log("Requested grid node is out of range");
+            Debug.Log("Requested grid node: " + xPosition + " " + yPosition + " is out of range");
             return null;
         }
     }

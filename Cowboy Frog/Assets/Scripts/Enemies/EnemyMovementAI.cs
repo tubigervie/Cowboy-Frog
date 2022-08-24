@@ -21,6 +21,8 @@ public class EnemyMovementAI : MonoBehaviour
     private bool chasePlayer = false;
     [HideInInspector] public int updateFrameNumber = 1; //default value. This is set by the enemy spawner
 
+    private bool movingAcrossRooms = false;
+
     private void Awake()
     {
         enemy = GetComponent<Enemy>();
@@ -72,13 +74,23 @@ public class EnemyMovementAI : MonoBehaviour
 
     private void CreatePath()
     {
-        Room currentRoom = GameManager.Instance.GetCurrentRoom();
-        Grid grid = currentRoom.instantiatedRoom.grid;
-        Vector3Int enemyGridPosition = grid.WorldToCell(transform.position);
 
-        Vector3Int playerGridPosition = GetNearestNonObstaclePlayerPosition(currentRoom); 
+        if(enemy.currentRoom == GameManager.Instance.GetCurrentRoom())
+        {
+            Vector3Int enemyGridPosition = enemy.currentRoom.instantiatedRoom.grid.WorldToCell(transform.position);
 
-        movementSteps = AStar.BuildPath(currentRoom, enemyGridPosition, playerGridPosition);
+            Vector3Int playerGridPosition = GetNearestNonObstaclePlayerPosition(enemy.currentRoom);
+
+            movementSteps = AStar.BuildPath(enemy.currentRoom, enemyGridPosition, playerGridPosition);
+            movingAcrossRooms = false;
+        }
+        else
+        {
+            Vector3Int enemyGridPosition = DungeonBuilder.Instance.dungeonGrid.WorldToCell(transform.position);
+            Vector3Int targetPosition = DungeonBuilder.Instance.dungeonGrid.WorldToCell(GameManager.Instance.GetPlayer().GetPlayerPosition());
+            movementSteps = AStar.BuildPath(enemy.currentRoom, enemyGridPosition, targetPosition, true);
+            movingAcrossRooms = true;
+        }
 
         if(movementSteps != null)
         {
@@ -88,6 +100,23 @@ public class EnemyMovementAI : MonoBehaviour
         {
             enemy.idleEvent.CallIdleEvent();
         }
+    }
+
+    private Door GetDoorClosestToPlayer()
+    {
+        Door[] doors = enemy.currentRoom.instantiatedRoom.GetDoors();
+        float minDistance = float.MaxValue;
+        Door closestDoor = null;
+        foreach(Door door in doors)
+        {
+            float playerDistance = Vector3.Distance(GameManager.Instance.GetPlayer().transform.position, door.transform.position);
+            if(playerDistance < minDistance)
+            {
+                minDistance = playerDistance;
+                closestDoor = door;
+            }
+        }
+        return closestDoor;
     }
 
     private Vector3Int GetNearestNonObstaclePlayerPosition(Room currentRoom)
@@ -138,10 +167,14 @@ public class EnemyMovementAI : MonoBehaviour
     {
         while(movementSteps != null && movementSteps.Count > 0)
         {
-            Vector3 nextPosition = movementSteps.Pop();
 
+
+            Vector2Int realPos = (movingAcrossRooms) ? DungeonBuilder.Instance.dungeonLowerBounds - enemy.currentRoom.lowerBounds : Vector2Int.zero;
+            Vector3 nextPosition = movementSteps.Pop() + new Vector3(realPos.x, realPos.y, 0);
             while(Vector3.Distance(nextPosition, transform.position) > 0.2f)
             {
+                if (movingAcrossRooms) 
+                    Debug.Log("here");
                 enemy.movementToPositionEvent.CallMovementToPositionEvent(nextPosition, transform.position, moveSpeed, (nextPosition - transform.position).normalized);
                 yield return waitForFixedUpdate; // moving the enemy using 2D physics so wait until next fixed update
             }

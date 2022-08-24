@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class AStarTest : MonoBehaviour
 {
+    [SerializeField] bool useDungeonBuildGrid;
     private InstantiatedRoom instantiatedRoom;
     private Grid grid;
     private Tilemap frontTilemap;
@@ -91,30 +92,43 @@ public class AStarTest : MonoBehaviour
     private void DisplayPath()
     {
         if (startGridPosition == noValue || endGridPosition == noValue) return;
-        pathStack = AStar.BuildPath(instantiatedRoom.room, startGridPosition, endGridPosition);
+        Grid gridToUse = (useDungeonBuildGrid) ? DungeonBuilder.Instance.dungeonGrid : grid;
+        pathStack = AStar.BuildPath(instantiatedRoom.room, startGridPosition, endGridPosition, useDungeonBuildGrid);
         if (pathStack == null) return;
         foreach(Vector3 worldPosition in pathStack)
         {
-            pathTilemap.SetTile(grid.WorldToCell(worldPosition), startPathTile);
+            Vector3Int cellPos = gridToUse.WorldToCell(worldPosition);
+            Vector2Int dungBoun = DungeonBuilder.Instance.dungeonLowerBounds;
+            Vector3Int worldPos = gridToUse.WorldToCell(worldPosition) + (Vector3Int)(DungeonBuilder.Instance.dungeonLowerBounds - instantiatedRoom.room.lowerBounds);
+            if (useDungeonBuildGrid)
+                DungeonBuilder.Instance.dungeonTileMap.SetTile(worldPos, startPathTile);
+            else
+                pathTilemap.SetTile(cellPos, startPathTile);
         }
     }
 
     private void SetEndPosition()
     {
+        Grid gridToUse = (useDungeonBuildGrid) ? DungeonBuilder.Instance.dungeonGrid : grid;
         if (endGridPosition == noValue)
         {
-            endGridPosition = grid.WorldToCell(HelperUtilities.GetMouseWorldPosition());
+            endGridPosition = gridToUse.WorldToCell(HelperUtilities.GetMouseWorldPosition());
             if (!IsPositionWithinBounds(endGridPosition))
             {
                 endGridPosition = noValue;
                 return;
             }
-
-            pathTilemap.SetTile(endGridPosition, finishPathTile);
+            if (useDungeonBuildGrid)
+                DungeonBuilder.Instance.dungeonTileMap.SetTile(endGridPosition, finishPathTile);
+            else
+                pathTilemap.SetTile(endGridPosition, finishPathTile);
         }
         else
         {
-            pathTilemap.SetTile(endGridPosition, null);
+            if (useDungeonBuildGrid)
+                DungeonBuilder.Instance.dungeonTileMap.SetTile(endGridPosition, null);
+            else
+                pathTilemap.SetTile(endGridPosition, null);
             endGridPosition = noValue;
         }
     }
@@ -123,27 +137,36 @@ public class AStarTest : MonoBehaviour
     {
         if(startGridPosition == noValue)
         {
-            startGridPosition = grid.WorldToCell(HelperUtilities.GetMouseWorldPosition());
+            Grid gridToUse = (useDungeonBuildGrid) ? DungeonBuilder.Instance.dungeonGrid : grid;
+            startGridPosition = gridToUse.WorldToCell(HelperUtilities.GetMouseWorldPosition());
             if(!IsPositionWithinBounds(startGridPosition))
             {
                 startGridPosition = noValue;
                 return;
             }
-
-            pathTilemap.SetTile(startGridPosition, startPathTile);
+            if (useDungeonBuildGrid)
+                DungeonBuilder.Instance.dungeonTileMap.SetTile(startGridPosition, startPathTile);
+            else
+                pathTilemap.SetTile(startGridPosition, startPathTile);
         }
         else
         {
-            pathTilemap.SetTile(startGridPosition, null);
+            if (useDungeonBuildGrid)
+                DungeonBuilder.Instance.dungeonTileMap.SetTile(startGridPosition, null);
+            else
+                pathTilemap.SetTile(startGridPosition, null);
             startGridPosition = noValue;
         }
     }
 
     private bool IsPositionWithinBounds(Vector3Int position)
     {
+        Vector2Int lowerBoundsToUse = (useDungeonBuildGrid) ? DungeonBuilder.Instance.dungeonLowerBounds : instantiatedRoom.room.templateLowerBounds;
+        Vector2Int upperBoundsToUse = (useDungeonBuildGrid) ? DungeonBuilder.Instance.dungeonUpperBounds : instantiatedRoom.room.templateUpperBounds;
+
         //if position is beyond grid return false;
-        if(position.x < instantiatedRoom.room.templateLowerBounds.x || position.x > instantiatedRoom.room.templateUpperBounds.x
-            || position.y < instantiatedRoom.room.templateLowerBounds.y || position.x > instantiatedRoom.room.templateUpperBounds.y)
+        if (position.x < lowerBoundsToUse.x || position.x > upperBoundsToUse.x
+            || position.y < lowerBoundsToUse.y || position.x > upperBoundsToUse.y)
         {
             return false;
         }
@@ -156,9 +179,15 @@ public class AStarTest : MonoBehaviour
     private void ClearPath()
     {
         if (pathStack == null) return;
-        foreach(Vector3 worldPosition in pathStack)
+        Grid gridToUse = (useDungeonBuildGrid) ? DungeonBuilder.Instance.dungeonGrid : grid;
+        foreach (Vector3 worldPosition in pathStack)
         {
-            pathTilemap.SetTile(grid.WorldToCell(worldPosition), null);
+            Vector3Int cellPos = gridToUse.WorldToCell(worldPosition);
+            Vector3Int worldPos = gridToUse.WorldToCell(worldPosition) + (Vector3Int)(DungeonBuilder.Instance.dungeonLowerBounds - instantiatedRoom.room.templateLowerBounds);
+            if (useDungeonBuildGrid)
+                DungeonBuilder.Instance.dungeonTileMap.SetTile(worldPos, null);
+            else
+                pathTilemap.SetTile(cellPos, null);
         }
 
         pathStack = null;

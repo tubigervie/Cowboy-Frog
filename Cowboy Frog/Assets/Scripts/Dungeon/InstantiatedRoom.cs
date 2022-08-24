@@ -266,6 +266,11 @@ public class InstantiatedRoom : MonoBehaviour
         DisableRoomCollider();
     }
 
+    public Door[] GetDoors()
+    {
+        return GetComponentsInChildren<Door>();
+    }
+
     private void DisableRoomCollider()
     {
         boxCollider2D.enabled = false;
@@ -285,6 +290,12 @@ public class InstantiatedRoom : MonoBehaviour
 
             //Call room changed event
             StaticEventHandler.CallRoomChangedEvent(room);
+        }
+        else if(collision.tag == Settings.enemyTag)
+        {
+            Enemy enemy = collision.GetComponent<Enemy>();
+            if (enemy.currentRoom == this.room) return;
+            enemy.currentRoom = this.room;
         }
     }
 }

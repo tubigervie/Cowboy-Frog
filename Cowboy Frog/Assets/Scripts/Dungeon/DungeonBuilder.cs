@@ -9,10 +9,19 @@ using UnityEngine.Tilemaps;
 public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
 {
     public Dictionary<string, Room> dungeonBuilderRoomDictionary = new Dictionary<string, Room>();
+    public Grid dungeonGrid;
+    public int[,] aStarMovementPenalty;
+
     private Dictionary<string, RoomTemplateSO> roomTemplateDictionary = new Dictionary<string, RoomTemplateSO>();
     private List<RoomTemplateSO> roomTemplateList = null;
     private RoomNodeTypeListSO roomNodeTypeList;
     private bool dungeonBuildSuccessful;
+    public Tilemap dungeonTileMap;
+
+
+    public Vector2Int dungeonLowerBounds = new Vector2Int(int.MaxValue, int.MaxValue);
+    public Vector2Int dungeonUpperBounds = new Vector2Int(int.MinValue, int.MinValue);
+
 
     private void OnEnable()
     {
@@ -27,7 +36,8 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
     protected override void Awake()
     {
         base.Awake();
-
+        dungeonGrid = GetComponentInChildren<Grid>();
+        dungeonTileMap = GetComponentInChildren<Tilemap>();
         LoadRoomNodeTypeList();
     }
 
@@ -70,7 +80,53 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
                 InstantiateRoomGameobjects();
             }
         }
+        AddObstaclesAndPreferredPaths();
         return dungeonBuildSuccessful;
+    }
+
+    private void AddObstaclesAndPreferredPaths()
+    {
+        aStarMovementPenalty = new int[dungeonUpperBounds.x - dungeonLowerBounds.x + 1, dungeonUpperBounds.y - dungeonLowerBounds.y + 1];
+        for (int x = 0; x < (dungeonUpperBounds.x - dungeonLowerBounds.x + 1); x++)
+        {
+            for (int y = 0; y < (dungeonUpperBounds.y - dungeonLowerBounds.y + 1); y++)
+            {
+                aStarMovementPenalty[x, y] = Settings.defaultAStarMovementPenalty;
+            }
+        }
+
+        foreach (KeyValuePair<string, Room> keyvaluepair in dungeonBuilderRoomDictionary)
+        {
+            Room room = keyvaluepair.Value;
+
+            for (int x = 0; x < (room.templateUpperBounds.x - room.templateLowerBounds.x + 1); x++)
+            {
+                for (int y = 0; y < (room.templateUpperBounds.y - room.templateLowerBounds.y + 1); y++)
+                {
+                    //Debug.Log("x, y - dungbounds " + ((x + room.lowerBounds.x - dungeonLowerBounds.x) + " " + (y + room.lowerBounds.y - dungeonLowerBounds.y)));
+                    //Set default movement penalty for grid squares
+                    aStarMovementPenalty[(x + room.lowerBounds.x - dungeonLowerBounds.x), (y + room.lowerBounds.y - dungeonLowerBounds.y)] = Settings.defaultAStarMovementPenalty;
+
+                    //Add obstacles for collision tiles the enemy can't walk on
+                    TileBase tile = room.instantiatedRoom.collisionTilemap.GetTile(new Vector3Int(x + room.templateLowerBounds.x, y + room.templateLowerBounds.y, 0));
+
+                    if (tile == GameResources.Instance.preferredEnemyPathTile)
+                    {
+                        aStarMovementPenalty[(x + room.lowerBounds.x - dungeonLowerBounds.x), (y + room.lowerBounds.y - dungeonLowerBounds.y)] = Settings.preferredPathAStarMovementPenalty;
+                        continue;
+                    }
+
+                    foreach (TileBase collisionTile in GameResources.Instance.enemyUnwalkableCollisionTilesArray)
+                    {
+                        if (tile == collisionTile)
+                        {
+                            aStarMovementPenalty[(x + room.lowerBounds.x - dungeonLowerBounds.x), (y + room.lowerBounds.y - dungeonLowerBounds.y)] = 0;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private void InstantiateRoomGameobjects()
@@ -91,7 +147,29 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
             instantiatedRoom.Initialize(roomGameObject);
             //Save gameobject reference
             room.instantiatedRoom = instantiatedRoom;
+
+            UpdateDungeonGridBounds(room);
         }
+    }
+
+    private void UpdateDungeonGridBounds(Room room)
+    {
+        int lowerX = dungeonLowerBounds.x;
+        int upperX = dungeonUpperBounds.x;
+        int lowerY = dungeonLowerBounds.y;
+        int upperY = dungeonUpperBounds.y;
+
+        if (room.lowerBounds.x < dungeonLowerBounds.x)
+            lowerX = room.lowerBounds.x;
+        if (room.lowerBounds.y < dungeonLowerBounds.y)
+            lowerY = room.lowerBounds.y;
+        if (room.upperBounds.x > dungeonUpperBounds.x)
+            upperX = room.upperBounds.x;
+        if (room.upperBounds.y > dungeonUpperBounds.y)
+            upperY = room.upperBounds.y;
+
+        dungeonLowerBounds = new Vector2Int(lowerX, lowerY);
+        dungeonUpperBounds = new Vector2Int(upperX, upperY);
     }
 
     private bool AttemptToBuildRandomDungeon(RoomNodeGraphSO roomNodeGraph)

@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
     public Health health;
     public Destroyed destroyed;
 
+    public Room currentRoom;
     [HideInInspector] public MaterializeEffect materializeEffect;
     [HideInInspector] public CircleCollider2D circleCollider2D;
     [HideInInspector] public PolygonCollider2D polygonCollider2D;
@@ -76,10 +77,11 @@ public class Enemy : MonoBehaviour
         destroyedEvent.CallDestroyedEvent(false);
     }
 
-    public void Initialization(EnemyDetailsSO enemyDetails, int enemySpawnNumber, DungeonLevelSO dungeonLevel)
+    public void Initialization(EnemyDetailsSO enemyDetails, int enemySpawnNumber, DungeonLevelSO dungeonLevel, Room currentRoom)
     {
         Debug.Log("should be spawning");
         this.enemyDetails = enemyDetails;
+        this.currentRoom = currentRoom;
         SetEnemyMovementUpdateFrame(enemySpawnNumber);
         SetEnemyStartingHealth(dungeonLevel);
         StartCoroutine(MaterializeEnemy());

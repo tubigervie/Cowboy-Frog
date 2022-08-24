@@ -82,13 +82,13 @@ public class EnemySpawner : SingletonMonobehaviour<EnemySpawner>
 
                 Vector3Int cellPosition = (Vector3Int)currentRoom.spawnPositionArray[UnityEngine.Random.Range(0, currentRoom.spawnPositionArray.Length)];
 
-                CreateEnemy(randomEnemyHelperClass.GetItem(), grid.CellToWorld(cellPosition));
+                CreateEnemy(randomEnemyHelperClass.GetItem(), grid.CellToWorld(cellPosition), currentRoom);
                 yield return new WaitForSeconds(GetEnemySpawnInterval());
             }
         }
     }
 
-    private void CreateEnemy(EnemyDetailsSO enemyDetailsSO, Vector3 position)
+    private void CreateEnemy(EnemyDetailsSO enemyDetailsSO, Vector3 position, Room currentRoom)
     {
         //keep track of the number of enemies spawned so far
         enemiesSpawnedSoFar++;
@@ -100,7 +100,7 @@ public class EnemySpawner : SingletonMonobehaviour<EnemySpawner>
 
         GameObject enemy = Instantiate(enemyDetailsSO.enemyPrefab, position, Quaternion.identity, transform);
 
-        enemy.GetComponent<Enemy>().Initialization(enemyDetailsSO, enemiesSpawnedSoFar, dungeonLevel);
+        enemy.GetComponent<Enemy>().Initialization(enemyDetailsSO, enemiesSpawnedSoFar, dungeonLevel, currentRoom);
 
         enemy.GetComponent<DestroyedEvent>().OnDestroyed += Enemy_OnDestroyed;
     }
