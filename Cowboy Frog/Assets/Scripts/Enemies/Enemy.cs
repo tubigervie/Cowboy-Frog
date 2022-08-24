@@ -89,6 +89,8 @@ public class Enemy : MonoBehaviour
         SetEnemyMovementUpdateFrame(enemySpawnNumber);
         SetEnemyStartingHealth(dungeonLevel);
         StartCoroutine(MaterializeEnemy());
+        GameObject minimapEnemy = Instantiate(GameResources.Instance.enemyMinimapPrefab, Minimap.Instance.transform);
+        minimapEnemy.GetComponent<MinimapEnemy>().Initialise(this);
     }
 
     private void SetEnemyStartingHealth(DungeonLevelSO dungeonLevel)

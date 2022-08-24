@@ -16,7 +16,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 8742315113892469028, guid: 67b0600e74443584894035bf7e5809dd, type: 3}
   chaseDistance: 50
   enemyStandardMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  enemyMaterializeTime: 1
+  enemyMaterializeTime: 0.75
   enemyMaterializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}
   enemyMaterializeColor: {r: 1, g: 0.3537736, b: 0.3537736, a: 1}
   enemyHealthDetailsArray:
@@ -34,3 +34,4 @@ MonoBehaviour:
     enemyHealthAmount: 75
   isImmuneAfterHit: 0
   hitImmunityTime: 0
+  healthBarAlwaysOn: 0

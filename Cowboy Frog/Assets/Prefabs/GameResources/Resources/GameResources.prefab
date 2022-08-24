@@ -70,5 +70,6 @@ MonoBehaviour:
     maxNormalAngle: 0
   ammoIconPrefab: {fileID: 8976196405496091426, guid: ff2b55e064dc7da499bbb04e8a008339, type: 3}
   heartIconPrefab: {fileID: 709742718510286214, guid: 4f5e5bda13f18c24abcf509ef0309d9e, type: 3}
+  enemyMinimapPrefab: {fileID: 220054884197757692, guid: 6ed1b097cfcfd78479d43203da62ac43, type: 3}
   soundsMasterMixerGroup: {fileID: -4734643798044506327, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   doorOpenCloseSoundEffect: {fileID: 11400000, guid: c1669c6fed642f54baae8da37a1989bb, type: 2}

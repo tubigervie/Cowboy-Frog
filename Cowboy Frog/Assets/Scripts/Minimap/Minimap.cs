@@ -2,11 +2,10 @@ using Cinemachine;
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public class Minimap : MonoBehaviour
+public class Minimap : SingletonMonobehaviour<Minimap>
 {
     [SerializeField] private GameObject miniMapPlayer;
     private Transform playerTransform;
-
     private void Start()
     {
         playerTransform = GameManager.Instance.GetPlayer().transform;

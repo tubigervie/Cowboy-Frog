@@ -88,7 +88,7 @@ public class EnemySpawner : SingletonMonobehaviour<EnemySpawner>
                 Vector3Int cellPosition = (Vector3Int)currentRoom.spawnPositionArray[UnityEngine.Random.Range(0, currentRoom.spawnPositionArray.Length)];
 
                 CreateEnemy(randomEnemyHelperClass.GetItem(), grid.CellToWorld(cellPosition), currentRoom);
-                yield return new WaitForSeconds(GetEnemySpawnInterval());
+                yield return new WaitForSeconds(GetEnemySpawnInterval() / GameManager.Instance.GetCurrentDungeonIndex());
             }
         }
     }

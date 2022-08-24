@@ -94,6 +94,11 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         canvasGroup.alpha = targetAlpha;
     }
 
+    public int GetCurrentDungeonIndex()
+    {
+        return currentDungeonLevelListIndex;
+    }
+
     private void Update()
     {
         HandleGameState();
@@ -160,7 +165,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
         yield return StartCoroutine(DisplayMessageRoutine("FIND AND DEFEAT THE BOSS...", Color.white, 0f));
 
-        yield return StartCoroutine(Fade(1f, 0f, .5f, Color.black));
+        yield return StartCoroutine(Fade(.4f, 0f, .5f, Color.black));
     }
 
     private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs roomChangedEventArgs)
@@ -268,7 +273,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             enemy.gameObject.SetActive(false);
         }
 
-        yield return StartCoroutine(DisplayMessageRoutine("YOU HAVE BEEN SLAYED...", Color.white, 5f));
+        yield return StartCoroutine(DisplayMessageRoutine("YOU HAVE BEEN SLAYED...", Color.white, 3f));
 
         yield return StartCoroutine(DisplayMessageRoutine("PRESS RETURN TO RESTART THE GAME.", Color.white, 0f));
 

@@ -88,6 +88,7 @@ public class GameResources : MonoBehaviour
     #endregion
     public GameObject ammoIconPrefab;
     public GameObject heartIconPrefab;
+    public GameObject enemyMinimapPrefab;
 
     #region Header SOUNDS
     [Space(10)]
