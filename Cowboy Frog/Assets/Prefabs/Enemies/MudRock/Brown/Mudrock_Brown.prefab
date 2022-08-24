@@ -143,6 +143,10 @@ PrefabInstance:
       propertyPath: enemyDetails
       value: 
       objectReference: {fileID: 11400000, guid: 1d3d28693b4c6fa4f9f0586f6f1ceb25, type: 2}
+    - target: {fileID: 8770661869718904414, guid: 8e45f4cee1a49c74bb7da96901f8dd01, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.85
+      objectReference: {fileID: 0}
     - target: {fileID: 9161779826827169859, guid: 8e45f4cee1a49c74bb7da96901f8dd01, type: 3}
       propertyPath: m_Name
       value: Mudrock_Brown

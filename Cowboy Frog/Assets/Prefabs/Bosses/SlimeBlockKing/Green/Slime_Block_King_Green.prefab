@@ -11,6 +11,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 4d0b2c89d0cedbc4ab6fa282843240e3, type: 3}
+    - target: {fileID: 2149152253448783859, guid: 8e45f4cee1a49c74bb7da96901f8dd01, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149152253448783859, guid: 8e45f4cee1a49c74bb7da96901f8dd01, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.75
+      objectReference: {fileID: 0}
     - target: {fileID: 4324500235929621247, guid: 8e45f4cee1a49c74bb7da96901f8dd01, type: 3}
       propertyPath: movementDetails
       value: 
@@ -123,6 +131,10 @@ PrefabInstance:
       propertyPath: enemyDetails
       value: 
       objectReference: {fileID: 11400000, guid: df2e7350e99167540a1f44420330a8e3, type: 2}
+    - target: {fileID: 8770661869718904414, guid: 8e45f4cee1a49c74bb7da96901f8dd01, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.55
+      objectReference: {fileID: 0}
     - target: {fileID: 9161779826827169859, guid: 8e45f4cee1a49c74bb7da96901f8dd01, type: 3}
       propertyPath: m_Name
       value: Slime_Block_King_Green

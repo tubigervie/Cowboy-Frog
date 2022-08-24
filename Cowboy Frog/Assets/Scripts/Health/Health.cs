@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
 {
     private int startingHealth;
     private int currentHealth;
-    private HealthEvent healthEvent;
+    public HealthEvent healthEvent;
     private Player player;
     private Coroutine immunityCoroutine;
     private bool isImmuneAfterHit = false;
@@ -18,11 +18,14 @@ public class Health : MonoBehaviour
     private const float spriteFlashInterval = 0.2f;
     private WaitForSeconds WaitForSecondsSpriteFlashInterval = new WaitForSeconds(spriteFlashInterval);
 
+    [HideInInspector] public HealthBar healthBar;
+    [HideInInspector] public bool alwaysDisplayHealthBar = false;
     [HideInInspector] public bool isDamageable = true;
     [HideInInspector] public Enemy enemy;
     private void Awake()
     {
         healthEvent = GetComponent<HealthEvent>();
+        healthBar = GetComponentInChildren<HealthBar>();
     }
 
     private void Start()
@@ -50,6 +53,11 @@ public class Health : MonoBehaviour
                 isImmuneAfterHit = true;
                 immunityTime = enemy.enemyDetails.hitImmunityTime;
                 spriteRenderer = enemy.spriteRendererArray[0];
+            }
+
+            if(enemy.enemyDetails.healthBarAlwaysOn)
+            {
+                alwaysDisplayHealthBar = true;
             }
         }
     }
@@ -101,12 +109,24 @@ public class Health : MonoBehaviour
     private void CallHealthEvent(int damageAmount)
     {
         healthEvent.CallHealthChangedEvent(((float)currentHealth / (float)startingHealth), currentHealth, damageAmount);
+        if(healthBar != null)
+            healthBar.EnableHealthBar(GetHealthPercent());
+    }
+
+    public float GetHealthPercent()
+    {
+        return (float)currentHealth / (float)startingHealth;
     }
 
     public void SetStartingHealth(int startingHealth)
     {
         this.startingHealth = startingHealth;
         currentHealth = startingHealth;
+        if(alwaysDisplayHealthBar && healthBar != null)
+        {
+            healthBar.SetBarAlwaysEnabledFlag(true);
+            healthBar.EnableHealthBar(GetHealthPercent());
+        }
     }
 
     public int GetStartingHealth()

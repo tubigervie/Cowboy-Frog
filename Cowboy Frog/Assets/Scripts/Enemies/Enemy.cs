@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public Animator animator;
     [HideInInspector] public SpriteRenderer[] spriteRendererArray;
 
+
     private void Awake()
     {
         healthEvent = GetComponent<HealthEvent>();
@@ -74,12 +75,15 @@ public class Enemy : MonoBehaviour
 
     private void EnemyDestroyed()
     {
+        if (GameManager.Instance.gameState == GameState.engagingBoss)
+        {
+            CinemachineTarget.Instance.RemoveFromTargetGroup(this.transform);
+        }
         destroyedEvent.CallDestroyedEvent(false);
     }
 
     public void Initialization(EnemyDetailsSO enemyDetails, int enemySpawnNumber, DungeonLevelSO dungeonLevel, Room currentRoom)
     {
-        Debug.Log("should be spawning");
         this.enemyDetails = enemyDetails;
         this.currentRoom = currentRoom;
         SetEnemyMovementUpdateFrame(enemySpawnNumber);
@@ -111,6 +115,8 @@ public class Enemy : MonoBehaviour
 
         yield return StartCoroutine(materializeEffect.MaterialiseRoutine(enemyDetails.enemyMaterializeShader, enemyDetails.enemyMaterializeColor,
             enemyDetails.enemyMaterializeTime, spriteRendererArray, enemyDetails.enemyStandardMaterial));
+        if (enemyDetails.healthBarAlwaysOn) 
+            health.healthBar.EnableHealthBar(health.GetHealthPercent());
         EnemyEnable(true);
     }
 

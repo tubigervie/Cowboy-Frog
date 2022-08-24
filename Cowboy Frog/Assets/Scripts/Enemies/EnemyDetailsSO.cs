@@ -47,6 +47,8 @@ public class EnemyDetailsSO : ScriptableObject
     public bool isImmuneAfterHit = false;
     [Tooltip("Immunity time in seconds after being hit" )]
     public float hitImmunityTime;
+    [Tooltip("Select to have health bar always on and never turns off. Typically for boss/miniboss enemies")]
+    public bool healthBarAlwaysOn = false;
 
     #region Validation
 #if UNITY_EDITOR

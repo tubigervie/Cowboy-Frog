@@ -167,6 +167,10 @@ PrefabInstance:
       propertyPath: enemyDetails
       value: 
       objectReference: {fileID: 11400000, guid: aeb89ce7dab3c01438ccffa7b30bff8c, type: 2}
+    - target: {fileID: 8770661869718904414, guid: 8e45f4cee1a49c74bb7da96901f8dd01, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.06
+      objectReference: {fileID: 0}
     - target: {fileID: 9161779826827169859, guid: 8e45f4cee1a49c74bb7da96901f8dd01, type: 3}
       propertyPath: m_Name
       value: Grimonk_Brown
