@@ -808,8 +808,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.99999994
-    height: 0.9995504
+    width: 0.99971336
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1231,7 +1231,7 @@ MonoBehaviour:
     ModeOverride: 1
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777776, y: 1}
+    m_SensorSize: {x: 1.7777777, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3499,6 +3499,7 @@ GameObject:
   - component: {fileID: 1960329409}
   - component: {fileID: 1960329411}
   - component: {fileID: 1960329412}
+  - component: {fileID: 1960329413}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3565,6 +3566,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0efb0d05f909e3b4eb631c5927e901c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1960329413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960329408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60a07a5239381d34382d852ac8c822a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimapCamera: {fileID: 959113163}
 --- !u!1 &2093191747
 GameObject:
   m_ObjectHideFlags: 0
