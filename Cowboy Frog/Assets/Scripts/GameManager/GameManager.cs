@@ -163,7 +163,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         ClearMessageText();
         yield return StartCoroutine(Fade(0f, 1f, .5f, new Color(0f, 0f, 0f, 0.4f)));
 
-        yield return StartCoroutine(DisplayMessageRoutine("FIND AND DEFEAT THE BOSS...", Color.white, 0f));
+        yield return StartCoroutine(DisplayMessageRoutine("FIND AND DEFEAT THE BOSS...", Color.white, 3f));
 
         yield return StartCoroutine(Fade(.4f, 0f, .5f, Color.black));
     }

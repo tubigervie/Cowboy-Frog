@@ -37,6 +37,22 @@ public class EnemyDetailsSO : ScriptableObject
     public Shader enemyMaterializeShader;
     public Color enemyMaterializeColor;
 
+    #region Header ENEMY WEAPON SETTINGS
+    [Space(10)]
+    #endregion
+    #region Tooltip
+    [Tooltip("The weapon for the enemy - none if the enemy doesn't have a weapon")]
+    #endregion
+    public WeaponDetailsSO enemyWeapon;
+    public float firingIntervalMin = 0.1f;
+    public float firingIntervalMax = 1f;
+    public float firingDurationMin = 1f;
+    public float firingDurationMax = 2f;
+
+    [Tooltip("Select this if line of sight is required of the player before the enemy fires. If line of sight isn't selected, the enemy will fire" +
+        "regardless of obstacles whenever the player is 'in range'")]
+    public bool firingLineOfSightRequired;
+
     #region HEADER ENEMY HEALTH
     [Space(10)]
     [Header("ENEMY HEALTH")]
@@ -65,6 +81,8 @@ public class EnemyDetailsSO : ScriptableObject
         {
             HelperUtilities.ValidateCheckPositiveValue(this, nameof(hitImmunityTime), hitImmunityTime, false);
         }
+        HelperUtilities.ValidateCheckPositiveRange(this, nameof(firingIntervalMin), firingIntervalMin, nameof(firingIntervalMax), firingIntervalMax, false);
+        HelperUtilities.ValidateCheckPositiveRange(this, nameof(firingDurationMin), firingDurationMin, nameof(firingDurationMax), firingDurationMax, false);
     }
 #endif
     #endregion

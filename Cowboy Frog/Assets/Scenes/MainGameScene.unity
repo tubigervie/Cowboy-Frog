@@ -808,8 +808,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.99971336
-    height: 1
+    width: 1
+    height: 0.9995861
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1231,7 +1231,7 @@ MonoBehaviour:
     ModeOverride: 1
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777777, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3089,6 +3089,9 @@ MonoBehaviour:
   - poolSize: 20
     prefab: {fileID: 5634315585716889392, guid: 6ad30b695aa49b14ba02e30c97940d61, type: 3}
     componentType: AmmoHitEffect
+  - poolSize: 20
+    prefab: {fileID: 4555858420671037347, guid: 3632c5728d0c02e41b05131af0f10c77, type: 3}
+    componentType: IFireable
 --- !u!4 &1735127131
 Transform:
   m_ObjectHideFlags: 0

@@ -23,24 +23,31 @@ using System;
 public class Enemy : MonoBehaviour
 {
     [HideInInspector] public EnemyDetailsSO enemyDetails;
-    public EnemyMovementAI enemyMovementAI;
+    [HideInInspector] public AimWeaponEvent aimWeaponEvent;
+    [HideInInspector] public FireWeaponEvent fireWeaponEvent;
     public MovementToPositionEvent movementToPositionEvent;
     public IdleEvent idleEvent;
     public HealthEvent healthEvent;
     public DestroyedEvent destroyedEvent;
     public Health health;
     public Destroyed destroyed;
-
     public Room currentRoom;
-    [HideInInspector] public MaterializeEffect materializeEffect;
-    [HideInInspector] public CircleCollider2D circleCollider2D;
-    [HideInInspector] public PolygonCollider2D polygonCollider2D;
     [HideInInspector] public Animator animator;
     [HideInInspector] public SpriteRenderer[] spriteRendererArray;
 
+    private FireWeapon fireWeapon;
+    private SetWeaponActiveEvent setWeaponActiveEvent;
+    private EnemyMovementAI enemyMovementAI;
+    private MaterializeEffect materializeEffect;
+    private CircleCollider2D circleCollider2D;
+    private PolygonCollider2D polygonCollider2D;
 
     private void Awake()
     {
+        aimWeaponEvent = GetComponent<AimWeaponEvent>();
+        fireWeaponEvent = GetComponent<FireWeaponEvent>();
+        fireWeapon = GetComponent<FireWeapon>();
+        setWeaponActiveEvent = GetComponent<SetWeaponActiveEvent>();
         healthEvent = GetComponent<HealthEvent>();
         health = GetComponent<Health>();
         destroyed = GetComponent<Destroyed>();
@@ -87,10 +94,22 @@ public class Enemy : MonoBehaviour
         this.enemyDetails = enemyDetails;
         this.currentRoom = currentRoom;
         SetEnemyMovementUpdateFrame(enemySpawnNumber);
+        SetEnemyStartingWeapon();
         SetEnemyStartingHealth(dungeonLevel);
         StartCoroutine(MaterializeEnemy());
         GameObject minimapEnemy = Instantiate(GameResources.Instance.enemyMinimapPrefab, Minimap.Instance.transform);
         minimapEnemy.GetComponent<MinimapEnemy>().Initialise(this);
+    }
+
+    private void SetEnemyStartingWeapon()
+    {
+        if (enemyDetails.enemyWeapon != null)
+        {
+            Weapon weapon = new Weapon() { weaponDetails = enemyDetails.enemyWeapon, weaponReloadTimer = 0f, weaponClipRemainingAmmo = enemyDetails.enemyWeapon.weaponClipAmmoCapacity,
+            weaponRemainingAmmo = enemyDetails.enemyWeapon.weaponAmmoCapacity, isWeaponReloading = false};
+
+            setWeaponActiveEvent.CallSetActiveWeaponEvent(weapon);
+        }
     }
 
     private void SetEnemyStartingHealth(DungeonLevelSO dungeonLevel)
@@ -128,5 +147,6 @@ public class Enemy : MonoBehaviour
         polygonCollider2D.enabled = isEnabled;
 
         enemyMovementAI.enabled = isEnabled;
+        fireWeapon.enabled = isEnabled;
     }
 }

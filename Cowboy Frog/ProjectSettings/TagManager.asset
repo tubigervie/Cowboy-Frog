@@ -16,6 +16,7 @@ TagManager:
   - playerWeapon
   - playerAmmo
   - puddleTilemap
+  - enemyAmmo
   layers:
   - Default
   - TransparentFX
