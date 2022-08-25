@@ -10,6 +10,10 @@ public static class StaticEventHandler
 
     public static event Action<RoomEnemiesDefeatedArgs> OnRoomEnemiesDefeated;
 
+    public static event Action<PointsScoredArgs> OnPointsScored;
+
+    public static event Action<ScoreChangedArgs> OnScoreChanged;
+
     //any subscribers who are interested in whether the players entered a different room can now subscribe to this
     //event and get notified when it happens
     public static void CallRoomChangedEvent(Room room)
@@ -21,6 +25,16 @@ public static class StaticEventHandler
     {
         OnRoomEnemiesDefeated?.Invoke(new RoomEnemiesDefeatedArgs() { room = room });
     }
+
+    public static void CallOnPointsScoredEvent(int points)
+    {
+        OnPointsScored?.Invoke(new PointsScoredArgs() { points = points });
+    }
+
+    public static void CallOnScoreChangedEvent(long score)
+    {
+        OnScoreChanged?.Invoke(new ScoreChangedArgs() { score = score });
+    }
 }
 
 public class RoomChangedEventArgs : EventArgs
@@ -31,4 +45,13 @@ public class RoomChangedEventArgs : EventArgs
 public class RoomEnemiesDefeatedArgs : EventArgs
 {
     public Room room;
+}
+
+public class PointsScoredArgs : EventArgs
+{
+    public int points;
+}
+public class ScoreChangedArgs : EventArgs
+{
+    public long score;
 }

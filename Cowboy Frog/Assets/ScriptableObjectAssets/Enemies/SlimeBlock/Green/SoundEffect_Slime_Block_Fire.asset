@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectName: Slime Block Fire
   soundPrefab: {fileID: 3886318349218805977, guid: 31d593329152adb47b25af9d6ccbfffa, type: 3}
-  soundEffectClip: {fileID: 8300000, guid: 7b82801ffd69b1e459dd4cf17aacda5d, type: 3}
+  soundEffectClip: {fileID: 8300000, guid: de229ff6f23dad645a8f50a8ed868b27, type: 3}
   soundEffectPitchRandomVariationMin: 0.563
   soundEffectPitchRandomVariationMax: 0.798
   soundEffectVolume: 0.55

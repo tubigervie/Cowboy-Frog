@@ -45,6 +45,8 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     private InstantiatedRoom bossRoom;
 
+    private long gameScore;
+
     protected override void Awake()
     {
         base.Awake();
@@ -60,6 +62,8 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
         StaticEventHandler.OnRoomEnemiesDefeated += StaticEventHandler_OnRoomEnemiesDefeated;
 
+        StaticEventHandler.OnPointsScored += StaticEventHandler_OnPointsScored;
+
         player.destroyedEvent.OnDestroyed += Player_OnDestroyed;
     }
 
@@ -68,6 +72,8 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         StaticEventHandler.OnRoomChanged -= StaticEventHandler_OnRoomChanged;
 
         StaticEventHandler.OnRoomEnemiesDefeated -= StaticEventHandler_OnRoomEnemiesDefeated;
+
+        StaticEventHandler.OnPointsScored -= StaticEventHandler_OnPointsScored;
 
         player.destroyedEvent.OnDestroyed -= Player_OnDestroyed;
     }
@@ -303,6 +309,12 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     public Player GetPlayer()
     {
         return player;
+    }
+
+    private void StaticEventHandler_OnPointsScored(PointsScoredArgs pointsScoredArgs)
+    {
+        gameScore += pointsScoredArgs.points;
+        StaticEventHandler.CallOnScoreChangedEvent(gameScore);
     }
 
     private void PlayDungeonLevel(int currentDungeonLevelListIndex)

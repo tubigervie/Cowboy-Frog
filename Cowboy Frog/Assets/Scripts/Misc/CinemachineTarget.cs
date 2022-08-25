@@ -18,15 +18,28 @@ public class CinemachineTarget : SingletonMonobehaviour<CinemachineTarget>
 
     private void Start()
     {
-        SetCinemachineTargetGroup();
+        SetCinemachineTargetGroupToPlayer();
     }
 
-    private void SetCinemachineTargetGroup()
+    private void SetCinemachineTargetGroupToPlayer()
     {
         CinemachineTargetGroup.Target cinemachineGroupTarget_player = new CinemachineTargetGroup.Target { weight = 1f, radius = 1f, target = GameManager.Instance.GetPlayer().transform };
         CinemachineTargetGroup.Target[] cinemachineTargetArray = new CinemachineTargetGroup.Target[] { cinemachineGroupTarget_player };
         targets.Add(cinemachineGroupTarget_player);
         cinemachineTargetGroup.m_Targets = cinemachineTargetArray;
+    }
+
+    private void SetCinemachineTarget(Transform targetToAdd)
+    {
+        CinemachineTargetGroup.Target cinemachineGroupTarget = new CinemachineTargetGroup.Target { weight = 1f, radius = 1f, target = targetToAdd };
+        CinemachineTargetGroup.Target[] cinemachineTargetArray = new CinemachineTargetGroup.Target[] { cinemachineGroupTarget };
+        targets.Add(cinemachineGroupTarget);
+        cinemachineTargetGroup.m_Targets = cinemachineTargetArray;
+    }
+
+    public void SetToTargets()
+    {
+        cinemachineTargetGroup.m_Targets = targets.ToArray();
     }
 
     public void AddToTargetGroup(Transform targetToAdd)

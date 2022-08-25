@@ -86,7 +86,7 @@ public class Enemy : MonoBehaviour
         {
             CinemachineTarget.Instance.RemoveFromTargetGroup(this.transform);
         }
-        destroyedEvent.CallDestroyedEvent(false);
+        destroyedEvent.CallDestroyedEvent(false, health.GetStartingHealth());
     }
 
     public void Initialization(EnemyDetailsSO enemyDetails, int enemySpawnNumber, DungeonLevelSO dungeonLevel, Room currentRoom)
