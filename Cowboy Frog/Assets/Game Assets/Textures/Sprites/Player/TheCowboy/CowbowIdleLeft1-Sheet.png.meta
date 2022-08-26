@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2f9f4c41d5787ff4687c2dc36bbbcdd7
+guid: 00852a4d2d6b9564fad0ca424c3e0d21
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TheGeneralMoveRight-Sheet_0
+      name: CowbowIdleLeft1-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,113 +130,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a78a6f47e5524341b6c7e04d3037c03
-      internalID: 708854473
+      spriteID: 6fa2f74e53d45f54f811d53e408a1c79
+      internalID: -420035388
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TheGeneralMoveRight-Sheet_1
+      name: CowbowIdleLeft1-Sheet_1
       rect:
         serializedVersion: 2
         x: 24
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26df132693ef3cd449239c105824b427
-      internalID: 1058870354
+      spriteID: 7e9388bd37868224788538ce0e3b98d8
+      internalID: 2093903107
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TheGeneralMoveRight-Sheet_2
+      name: CowbowIdleLeft1-Sheet_2
       rect:
         serializedVersion: 2
         x: 48
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cad3a90e53a3629479ffefaab3bdda80
-      internalID: -1853040831
+      spriteID: c5fc9c838b5496f46b8176ad01a7d329
+      internalID: -416339686
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TheGeneralMoveRight-Sheet_3
+      name: CowbowIdleLeft1-Sheet_3
       rect:
         serializedVersion: 2
         x: 72
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e9f050799568f3418ed5e645c626a50
-      internalID: -542707311
+      spriteID: 89edd025341680943aaa7b1970a693cd
+      internalID: -340537621
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TheGeneralMoveRight-Sheet_4
+      name: CowbowIdleLeft1-Sheet_4
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55b1825e3412324408da2e50df34328a
-      internalID: -1590412001
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TheGeneralMoveRight-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 0
-        width: 24
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fec97a01714a48e4eafe69add91a2d05
-      internalID: -247896673
+      spriteID: 9458e32d63633434daea3719d605669d
+      internalID: -120554001
       vertices: []
       indices: 
       edges: []
@@ -252,12 +231,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      TheGeneralMoveRight-Sheet_3: -542707311
-      TheGeneralMoveRight-Sheet_0: 708854473
-      TheGeneralMoveRight-Sheet_2: -1853040831
-      TheGeneralMoveRight-Sheet_4: -1590412001
-      TheGeneralMoveRight-Sheet_5: -247896673
-      TheGeneralMoveRight-Sheet_1: 1058870354
+      CowbowIdleLeft1-Sheet_2: -416339686
+      CowbowIdleLeft1-Sheet_0: -420035388
+      CowbowIdleLeft1-Sheet_1: 2093903107
+      CowbowIdleLeft1-Sheet_4: -120554001
+      CowbowIdleLeft1-Sheet_3: -340537621
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

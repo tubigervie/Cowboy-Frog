@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f50ee2bd51e572c48b1b401a743b55bf
+guid: f11074e295c80334cb5d532913987db6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,106 +116,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CowbowIdleRight1-Sheet_0
+      name: CowbowIdleLeft1-Sheet-sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b58cfa8692633f343a634bde4f5e259a
-      internalID: 1810492685
+      spriteID: c38c0bb2479a1ea44829cecd43c046fd
+      internalID: -1109980712
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CowbowIdleRight1-Sheet_1
+      name: CowbowIdleLeft1-Sheet-sheet_1
       rect:
         serializedVersion: 2
         x: 24
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 249186ccc2f6b2a4780384760bba25e8
-      internalID: 295020053
+      spriteID: 8ebb9ff69f22d0142beaa8ead5f0debe
+      internalID: 681040094
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CowbowIdleRight1-Sheet_2
+      name: CowbowIdleLeft1-Sheet-sheet_2
       rect:
         serializedVersion: 2
         x: 48
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e8b627b9a8ce834085bca41822b6e8b
-      internalID: 664389708
+      spriteID: 7a9405f62a854194d8eec0406cfe6b76
+      internalID: -1270852050
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CowbowIdleRight1-Sheet_3
+      name: CowbowIdleLeft1-Sheet-sheet_3
       rect:
         serializedVersion: 2
         x: 72
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 480ae2cbf140b784a856cd9e0bc92491
-      internalID: 1398521681
+      spriteID: f0df79a9c2a47eb448aa74c9fb9a9436
+      internalID: 1604259652
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CowbowIdleRight1-Sheet_4
+      name: CowbowIdleLeft1-Sheet-sheet_4
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3030d8e17f83efe4a892aa092f88093a
-      internalID: -1004992480
+      spriteID: 8ab388c04551b0b49af2a61f2d4528f5
+      internalID: -283005293
       vertices: []
       indices: 
       edges: []
@@ -231,11 +231,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CowbowIdleRight1-Sheet_2: 664389708
-      CowbowIdleRight1-Sheet_1: 295020053
-      CowbowIdleRight1-Sheet_3: 1398521681
-      CowbowIdleRight1-Sheet_0: 1810492685
-      CowbowIdleRight1-Sheet_4: -1004992480
+      CowbowIdleLeft1-Sheet-sheet_3: 1604259652
+      CowbowIdleLeft1-Sheet-sheet_0: -1109980712
+      CowbowIdleLeft1-Sheet-sheet_2: -1270852050
+      CowbowIdleLeft1-Sheet-sheet_4: -283005293
+      CowbowIdleLeft1-Sheet-sheet_1: 681040094
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

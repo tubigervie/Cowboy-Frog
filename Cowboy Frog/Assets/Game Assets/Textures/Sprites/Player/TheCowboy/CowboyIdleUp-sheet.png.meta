@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2f9f4c41d5787ff4687c2dc36bbbcdd7
+guid: 0c697b4e1dd8c7c43817de00cdf873f8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TheGeneralMoveRight-Sheet_0
+      name: CowboyIdleUp-sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,113 +130,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a78a6f47e5524341b6c7e04d3037c03
-      internalID: 708854473
+      spriteID: 1154049afa9d97442aebf906db89e838
+      internalID: 2046923381
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TheGeneralMoveRight-Sheet_1
+      name: CowboyIdleUp-sheet_1
       rect:
         serializedVersion: 2
         x: 24
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26df132693ef3cd449239c105824b427
-      internalID: 1058870354
+      spriteID: 29e90dce8dc84ec479f0b9f1fc8336ce
+      internalID: 1942247094
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TheGeneralMoveRight-Sheet_2
+      name: CowboyIdleUp-sheet_2
       rect:
         serializedVersion: 2
         x: 48
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cad3a90e53a3629479ffefaab3bdda80
-      internalID: -1853040831
+      spriteID: 61b2fd8832729a449bb9cdfbfde5a421
+      internalID: -1259007361
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TheGeneralMoveRight-Sheet_3
+      name: CowboyIdleUp-sheet_3
       rect:
         serializedVersion: 2
         x: 72
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e9f050799568f3418ed5e645c626a50
-      internalID: -542707311
+      spriteID: 4c3133e10ab16154688765699258fad2
+      internalID: -1778600205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TheGeneralMoveRight-Sheet_4
+      name: CowboyIdleUp-sheet_4
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55b1825e3412324408da2e50df34328a
-      internalID: -1590412001
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TheGeneralMoveRight-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 0
-        width: 24
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fec97a01714a48e4eafe69add91a2d05
-      internalID: -247896673
+      spriteID: 2eacd37bac4a6614bb3b85cd41d8716f
+      internalID: 231273051
       vertices: []
       indices: 
       edges: []
@@ -252,12 +231,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      TheGeneralMoveRight-Sheet_3: -542707311
-      TheGeneralMoveRight-Sheet_0: 708854473
-      TheGeneralMoveRight-Sheet_2: -1853040831
-      TheGeneralMoveRight-Sheet_4: -1590412001
-      TheGeneralMoveRight-Sheet_5: -247896673
-      TheGeneralMoveRight-Sheet_1: 1058870354
+      CowboyIdleUp-sheet_3: -1778600205
+      CowboyIdleUp-sheet_4: 231273051
+      CowboyIdleUp-sheet_0: 2046923381
+      CowboyIdleUp-sheet_2: -1259007361
+      CowboyIdleUp-sheet_1: 1942247094
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

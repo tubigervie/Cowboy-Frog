@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2f9f4c41d5787ff4687c2dc36bbbcdd7
+guid: b1184c7274fb1fe4692016424ffcce95
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TheGeneralMoveRight-Sheet_0
+      name: CowboyRollUp_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,113 +130,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a78a6f47e5524341b6c7e04d3037c03
-      internalID: 708854473
+      spriteID: 0eff42c2ea5dc4d44aa7e95a82f0524b
+      internalID: -740010366
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TheGeneralMoveRight-Sheet_1
+      name: CowboyRollUp_1
       rect:
         serializedVersion: 2
         x: 24
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26df132693ef3cd449239c105824b427
-      internalID: 1058870354
+      spriteID: 3f572ca842bed8842984d3f058066233
+      internalID: -1070326396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TheGeneralMoveRight-Sheet_2
+      name: CowboyRollUp_2
       rect:
         serializedVersion: 2
         x: 48
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cad3a90e53a3629479ffefaab3bdda80
-      internalID: -1853040831
+      spriteID: 30934b0707ceb8f4e9e7a5e167ca3d5d
+      internalID: -1188690041
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TheGeneralMoveRight-Sheet_3
+      name: CowboyRollUp_3
       rect:
         serializedVersion: 2
         x: 72
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e9f050799568f3418ed5e645c626a50
-      internalID: -542707311
+      spriteID: 767633967266a9e4e9d27c682aa1f635
+      internalID: -413181336
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TheGeneralMoveRight-Sheet_4
+      name: CowboyRollUp_4
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55b1825e3412324408da2e50df34328a
-      internalID: -1590412001
+      spriteID: 20ba630611a7e54498514b2a98d51b45
+      internalID: -524626361
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TheGeneralMoveRight-Sheet_5
+      name: CowboyRollUp_5
       rect:
         serializedVersion: 2
         x: 120
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fec97a01714a48e4eafe69add91a2d05
-      internalID: -247896673
+      spriteID: 7200ec4e6c30d5a47a9d251928e71f84
+      internalID: 1679346980
       vertices: []
       indices: 
       edges: []
@@ -252,12 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      TheGeneralMoveRight-Sheet_3: -542707311
-      TheGeneralMoveRight-Sheet_0: 708854473
-      TheGeneralMoveRight-Sheet_2: -1853040831
-      TheGeneralMoveRight-Sheet_4: -1590412001
-      TheGeneralMoveRight-Sheet_5: -247896673
-      TheGeneralMoveRight-Sheet_1: 1058870354
+      CowboyRollUp_1: -1070326396
+      CowboyRollUp_4: -524626361
+      CowboyRollUp_0: -740010366
+      CowboyRollUp_2: -1188690041
+      CowboyRollUp_3: -413181336
+      CowboyRollUp_5: 1679346980
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

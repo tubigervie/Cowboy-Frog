@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
     private Coroutine immunityCoroutine;
     private bool isImmuneAfterHit = false;
     private float immunityTime = 0f;
-    private SpriteRenderer spriteRenderer = null;
+    private SpriteRenderer[] spriteRenderers = null;
     private const float spriteFlashInterval = 0.2f;
     private WaitForSeconds WaitForSecondsSpriteFlashInterval = new WaitForSeconds(spriteFlashInterval);
 
@@ -43,7 +43,7 @@ public class Health : MonoBehaviour
             {
                 isImmuneAfterHit = true;
                 immunityTime = player.playerDetails.hitImmunityTime;
-                spriteRenderer = player.spriteRenderer;
+                spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
             }
         }
         else if(enemy != null)
@@ -52,7 +52,7 @@ public class Health : MonoBehaviour
             {
                 isImmuneAfterHit = true;
                 immunityTime = enemy.enemyDetails.hitImmunityTime;
-                spriteRenderer = enemy.spriteRendererArray[0];
+                spriteRenderers = enemy.spriteRendererArray;
             }
 
             if(enemy.enemyDetails.healthBarAlwaysOn)
@@ -85,20 +85,22 @@ public class Health : MonoBehaviour
         {
             if (immunityCoroutine != null)
                 StopCoroutine(immunityCoroutine);
-            immunityCoroutine = StartCoroutine(PostHitImmunityCoroutine(immunityTime, spriteRenderer));
+            immunityCoroutine = StartCoroutine(PostHitImmunityCoroutine(immunityTime, spriteRenderers));
         }
     }
 
-    private IEnumerator PostHitImmunityCoroutine(float immunityTime, SpriteRenderer spriteRenderer)
+    private IEnumerator PostHitImmunityCoroutine(float immunityTime, SpriteRenderer[] spriteRenderers)
     {
         int iterations = Mathf.RoundToInt(immunityTime / spriteFlashInterval / 2f); //use sprite flash interval twice for every iteration
 
         isDamageable = false;
         while(iterations > 0)
         {
-            spriteRenderer.color = Color.red;
+            foreach(SpriteRenderer spriteRenderer in spriteRenderers)
+                spriteRenderer.color = Color.red;
             yield return WaitForSecondsSpriteFlashInterval;
-            spriteRenderer.color = Color.white;
+            foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+                spriteRenderer.color = Color.white;
             yield return WaitForSecondsSpriteFlashInterval;
             iterations--;
             yield return null;

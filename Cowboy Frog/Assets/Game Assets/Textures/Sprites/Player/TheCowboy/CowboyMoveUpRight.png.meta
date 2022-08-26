@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 00852a4d2d6b9564fad0ca424c3e0d21
+guid: 1ad83b3e4246251478353d8e02ff4c9a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,106 +116,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CowbowIdleLeft1-Sheet_0
+      name: CowboyMoveUpRight_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fa2f74e53d45f54f811d53e408a1c79
-      internalID: -420035388
+      spriteID: ec5932ee8812e94418c6cc88446d299e
+      internalID: 879204351
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CowbowIdleLeft1-Sheet_1
+      name: CowboyMoveUpRight_1
       rect:
         serializedVersion: 2
         x: 24
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e9388bd37868224788538ce0e3b98d8
-      internalID: 2093903107
+      spriteID: ce06d66b6a384434fb9377104d6ee39a
+      internalID: -1327367395
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CowbowIdleLeft1-Sheet_2
+      name: CowboyMoveUpRight_2
       rect:
         serializedVersion: 2
         x: 48
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5fc9c838b5496f46b8176ad01a7d329
-      internalID: -416339686
+      spriteID: 4ceadb178cff04d43ae9ad5f108a42fa
+      internalID: -455392158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CowbowIdleLeft1-Sheet_3
+      name: CowboyMoveUpRight_3
       rect:
         serializedVersion: 2
         x: 72
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89edd025341680943aaa7b1970a693cd
-      internalID: -340537621
+      spriteID: 05e1d273367cfa14a8eb3527c3d2a54e
+      internalID: 9163397
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CowbowIdleLeft1-Sheet_4
+      name: CowboyMoveUpRight_4
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 24
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9458e32d63633434daea3719d605669d
-      internalID: -120554001
+      spriteID: 57954b19f5c11b14faab52bc99836c2f
+      internalID: 332660156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CowboyMoveUpRight_5
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 24
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd4896aede834b44597ba4468a3edb7a
+      internalID: -1094974896
       vertices: []
       indices: 
       edges: []
@@ -231,11 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CowbowIdleLeft1-Sheet_2: -416339686
-      CowbowIdleLeft1-Sheet_0: -420035388
-      CowbowIdleLeft1-Sheet_1: 2093903107
-      CowbowIdleLeft1-Sheet_4: -120554001
-      CowbowIdleLeft1-Sheet_3: -340537621
+      CowboyMoveUpRight_1: -1327367395
+      CowboyMoveUpRight_2: -455392158
+      CowboyMoveUpRight_4: 332660156
+      CowboyMoveUpRight_3: 9163397
+      CowboyMoveUpRight_5: -1094974896
+      CowboyMoveUpRight_0: 879204351
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

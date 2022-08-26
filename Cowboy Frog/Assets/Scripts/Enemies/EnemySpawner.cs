@@ -105,10 +105,10 @@ public class EnemySpawner : SingletonMonobehaviour<EnemySpawner>
 
         GameObject enemy = Instantiate(enemyDetailsSO.enemyPrefab, position, Quaternion.identity, transform);
 
-        if (GameManager.Instance.gameState == GameState.engagingBoss)
-        {
-            CinemachineTarget.Instance.AddToTargetGroup(enemy.transform);
-        }
+        //if (GameManager.Instance.gameState == GameState.engagingBoss)
+        //{
+        //    CinemachineTarget.Instance.AddToTargetGroup(enemy.transform);
+        //}
 
         enemy.GetComponent<Enemy>().Initialization(enemyDetailsSO, enemiesSpawnedSoFar, dungeonLevel, currentRoom);
 

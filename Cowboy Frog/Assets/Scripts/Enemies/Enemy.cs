@@ -82,10 +82,10 @@ public class Enemy : MonoBehaviour
 
     private void EnemyDestroyed()
     {
-        if (GameManager.Instance.gameState == GameState.engagingBoss)
-        {
-            CinemachineTarget.Instance.RemoveFromTargetGroup(this.transform);
-        }
+        //if (GameManager.Instance.gameState == GameState.engagingBoss)
+        //{
+        //    CinemachineTarget.Instance.RemoveFromTargetGroup(this.transform);
+        //}
         destroyedEvent.CallDestroyedEvent(false, health.GetStartingHealth());
     }
 
