@@ -82,6 +82,12 @@ public class RoomTemplateSO : ScriptableObject
     #endregion Tooltip
     public List<SpawnableObjectsByLevel<EnemyDetailsSO>> enemiesByLevelList;
     public List<RoomEnemySpawnParameters> roomEnemySpawnParametersList;
+
+    #region Header ROOM MUSIC
+    [Space(10)]
+    [Header("ROOM MUSIC")]
+    public MusicTrackSO roomMusic;
+    #endregion
     /// <summary>
     /// Returns the list of Entrances for the room template
     /// </summary>
@@ -106,6 +112,7 @@ public class RoomTemplateSO : ScriptableObject
         }
 
         HelperUtilities.ValidateCheckEnumerableValues(this, nameof(doorwayList), doorwayList);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(roomMusic), roomMusic);
 
         if(enemiesByLevelList.Count > 0 || roomEnemySpawnParametersList.Count > 0)
         {

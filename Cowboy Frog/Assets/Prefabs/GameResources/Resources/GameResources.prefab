@@ -73,3 +73,7 @@ MonoBehaviour:
   enemyMinimapPrefab: {fileID: 220054884197757692, guid: 6ed1b097cfcfd78479d43203da62ac43, type: 3}
   soundsMasterMixerGroup: {fileID: -4734643798044506327, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   doorOpenCloseSoundEffect: {fileID: 11400000, guid: c1669c6fed642f54baae8da37a1989bb, type: 2}
+  musicMasterMixerGroup: {fileID: 24300002, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
+  musicOnFullSnapshot: {fileID: 24500006, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
+  musicLowSnapshot: {fileID: 8893122114324796974, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
+  musicOffSnapshot: {fileID: -3084740370723268673, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}

@@ -145,3 +145,4 @@ MonoBehaviour:
     maxConcurrentEnemies: 8
     minSpawnInterval: 2
     maxSpawnInterval: 5
+  roomMusic: {fileID: 11400000, guid: 01854ecf59ab57044b96978a5a7122cb, type: 2}

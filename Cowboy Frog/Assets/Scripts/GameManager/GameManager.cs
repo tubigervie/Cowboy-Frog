@@ -146,6 +146,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             if (currentDungeonLevelListIndex < dungeonLevelList.Count - 1)
             {
                 gameState = GameState.levelCompleted;
+                MusicManager.Instance.PlayPreviousTrack();
             }
             else
             {

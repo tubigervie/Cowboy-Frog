@@ -58,3 +58,6 @@ MonoBehaviour:
   - {x: 18, y: 9}
   - {x: 26, y: 6}
   - {x: 37, y: 13}
+  enemiesByLevelList: []
+  roomEnemySpawnParametersList: []
+  roomMusic: {fileID: 11400000, guid: 01854ecf59ab57044b96978a5a7122cb, type: 2}

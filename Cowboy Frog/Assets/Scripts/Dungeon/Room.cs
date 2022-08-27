@@ -23,6 +23,7 @@ public class Room
     public bool isPreviouslyVisited = false;
     public List<SpawnableObjectsByLevel<EnemyDetailsSO>> enemiesByLevelList;
     public List<RoomEnemySpawnParameters> roomLevelEnemySpawnParametersList;
+    public MusicTrackSO musicTrack;
 
     public Room()
     {

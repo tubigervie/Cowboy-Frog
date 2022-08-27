@@ -833,6 +833,7 @@ SpriteAtlas:
   - {fileID: 585492555750498021, guid: ca9a6422e6651ee45836825651a35e3f, type: 3}
   - {fileID: -2707397711903873196, guid: ca9a6422e6651ee45836825651a35e3f, type: 3}
   - {fileID: 8430444257694572113, guid: ca9a6422e6651ee45836825651a35e3f, type: 3}
+  - {fileID: 21300000, guid: 3c212622a1b3b044ba41ae01d3c80ffd, type: 3}
   - {fileID: 5096345463590902717, guid: ef88e6229f9d508479ce144758719233, type: 3}
   - {fileID: 6466184282079594016, guid: ef88e6229f9d508479ce144758719233, type: 3}
   - {fileID: 2107056869430351448, guid: ef88e6229f9d508479ce144758719233, type: 3}
@@ -1316,6 +1317,7 @@ SpriteAtlas:
   - {fileID: -2965851780846493957, guid: 1c1ba9a45c5379a419a9788223c5aa60, type: 3}
   - {fileID: 8981257277689560868, guid: 1c1ba9a45c5379a419a9788223c5aa60, type: 3}
   - {fileID: -226551638744861857, guid: 1c1ba9a45c5379a419a9788223c5aa60, type: 3}
+  - {fileID: 21300000, guid: 62f67ea4e3519ce4eaa896de9cbd12f6, type: 3}
   - {fileID: 21300000, guid: 40a87fa4fa44fca41a3bf89209755898, type: 3}
   - {fileID: 4340226365756719162, guid: c0e36ab4a4c34c1458cb67e4eea61d49, type: 3}
   - {fileID: -3585331759301432200, guid: c0e36ab4a4c34c1458cb67e4eea61d49, type: 3}
@@ -3622,6 +3624,7 @@ SpriteAtlas:
   - {fileID: 2580090179121278332, guid: a95e912cc780a0b44b517cdd0eca3a03, type: 3}
   - {fileID: -340863048474730885, guid: a95e912cc780a0b44b517cdd0eca3a03, type: 3}
   - {fileID: 21300000, guid: 88540b2c8e3d3004592f56f61aa04d61, type: 3}
+  - {fileID: 21300000, guid: 39277b2c029c6d9459db382e21bd4ab3, type: 3}
   - {fileID: 7443465781722474237, guid: cbcb3e2cfaea01748b31ea29a7946c58, type: 3}
   - {fileID: -3844135841060172918, guid: cbcb3e2cfaea01748b31ea29a7946c58, type: 3}
   - {fileID: -1868880541920376693, guid: cbcb3e2cfaea01748b31ea29a7946c58, type: 3}
@@ -5801,6 +5804,7 @@ SpriteAtlas:
   - statue_cerebov_2
   - statue_cerebov_1
   - statue_cerebov_0
+  - WaterGun-sheet
   - SlizzardMoveDown_0
   - SlizzardMoveDown_1
   - SlizzardMoveDown_2
@@ -6284,6 +6288,7 @@ SpriteAtlas:
   - lshield_dd_dk_3
   - lshield_dd_dk_0
   - lshield_dd_dk_1
+  - WaterGun
   - button
   - SlimeBlockKingMoveUp_0
   - SlimeBlockKingMoveUp_1
@@ -8590,6 +8595,7 @@ SpriteAtlas:
   - sand5_1
   - sand5_0
   - Cursor
+  - waterbullet14x9
   - crumbled_column_3_0
   - crumbled_column_3_3
   - crumbled_column_3_2

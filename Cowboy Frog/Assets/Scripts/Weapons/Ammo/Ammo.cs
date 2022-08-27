@@ -20,6 +20,8 @@ public class Ammo : MonoBehaviour, IFireable
     private bool overrideAmmoMovement;
     private InstantiatedRoom currentRoom;
 
+    [SerializeField] float frequency = 2;
+    [SerializeField] float amplitude = 2;
 
     private void Awake()
     {
@@ -29,34 +31,38 @@ public class Ammo : MonoBehaviour, IFireable
     private void Start()
     {
         currentRoom = GameManager.Instance.GetCurrentRoom().instantiatedRoom;
-        
     }
 
     private void Update()
     {
-        if(ammoChargeTimer > 0f)
+        if (ammoChargeTimer > 0f)
         {
             ammoChargeTimer -= Time.deltaTime;
             return;
         }
-        else if(!isAmmoMaterialSet)
+        else if (!isAmmoMaterialSet)
         {
             SetAmmoMaterial(ammoDetails.ammoMaterial);
             isAmmoMaterialSet = true;
         }
 
         //Calculate distance vector to move ammo (small ammount each frame)
-        Vector3 distanceVector = fireDirectionVector * ammoSpeed * Time.deltaTime;
-        transform.position += distanceVector;
+        Vector3 horizontalDistanceVector = fireDirectionVector * ammoSpeed * Time.deltaTime;
+        transform.position += horizontalDistanceVector;
 
         //if(currentRoom.paintMap != null)
         //    currentRoom.paintMap.PaintTile(transform.position);
 
-        ammoRange -= distanceVector.magnitude;
-        if(ammoRange < 0f)
+        ammoRange -= horizontalDistanceVector.magnitude;
+        if (ammoRange < 0f)
         {
             DisableAmmo();
         }
+    }
+
+    Vector3 GetPerpendicularDirection(Vector3 direction)
+    {
+        return new Vector3(-direction.y, direction.x, 0);
     }
 
     private void DisableAmmo()
@@ -121,6 +127,7 @@ public class Ammo : MonoBehaviour, IFireable
         this.ammoRange = ammoDetails.ammoRange;
         this.ammoSpeed = ammoSpeed;
         this.overrideAmmoMovement = overrideAmmoMovement;
+        this.fireDirectionAngle = HelperUtilities.GetAngleFromVector(fireDirectionVector);
 
         gameObject.SetActive(true);
 

@@ -63,6 +63,11 @@ public static class Settings
     public const int targetFrameRateToSpreadPathFindingOver = 60;
     #endregion
 
+    #region AUDIO
+    public const float musicFadeOutTime = 0.5f;
+    public const float musicFadeInTime = 0.5f;
+    #endregion
+
     #region ENEMY PARAMETERS
     public const int defaultEnemyHealth = 30;
     #endregion

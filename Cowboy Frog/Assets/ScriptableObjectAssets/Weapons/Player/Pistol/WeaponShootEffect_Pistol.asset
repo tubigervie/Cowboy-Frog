@@ -14,21 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 0.9528302, g: 0.8581187, b: 0.25618547, a: 1}
-    key2: {r: 1, g: 0, b: 0.20194721, a: 0.7764706}
-    key3: {r: 1, g: 0, b: 0.019191265, a: 0}
-    key4: {r: 1, g: 0.11642266, b: 0.13337964, a: 0}
-    key5: {r: 1, g: 0.17903, b: 0.19478546, a: 0}
+    key0: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
+    key1: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0.7058824}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 6554
-    ctime2: 21781
-    ctime3: 37394
-    ctime4: 41056
-    ctime5: 42791
-    ctime6: 43947
+    ctime1: 65535
+    ctime2: 65535
+    ctime3: 65535
+    ctime4: 65535
+    ctime5: 65535
+    ctime6: 65535
     ctime7: 65535
     atime0: 0
     atime1: 29298
@@ -39,17 +39,17 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_NumColorKeys: 8
+    m_NumColorKeys: 2
     m_NumAlphaKeys: 3
-  duration: 0.5
+  duration: 0.1
   startParticleSize: 0.2
   startParticleSpeed: 0.4
-  startLifetime: 0.17
+  startLifetime: 0.05
   maxParticleNumber: 100
   emissionRate: 100
   burstParticleNumber: 30
-  effectGravity: -0.03
-  sprite: {fileID: 21300000, guid: ecf6e010769abce4cb1e7c60e0f3b3d8, type: 3}
+  effectGravity: 1
+  sprite: {fileID: 21300000, guid: 39277b2c029c6d9459db382e21bd4ab3, type: 3}
   velocityOverLifetimeMin: {x: 0, y: 0, z: 0}
   velocityOverLifetimeMax: {x: 0, y: 0, z: 0}
-  weaponShootEffectPrefab: {fileID: 114432523924143903, guid: c464997a0ff5e87459dfffcbde5313e7, type: 3}
+  weaponShootEffectPrefab: {fileID: 5634315585716889392, guid: f87e8f952baeaf64b924b6eb18c38182, type: 3}

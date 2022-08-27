@@ -40,6 +40,21 @@ public class InstantiatedRoom : MonoBehaviour
         DisableCollisionTilemapRenderer();
     }
 
+    private void OnEnable()
+    {
+        StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
+    }
+
+    private void OnDisable()
+    {
+        StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
+    }
+
+    private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs roomArg)
+    {
+        MusicManager.Instance.PlayMusic(roomArg.room.musicTrack, 0.2f, 1f);
+    }
+
     //Update obsctacles by AStar pathfinding
     private void AddObstaclesAndPreferredPaths()
     {

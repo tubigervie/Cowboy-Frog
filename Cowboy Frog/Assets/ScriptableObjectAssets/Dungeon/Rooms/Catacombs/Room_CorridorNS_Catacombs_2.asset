@@ -37,3 +37,6 @@ MonoBehaviour:
     isUnavailable: 0
   spawnPositionArray:
   - {x: -3, y: 7}
+  enemiesByLevelList: []
+  roomEnemySpawnParametersList: []
+  roomMusic: {fileID: 11400000, guid: 01854ecf59ab57044b96978a5a7122cb, type: 2}

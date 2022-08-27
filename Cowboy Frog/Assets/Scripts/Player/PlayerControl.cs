@@ -120,7 +120,6 @@ public class PlayerControl : MonoBehaviour
             if (currentWeapon.isWeaponReloading) return;
             if (currentWeapon.weaponRemainingAmmo <= 0 && !currentWeapon.weaponDetails.hasInfiniteAmmo) return;
             if (currentWeapon.weaponClipRemainingAmmo == currentWeapon.weaponDetails.weaponClipAmmoCapacity) return;
-            Debug.Log("Call reload");
             player.reloadWeaponEvent.CallReloadWeaponEvent(player.activeWeapon.GetCurrentWEapon(), 0);
         }
     }
