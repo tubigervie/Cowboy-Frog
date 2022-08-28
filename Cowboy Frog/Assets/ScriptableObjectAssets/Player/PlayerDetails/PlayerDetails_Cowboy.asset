@@ -23,3 +23,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 02faf2890ecd67e43937e7fb66ce4cc2, type: 2}
   playerMiniMapIcon: {fileID: 21300000, guid: e633ff370ee6b4b4f81e33d9ce006074, type: 3}
   playerHandSprite: {fileID: 21300000, guid: 1c777b2dc071f124b8addb39f18fc8ee, type: 3}
+  hurtSFX: {fileID: 11400000, guid: 2c4e9b855b135ae4dbb4292dbf59b09f, type: 2}

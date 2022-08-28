@@ -218,11 +218,21 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             case GameState.engagingEnemies:
                 break;
             case GameState.bossStage:
+                if (Input.GetKeyDown(KeyCode.Tab))
+                {
+                    if (!fadingScreen)
+                        DungeonMap.Instance.DisplayDungeonOverviewMap();
+                }
                 break;
             case GameState.engagingBoss:
                 break;
             case GameState.levelCompleted:
                 StartCoroutine(LevelCompleted());
+                if (Input.GetKeyDown(KeyCode.Tab))
+                {
+                    if (!fadingScreen)
+                        DungeonMap.Instance.DisplayDungeonOverviewMap();
+                }
                 break;
             case GameState.gameWon:
                 if(previousGameState != GameState.gameWon)
@@ -345,6 +355,14 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         currentDungeonLevelListIndex = 0;
 
         gameState = GameState.restartGame;
+    }
+
+    public Coroutine CallFade(float startAlpha, float targetAlpha, float fadeSeconds, Color backgroundColor)
+    {
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+        fadeCoroutine = StartCoroutine(Fade(startAlpha, targetAlpha, fadeSeconds, backgroundColor));
+        return fadeCoroutine;
     }
 
     private void InstantiatePlayer()

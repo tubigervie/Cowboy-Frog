@@ -71,6 +71,8 @@ public class Health : MonoBehaviour
         
         if(isDamageable && !isRolling)
         {
+            if (player != null && player.playerDetails.hurtSFX != null)
+                SoundEffectManager.Instance.PlaySoundEffect(player.playerDetails.hurtSFX);
             currentHealth -= damageAmount;
             CallHealthEvent(damageAmount);
             PostHitImmunity();

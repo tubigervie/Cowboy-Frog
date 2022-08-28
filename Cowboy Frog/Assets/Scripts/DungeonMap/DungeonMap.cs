@@ -29,6 +29,14 @@ public class DungeonMap : SingletonMonobehaviour<DungeonMap>
         dungeonMapCamera.gameObject.SetActive(false);
     }
 
+    private void Update()
+    {
+        if(Input.GetMouseButtonDown(0) && GameManager.Instance.gameState == GameState.dungeonOverviewMap)
+        {
+            GetRoomClicked();
+        }
+    }
+
     public void DisplayDungeonOverviewMap()
     {
         GameManager.Instance.previousGameState = GameManager.Instance.gameState;
@@ -64,11 +72,29 @@ public class DungeonMap : SingletonMonobehaviour<DungeonMap>
         }
     }
 
-    public void ClearDungeonOverviewMap()
+    private void GetRoomClicked()
+    {
+        Vector3 worldPosition = dungeonMapCamera.ScreenToWorldPoint(Input.mousePosition);
+        worldPosition = new Vector3(worldPosition.x, worldPosition.y, 0f);
+
+        Collider2D[] collider2DArray = Physics2D.OverlapCircleAll(new Vector2(worldPosition.x, worldPosition.y), 1f);
+
+        foreach(Collider2D collider2D in collider2DArray)
+        {
+            Teleporter teleport = collider2D.GetComponent<Teleporter>();
+            if(teleport != null && teleport.isActivated)
+            {
+                teleport.Teleport();              
+            }
+        }
+    }
+
+    public void ClearDungeonOverviewMap(bool enablePlayer = true)
     {
         GameManager.Instance.gameState = GameManager.Instance.previousGameState;
         GameManager.Instance.previousGameState = GameState.dungeonOverviewMap;
-        GameManager.Instance.GetPlayer().playerControl.EnablePlayer();
+        if(enablePlayer)
+            GameManager.Instance.GetPlayer().playerControl.EnablePlayer();
 
         //disable main camera and enable dungeon overview camera
         cameraMain.gameObject.SetActive(true);

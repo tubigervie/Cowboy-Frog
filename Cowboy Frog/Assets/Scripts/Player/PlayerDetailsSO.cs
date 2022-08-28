@@ -58,6 +58,8 @@ public class PlayerDetailsSO : ScriptableObject
     #endregion
     public Sprite playerHandSprite;
 
+    public SoundEffectSO hurtSFX;
+
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()

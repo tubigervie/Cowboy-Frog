@@ -31,6 +31,10 @@ public class RoomNodeTypeSO : ScriptableObject
     [Header("One Type Should Be A Boss Room")]
     #endregion
     public bool isBossRoom;
+
+    [Header("One Type Should Be A Sanctuary")]
+    public bool isSanctuary;
+
     #region Header
     [Header("One Type Should Be None (Unassigned)")]
     #endregion
