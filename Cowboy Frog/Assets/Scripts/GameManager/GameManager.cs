@@ -16,6 +16,8 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     [SerializeField] private TextMeshProUGUI messageTextTMP;
     [Tooltip("Populate with the CanvasGroup component in FadeScreenUI")]
     [SerializeField] private CanvasGroup canvasGroup;
+    [Tooltip("Populate with the pausemenu gameObject in FadeScreenUI")]
+    [SerializeField] private GameObject pauseMenu;
 
     #region Header DUNGEON LEVELS
     [Space(10)]
@@ -30,6 +32,10 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     [Tooltip("Populate with the starting dungeon level for testing, first level = 0")]
     #endregion Tooltip
     [SerializeField] private int currentDungeonLevelListIndex = 0;
+
+    [SerializeField] private GameState[] canPauseGameStates;
+
+    [SerializeField] private GameState[] canToggleMapGameStates;
 
     private Room currentRoom;
 
@@ -171,7 +177,6 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     private IEnumerator BossStage()
     {
-        Debug.Log("how many times called");
         bossRoom.gameObject.SetActive(true);
 
         bossRoom.UnlockDoors(0f);
@@ -199,40 +204,49 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     private void HandleGameState()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            for (int i = 0; i < canPauseGameStates.Length; i++)
+            {
+                if (gameState == canPauseGameStates[i])
+                {
+                    PauseGameMenu();
+                    break;
+                }
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            for (int i = 0; i < canToggleMapGameStates.Length; i++)
+            {
+                if (gameState == canToggleMapGameStates[i])
+                {
+                    if (gameState == GameState.dungeonOverviewMap)
+                        DungeonMap.Instance.ClearDungeonOverviewMap();
+                    else if(!fadingScreen)
+                        DungeonMap.Instance.DisplayDungeonOverviewMap();
+                    break;
+                }
+            }
+        }
         switch (gameState)
         {
             case GameState.gameStarted:
                 PlayDungeonLevel(currentDungeonLevelListIndex);
                 gameState = GameState.playingLevel;
-
                 //Trigger room enemies defeated since we start in the entrance where there are no enemies (just in case level with just a boss room!)
                 RoomEnemiesDefeated();
                 break;
             case GameState.playingLevel:
-                if(Input.GetKeyDown(KeyCode.Tab))
-                {
-                    if(!fadingScreen)
-                        DungeonMap.Instance.DisplayDungeonOverviewMap();
-                }
                 break;
             case GameState.engagingEnemies:
                 break;
             case GameState.bossStage:
-                if (Input.GetKeyDown(KeyCode.Tab))
-                {
-                    if (!fadingScreen)
-                        DungeonMap.Instance.DisplayDungeonOverviewMap();
-                }
                 break;
             case GameState.engagingBoss:
                 break;
             case GameState.levelCompleted:
                 StartCoroutine(LevelCompleted());
-                if (Input.GetKeyDown(KeyCode.Tab))
-                {
-                    if (!fadingScreen)
-                        DungeonMap.Instance.DisplayDungeonOverviewMap();
-                }
                 break;
             case GameState.gameWon:
                 if(previousGameState != GameState.gameWon)
@@ -248,14 +262,28 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             case GameState.GamePaused:
                 break;
             case GameState.dungeonOverviewMap:
-                if (Input.GetKeyDown(KeyCode.Tab))
-                {
-                    DungeonMap.Instance.ClearDungeonOverviewMap();
-                }
                 break;
             case GameState.restartGame:
                 RestartGame();
                 break;
+        }
+    }
+
+    public void PauseGameMenu()
+    {
+        if(gameState != GameState.GamePaused)
+        {
+            pauseMenu.SetActive(true);
+            GetPlayer().playerControl.DisablePlayer();
+            previousGameState = gameState;
+            gameState = GameState.GamePaused;
+        }
+        else
+        {
+            pauseMenu.SetActive(false);
+            GetPlayer().playerControl.EnablePlayer();
+            gameState = previousGameState;
+            previousGameState = GameState.GamePaused;
         }
     }
 
@@ -480,6 +508,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     private void OnValidate()
     {
         HelperUtilities.ValidateCheckEnumerableValues(this, nameof(dungeonLevelList), dungeonLevelList);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(pauseMenu), pauseMenu);
     }
 
 #endif
