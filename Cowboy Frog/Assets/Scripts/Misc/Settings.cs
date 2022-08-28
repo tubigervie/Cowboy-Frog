@@ -35,6 +35,8 @@ public static class Settings
     public static int rollRight = Animator.StringToHash("rollRight");
 
     public static int open = Animator.StringToHash("open");
+    public static int use = Animator.StringToHash("use");
+
     public static float baseSpeedForPlayerAnimations = 10f;
     public static float baseSpeedForEnemyAnimations = 3f;
     #endregion

@@ -47,6 +47,12 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     private long gameScore;
 
+    private bool fadingScreen;
+
+    Coroutine fadeCoroutine;
+
+    Coroutine messageCoroutine;
+
     protected override void Awake()
     {
         base.Awake();
@@ -54,6 +60,10 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         playerDetails = GameResources.Instance.currentPlayer.playerDetails;
 
         InstantiatePlayer();
+
+        previousGameState = GameState.gameStarted;
+        gameState = GameState.gameStarted;
+        fadeCoroutine = StartCoroutine(Fade(0f, 1f, 0f, Color.black));
     }
 
     private void OnEnable()
@@ -80,16 +90,14 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     private void Start()
     {
-        previousGameState = GameState.gameStarted;
-        gameState = GameState.gameStarted;
-        StartCoroutine(Fade(0f, 1f, 0f, Color.black));
     }
 
     private IEnumerator Fade(float startAlpha, float targetAlpha, float fadeSeconds, Color backgroundColor)
     {
+        Debug.Log("fade call");
         Image image = canvasGroup.GetComponent<Image>();
         image.color = backgroundColor;
-
+        fadingScreen = true;
         float time = 0;
         while(time <= fadeSeconds)
         {
@@ -98,6 +106,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             yield return null;
         }
         canvasGroup.alpha = targetAlpha;
+        fadingScreen = false;
     }
 
     public int GetCurrentDungeonIndex()
@@ -162,17 +171,25 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     private IEnumerator BossStage()
     {
+        Debug.Log("how many times called");
         bossRoom.gameObject.SetActive(true);
 
         bossRoom.UnlockDoors(0f);
 
         yield return new WaitForSeconds(2f);
         ClearMessageText();
-        yield return StartCoroutine(Fade(0f, 1f, .5f, new Color(0f, 0f, 0f, 0.4f)));
-
-        yield return StartCoroutine(DisplayMessageRoutine("FIND AND DEFEAT THE BOSS...", Color.white, 3f));
-
-        yield return StartCoroutine(Fade(.4f, 0f, .5f, Color.black));
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+        fadeCoroutine = StartCoroutine(Fade(0f, 1f, .5f, new Color(0f, 0f, 0f, 0.4f)));
+        yield return fadeCoroutine;
+        if (messageCoroutine != null)
+            StopCoroutine(messageCoroutine);
+        messageCoroutine = StartCoroutine(DisplayMessageRoutine("FIND AND DEFEAT THE BOSS...", Color.white, 3f));
+        yield return messageCoroutine;
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+        fadeCoroutine = StartCoroutine(Fade(.4f, 0f, .5f, new Color(0f, 0f, 0f, 0.4f)));
+        yield return fadeCoroutine;
     }
 
     private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs roomChangedEventArgs)
@@ -192,6 +209,11 @@ public class GameManager : SingletonMonobehaviour<GameManager>
                 RoomEnemiesDefeated();
                 break;
             case GameState.playingLevel:
+                if(Input.GetKeyDown(KeyCode.Tab))
+                {
+                    if(!fadingScreen)
+                        DungeonMap.Instance.DisplayDungeonOverviewMap();
+                }
                 break;
             case GameState.engagingEnemies:
                 break;
@@ -216,6 +238,10 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             case GameState.GamePaused:
                 break;
             case GameState.dungeonOverviewMap:
+                if (Input.GetKeyDown(KeyCode.Tab))
+                {
+                    DungeonMap.Instance.ClearDungeonOverviewMap();
+                }
                 break;
             case GameState.restartGame:
                 RestartGame();
@@ -234,13 +260,26 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
         yield return new WaitForSeconds(2f);
         ClearMessageText();
-        yield return StartCoroutine(Fade(0f, 1f, .5f, new Color(0f, 0f, 0f, 0.4f)));
 
-        yield return StartCoroutine(DisplayMessageRoutine("YOU SURVIVED...", Color.white, 2f));
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+        fadeCoroutine = StartCoroutine(Fade(0f, 1f, .5f, new Color(0f, 0f, 0f, 0.4f)));
+        yield return fadeCoroutine;
 
-        yield return StartCoroutine(DisplayMessageRoutine("PRESS RETURN TO DESCEND FURTHER.", Color.white, 0f));
-        
-        yield return StartCoroutine(Fade(1f, 0f, 2f, new Color(0f, 0f, 0f, 0.4f)));
+        if (messageCoroutine != null)
+            StopCoroutine(messageCoroutine);
+        messageCoroutine = StartCoroutine(DisplayMessageRoutine("YOU SURVIVED...", Color.white, 2f));
+        yield return messageCoroutine;
+
+        if (messageCoroutine != null)
+            StopCoroutine(messageCoroutine);
+        messageCoroutine = StartCoroutine(DisplayMessageRoutine("PRESS RETURN TO DESCEND FURTHER.", Color.white, 0f));
+        yield return messageCoroutine;
+
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+        fadeCoroutine = StartCoroutine(Fade(1f, 0f, 2f, new Color(0f, 0f, 0f, 0.4f)));
+        yield return fadeCoroutine;
 
         currentDungeonLevelListIndex++;
 
@@ -253,11 +292,21 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
         GetPlayer().playerControl.DisablePlayer();
         ClearMessageText();
-        yield return StartCoroutine(Fade(0f, 1f, 1f, Color.black));
 
-        yield return StartCoroutine(DisplayMessageRoutine("YOU BEAT THE DUNGEON...", Color.white, 5f));
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+        fadeCoroutine = StartCoroutine(Fade(0f, 1f, 1f, Color.black));
+        yield return fadeCoroutine;
 
-        yield return StartCoroutine(DisplayMessageRoutine("PRESS RETURN TO RESTART THE GAME.", Color.white, 0f));
+        if (messageCoroutine != null)
+            StopCoroutine(messageCoroutine);
+        messageCoroutine = StartCoroutine(DisplayMessageRoutine("YOU BEAT THE DUNGEON...", Color.white, 5f));
+        yield return messageCoroutine;
+
+        if (messageCoroutine != null)
+            StopCoroutine(messageCoroutine);
+        messageCoroutine = StartCoroutine(DisplayMessageRoutine("PRESS RETURN TO RESTART THE GAME.", Color.white, 0f));
+        yield return null;
 
         gameState = GameState.restartGame;
     }
@@ -270,7 +319,10 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         ClearMessageText();
         yield return new WaitForSeconds(1f);
 
-        yield return StartCoroutine(Fade(0f, 1f, 1f, Color.black));
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+        fadeCoroutine = StartCoroutine(Fade(0f, 1f, 1f, Color.black));
+        yield return fadeCoroutine;
 
         //Resource hungry but ok since end game state
         Enemy[] enemyArray = GameObject.FindObjectsOfType<Enemy>();
@@ -280,9 +332,15 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             enemy.gameObject.SetActive(false);
         }
 
-        yield return StartCoroutine(DisplayMessageRoutine("YOU HAVE BEEN SLAYED...", Color.white, 3f));
+        if (messageCoroutine != null)
+            StopCoroutine(messageCoroutine);
+        messageCoroutine = StartCoroutine(DisplayMessageRoutine("YOU HAVE BEEN SLAYED...", Color.white, 3f));
+        yield return messageCoroutine;
 
-        yield return StartCoroutine(DisplayMessageRoutine("PRESS RETURN TO RESTART THE GAME.", Color.white, 0f));
+        if (messageCoroutine != null)
+            StopCoroutine(messageCoroutine);
+        messageCoroutine = StartCoroutine(DisplayMessageRoutine("PRESS RETURN TO RESTART THE GAME.", Color.white, 0f));
+        yield return messageCoroutine;
 
         currentDungeonLevelListIndex = 0;
 
@@ -338,17 +396,26 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     private IEnumerator DisplayDungeonLevelText()
     {
-        StartCoroutine(Fade(0f, 1f, 0f, Color.black));
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+        fadeCoroutine = StartCoroutine(Fade(0f, 1f, 0f, Color.black));
+        yield return fadeCoroutine;
 
         GetPlayer().playerControl.DisablePlayer();
 
         string messageText = "LEVEL " + (currentDungeonLevelListIndex + 1).ToString();
 
-        yield return StartCoroutine(DisplayMessageRoutine(messageText, Color.white, 2f));
+        if (messageCoroutine != null)
+            StopCoroutine(messageCoroutine);
+        messageCoroutine = StartCoroutine(DisplayMessageRoutine(messageText, Color.white, 2f));
+        yield return messageCoroutine;
 
         GetPlayer().playerControl.EnablePlayer();
 
-        yield return StartCoroutine(Fade(1f, 0f, 2f, Color.black));
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+        fadeCoroutine = StartCoroutine(Fade(1f, 0f, 2f, Color.black));
+        yield return fadeCoroutine;
     }
 
     private IEnumerator DisplayMessageRoutine(string messageText, Color messageColor, float displaySeconds)

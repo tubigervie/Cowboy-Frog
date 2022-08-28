@@ -122,6 +122,8 @@ public class InstantiatedRoom : MonoBehaviour
                 if(room.roomNodeType.isBossRoom)
                 {
                     doorComponent.isBossRoomDoor = true;
+                    GameObject skullIcon = Instantiate(GameResources.Instance.bossMapIconPrefab, gameObject.transform);
+                    skullIcon.transform.localPosition = door.transform.localPosition;
                     //lock door to prevent access
                     doorComponent.LockDoor();
                 }

@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3573570691156909174
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 911254928400922345, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
+      propertyPath: m_Name
+      value: ChestSpawner_EnemiesDefeated_Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658773479706840685, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658773479706840685, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658773479706840685, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658773479706840685, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658773479706840685, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658773479706840685, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658773479706840685, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658773479706840685, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658773479706840685, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658773479706840685, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658773479706840685, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704709918933731218, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
+      propertyPath: chestType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704709918933731218, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
+      propertyPath: chestSpawnChanceMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704709918933731218, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
+      propertyPath: numberOfItemsToSpawnMax
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704709918933731218, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
+      propertyPath: weaponSpawnByLevelList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704709918933731218, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
+      propertyPath: chestSpawnChanceByLevellist.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}

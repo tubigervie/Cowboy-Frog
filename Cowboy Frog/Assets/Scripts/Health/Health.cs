@@ -135,4 +135,19 @@ public class Health : MonoBehaviour
     {
         return startingHealth;
     }
+
+
+    public void AddHealth(int healthToAdd)
+    {
+        int totalHealth = currentHealth + healthToAdd;
+        if(totalHealth > startingHealth)
+        {
+            currentHealth = startingHealth;
+        }
+        else
+        {
+            currentHealth = totalHealth;
+        }
+        CallHealthEvent(0);
+    }
 }

@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1766851874605143265
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1116958522598316684, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116958522598316684, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116958522598316684, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116958522598316684, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116958522598316684, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116958522598316684, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116958522598316684, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116958522598316684, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116958522598316684, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116958522598316684, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116958522598316684, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450286540545303048, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: m_Name
+      value: ChestSpawner_EnemiesDefeated
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471499859036722035, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: chestSpawnEvent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471499859036722035, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: chestSpawnPosition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471499859036722035, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: chestSpawnChanceMin
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471499859036722035, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: chestSpawnChanceByLevellist.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471499859036722035, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: chestSpawnChanceByLevellist.Array.data[0].max
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471499859036722035, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: chestSpawnChanceByLevellist.Array.data[1].max
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471499859036722035, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: chestSpawnChanceByLevellist.Array.data[2].max
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471499859036722035, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: chestSpawnChanceByLevellist.Array.data[3].max
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471499859036722035, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: chestSpawnChanceByLevellist.Array.data[4].max
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471499859036722035, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: chestSpawnChanceByLevellist.Array.data[5].max
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471499859036722035, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: chestSpawnChanceByLevellist.Array.data[0].dungeonLevelSO
+      value: 
+      objectReference: {fileID: 11400000, guid: e82f066453cf28a478c7ce04a411c419, type: 2}
+    - target: {fileID: 6471499859036722035, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: chestSpawnChanceByLevellist.Array.data[1].dungeonLevelSO
+      value: 
+      objectReference: {fileID: 11400000, guid: e3336bff00318d743a3a4a4e587d0a35, type: 2}
+    - target: {fileID: 6471499859036722035, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: chestSpawnChanceByLevellist.Array.data[2].dungeonLevelSO
+      value: 
+      objectReference: {fileID: 11400000, guid: aea548e0d781aa842a868bb7e028abbe, type: 2}
+    - target: {fileID: 6471499859036722035, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: chestSpawnChanceByLevellist.Array.data[3].dungeonLevelSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 940a9a11734d256498956e8b6c75f31e, type: 2}
+    - target: {fileID: 6471499859036722035, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: chestSpawnChanceByLevellist.Array.data[4].dungeonLevelSO
+      value: 
+      objectReference: {fileID: 11400000, guid: ddd00cce305819944991e758a3271889, type: 2}
+    - target: {fileID: 6471499859036722035, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}
+      propertyPath: chestSpawnChanceByLevellist.Array.data[5].dungeonLevelSO
+      value: 
+      objectReference: {fileID: 11400000, guid: fa49fc731a5c7754484c929b0b486778, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 55d99e05582d2444d83a7c5d881bc82d, type: 3}

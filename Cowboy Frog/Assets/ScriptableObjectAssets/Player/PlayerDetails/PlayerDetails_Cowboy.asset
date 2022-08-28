@@ -20,11 +20,6 @@ MonoBehaviour:
   hitImmunityTime: 3
   startingWeapon: {fileID: 11400000, guid: 02faf2890ecd67e43937e7fb66ce4cc2, type: 2}
   startingWeaponList:
-  - {fileID: 11400000, guid: 7fc40a9cf9e81a945ab2a9b57efffaa9, type: 2}
   - {fileID: 11400000, guid: 02faf2890ecd67e43937e7fb66ce4cc2, type: 2}
-  - {fileID: 11400000, guid: 61eba08dfd019ce4eb2f7821b166ac86, type: 2}
-  - {fileID: 11400000, guid: 4b5b4c9aa33a34a4b92c0c0e17416401, type: 2}
-  - {fileID: 11400000, guid: ea599a2779444a24baf1753da5ae33c5, type: 2}
-  - {fileID: 11400000, guid: 104ccbfae6a2de34386260809e9498fb, type: 2}
   playerMiniMapIcon: {fileID: 21300000, guid: e633ff370ee6b4b4f81e33d9ce006074, type: 3}
   playerHandSprite: {fileID: 21300000, guid: 1c777b2dc071f124b8addb39f18fc8ee, type: 3}

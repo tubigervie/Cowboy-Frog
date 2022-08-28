@@ -141,4 +141,21 @@ public class Player : MonoBehaviour
         setActiveWeaponEvent.CallSetActiveWeaponEvent(weapon);
         return weapon;
     }
+
+    public WeaponDetailsSO SwapWeapon(WeaponDetailsSO weaponDetails)
+    {
+        WeaponDetailsSO currWeapon = weaponList[0].weaponDetails;
+        Weapon newWeap = new Weapon()
+        {
+            weaponDetails = weaponDetails,
+            weaponReloadTimer = 0f,
+            weaponClipRemainingAmmo = weaponDetails.weaponClipAmmoCapacity,
+            weaponRemainingAmmo = weaponDetails.weaponAmmoCapacity,
+            isWeaponReloading = false
+        };
+        weaponList[0] = newWeap;
+        setActiveWeaponEvent.CallSetActiveWeaponEvent(newWeap);
+        return currWeapon;
+    }
+
 }

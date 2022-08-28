@@ -15,6 +15,7 @@ public class ActivateRooms : MonoBehaviour
 
     private void EnableRooms()
     {
+        if (GameManager.Instance.gameState == GameState.dungeonOverviewMap) return;
         foreach(KeyValuePair<string, Room> keyValuePair in DungeonBuilder.Instance.dungeonBuilderRoomDictionary)
         {
             Room room = keyValuePair.Value;

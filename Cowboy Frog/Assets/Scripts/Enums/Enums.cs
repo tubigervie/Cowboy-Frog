@@ -7,6 +7,33 @@
     none
 }
 
+public enum ChestSpawnEvent
+{
+    onRoomEntry,
+    onEnemiesDefeated
+}
+
+public enum ChestSpawnPosition
+{
+    atSpawnerPosition,
+    atPlayerPosition
+}
+
+public enum ChestState
+{
+    closed,
+    healthItem,
+    item,
+    empty
+}
+
+public enum ChestType
+{
+    random,
+    health,
+    weapon
+}
+
 public enum AimDirection
 {
     Up,

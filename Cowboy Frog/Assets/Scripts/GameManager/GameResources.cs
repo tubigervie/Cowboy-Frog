@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.Audio;
@@ -60,6 +58,8 @@ public class GameResources : MonoBehaviour
     #endregion
     public Shader variableLitShader;
 
+    public Shader materializeShader;
+
     #region Header SPECIAL TILEMAP TILES
     [Space(10)]
     [Header("SPECIAL TILEMAP TILES")]
@@ -89,6 +89,9 @@ public class GameResources : MonoBehaviour
     public GameObject ammoIconPrefab;
     public GameObject heartIconPrefab;
     public GameObject enemyMinimapPrefab;
+    public GameObject bossMapIconPrefab;
+    public GameObject chestItemPrefab;
+    public Sprite heartIcon;
 
     #region Header SOUNDS
     [Space(10)]
@@ -96,6 +99,9 @@ public class GameResources : MonoBehaviour
     #endregion SOUNDS
     public AudioMixerGroup soundsMasterMixerGroup;
     public SoundEffectSO doorOpenCloseSoundEffect;
+    public SoundEffectSO chestOpen;
+    public SoundEffectSO healthPickup;
+    public SoundEffectSO itemPickup;
 
     #region Header MUSIC
     [Space(10)]
@@ -117,7 +123,12 @@ public class GameResources : MonoBehaviour
         HelperUtilities.ValidateCheckNullValue(this, nameof(dimmedMaterial), dimmedMaterial);
         HelperUtilities.ValidateCheckNullValue(this, nameof(litMaterial), litMaterial);
         HelperUtilities.ValidateCheckNullValue(this, nameof(variableLitShader), variableLitShader);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(materializeShader), materializeShader);
         HelperUtilities.ValidateCheckNullValue(this, nameof(ammoIconPrefab), ammoIconPrefab);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(heartIconPrefab), heartIconPrefab);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(enemyMinimapPrefab), enemyMinimapPrefab);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(bossMapIconPrefab), bossMapIconPrefab);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(chestItemPrefab), chestItemPrefab);
         HelperUtilities.ValidateCheckNullValue(this, nameof(doorOpenCloseSoundEffect), doorOpenCloseSoundEffect);
         HelperUtilities.ValidateCheckNullValue(this, nameof(soundsMasterMixerGroup), soundsMasterMixerGroup);
         HelperUtilities.ValidateCheckNullValue(this, nameof(musicMasterMixerGroup), musicMasterMixerGroup);
