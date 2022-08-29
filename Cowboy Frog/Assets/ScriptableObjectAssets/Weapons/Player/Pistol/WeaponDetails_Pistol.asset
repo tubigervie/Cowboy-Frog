@@ -21,9 +21,9 @@ MonoBehaviour:
   weaponShootEffect: {fileID: 11400000, guid: 06def6f2839961b4799eaa3987e3938c, type: 2}
   hasInfiniteAmmo: 1
   hasInfiniteClipCapacity: 0
-  weaponClipAmmoCapacity: 10
+  weaponClipAmmoCapacity: 6
   weaponAmmoCapacity: 20
-  weaponFireRate: 0.2
+  weaponFireRate: 0.12
   weaponPrechargeTime: 0
-  weaponReloadTime: 1.2
-  isAutomatic: 1
+  weaponReloadTime: 1
+  isAutomatic: 0

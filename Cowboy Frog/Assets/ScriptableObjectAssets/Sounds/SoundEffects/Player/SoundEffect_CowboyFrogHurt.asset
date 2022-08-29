@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectName: Player Hurt
   soundPrefab: {fileID: 3886318349218805977, guid: 31d593329152adb47b25af9d6ccbfffa, type: 3}
-  soundEffectClip: {fileID: 8300000, guid: 450620ac8dae248449254dbf8fc76c51, type: 3}
+  soundEffectClip: {fileID: 8300000, guid: b8c07045fdf82eb4a9cc842b26e77c1a, type: 3}
   soundEffectPitchRandomVariationMin: 1
   soundEffectPitchRandomVariationMax: 1
   soundEffectVolume: 1

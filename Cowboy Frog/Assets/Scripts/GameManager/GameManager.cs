@@ -100,7 +100,6 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     private IEnumerator Fade(float startAlpha, float targetAlpha, float fadeSeconds, Color backgroundColor)
     {
-        Debug.Log("fade call");
         Image image = canvasGroup.GetComponent<Image>();
         image.color = backgroundColor;
         fadingScreen = true;
@@ -289,7 +288,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     private void RestartGame()
     {
-        SceneManager.LoadScene("MainGameScene");
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     private IEnumerator LevelCompleted()
@@ -472,7 +471,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         if(displaySeconds > 0f)
         {
             float timer = displaySeconds;
-            while(timer > 0f && !Input.GetKeyDown(KeyCode.Return))
+            while(timer > 0f && !Input.GetKeyDown(KeyCode.Return) && !fadingScreen)
             {
                 timer -= Time.deltaTime;
                 yield return null;
@@ -481,7 +480,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         else
         {
             //else display the message until the return button is pressed
-            while(!Input.GetKeyDown(KeyCode.Return))
+            while(!Input.GetKeyDown(KeyCode.Return) && !fadingScreen)
             {
                 yield return null;
             }

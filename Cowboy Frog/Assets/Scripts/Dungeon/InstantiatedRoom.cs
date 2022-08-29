@@ -52,6 +52,9 @@ public class InstantiatedRoom : MonoBehaviour
 
     private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs roomArg)
     {
+        //edge case for when reentering a boss room after already clearing, try to fix later
+        if (roomArg.room.roomNodeType.isBossRoom && roomArg.room.isClearedOfEnemies) return;
+
         MusicManager.Instance.PlayMusic(roomArg.room.musicTrack, 0.2f, 1f);
     }
 

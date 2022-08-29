@@ -20,9 +20,6 @@ public class Ammo : MonoBehaviour, IFireable
     private bool overrideAmmoMovement;
     private InstantiatedRoom currentRoom;
 
-    [SerializeField] float frequency = 2;
-    [SerializeField] float amplitude = 2;
-
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
