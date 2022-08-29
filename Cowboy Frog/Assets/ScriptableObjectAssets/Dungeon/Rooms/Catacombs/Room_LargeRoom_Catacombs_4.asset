@@ -96,6 +96,8 @@ MonoBehaviour:
       ratio: 3
     - dungeonObject: {fileID: 11400000, guid: d94c143131b41f14b8cdbb92e80d4b04, type: 2}
       ratio: 6
+    - dungeonObject: {fileID: 11400000, guid: ad60e7e0bf3bfd14ab46f1edd3b39d90, type: 2}
+      ratio: 6
   roomEnemySpawnParametersList:
   - dungeonLevel: {fileID: 11400000, guid: e82f066453cf28a478c7ce04a411c419, type: 2}
     minTotalEnemiesToSpawn: 7
@@ -103,19 +105,19 @@ MonoBehaviour:
     minConcurrentEnemies: 4
     maxConcurrentEnemies: 6
     minSpawnInterval: 2
-    maxSpawnInterval: 5
+    maxSpawnInterval: 3
   - dungeonLevel: {fileID: 11400000, guid: e3336bff00318d743a3a4a4e587d0a35, type: 2}
     minTotalEnemiesToSpawn: 10
     maxTotalEnemiesToSpawn: 15
     minConcurrentEnemies: 5
     maxConcurrentEnemies: 7
     minSpawnInterval: 1
-    maxSpawnInterval: 5
+    maxSpawnInterval: 3
   - dungeonLevel: {fileID: 11400000, guid: aea548e0d781aa842a868bb7e028abbe, type: 2}
     minTotalEnemiesToSpawn: 15
     maxTotalEnemiesToSpawn: 20
     minConcurrentEnemies: 6
     maxConcurrentEnemies: 10
     minSpawnInterval: 1
-    maxSpawnInterval: 4
+    maxSpawnInterval: 2
   roomMusic: {fileID: 11400000, guid: 01854ecf59ab57044b96978a5a7122cb, type: 2}

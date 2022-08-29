@@ -56,15 +56,17 @@ MonoBehaviour:
   - {x: 5, y: 27}
   - {x: 19, y: 27}
   enemiesByLevelList:
-  - dungeonLevel: {fileID: 11400000, guid: 4ac8db6a59ef4394ab0f067493ea5091, type: 2}
+  - dungeonLevel: {fileID: 11400000, guid: e82f066453cf28a478c7ce04a411c419, type: 2}
     spawnableObjectRatioList:
     - dungeonObject: {fileID: 11400000, guid: 1bbc2a8cbc66aba4287e664df4e0fda2, type: 2}
       ratio: 1
   - dungeonLevel: {fileID: 11400000, guid: e3336bff00318d743a3a4a4e587d0a35, type: 2}
     spawnableObjectRatioList:
-    - dungeonObject: {fileID: 11400000, guid: 1bbc2a8cbc66aba4287e664df4e0fda2, type: 2}
+    - dungeonObject: {fileID: 11400000, guid: f8241056c765d3d408a670cfc422d7aa, type: 2}
       ratio: 1
-    - dungeonObject: {fileID: 11400000, guid: df2e7350e99167540a1f44420330a8e3, type: 2}
+    - dungeonObject: {fileID: 11400000, guid: 7d77c43bbb4a15b4eb53232cace43751, type: 2}
+      ratio: 1
+    - dungeonObject: {fileID: 11400000, guid: 0124a0466ef42834b8c0b28206196cb7, type: 2}
       ratio: 1
   - dungeonLevel: {fileID: 11400000, guid: aea548e0d781aa842a868bb7e028abbe, type: 2}
     spawnableObjectRatioList:
@@ -75,7 +77,7 @@ MonoBehaviour:
     - dungeonObject: {fileID: 11400000, guid: d741af090e03cd745bbf669dd0a677de, type: 2}
       ratio: 1
   roomEnemySpawnParametersList:
-  - dungeonLevel: {fileID: 11400000, guid: 4ac8db6a59ef4394ab0f067493ea5091, type: 2}
+  - dungeonLevel: {fileID: 11400000, guid: e82f066453cf28a478c7ce04a411c419, type: 2}
     minTotalEnemiesToSpawn: 1
     maxTotalEnemiesToSpawn: 1
     minConcurrentEnemies: 1
@@ -83,10 +85,10 @@ MonoBehaviour:
     minSpawnInterval: 2
     maxSpawnInterval: 4
   - dungeonLevel: {fileID: 11400000, guid: e3336bff00318d743a3a4a4e587d0a35, type: 2}
-    minTotalEnemiesToSpawn: 2
-    maxTotalEnemiesToSpawn: 2
-    minConcurrentEnemies: 2
-    maxConcurrentEnemies: 2
+    minTotalEnemiesToSpawn: 3
+    maxTotalEnemiesToSpawn: 3
+    minConcurrentEnemies: 3
+    maxConcurrentEnemies: 3
     minSpawnInterval: 1
     maxSpawnInterval: 2
   - dungeonLevel: {fileID: 11400000, guid: aea548e0d781aa842a868bb7e028abbe, type: 2}

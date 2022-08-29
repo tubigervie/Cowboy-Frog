@@ -35894,6 +35894,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChestSpawner_EnemiesDefeated_Room
       objectReference: {fileID: 0}
+    - target: {fileID: 8132835870864235492, guid: df30caaab9387fe4d82c87297e58f45e, type: 3}
+      propertyPath: chestSpawnChanceMax
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8132835870864235492, guid: df30caaab9387fe4d82c87297e58f45e, type: 3}
+      propertyPath: chestSpawnChanceMin
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df30caaab9387fe4d82c87297e58f45e, type: 3}
 --- !u!4 &4850097854300540687 stripped

@@ -1869,9 +1869,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
-    width: 1
-    height: 1
+    y: 0.13761467
+    width: 0.8258065
+    height: 0.82568806
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -2297,7 +2297,7 @@ MonoBehaviour:
     ModeOverride: 1
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7773279, y: 1}
+    m_SensorSize: {x: 1.7777779, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5146,7 +5146,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7773279, y: 1}
+    m_SensorSize: {x: 1.7775229, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5736,6 +5736,9 @@ MonoBehaviour:
   - poolSize: 30
     prefab: {fileID: 5634315585716889392, guid: f87e8f952baeaf64b924b6eb18c38182, type: 3}
     componentType: WeaponShootEffect
+  - poolSize: 40
+    prefab: {fileID: 4555858420671037347, guid: b17ad33f99c046b448738d045afc2520, type: 3}
+    componentType: IFireable
 --- !u!4 &1735127131
 Transform:
   m_ObjectHideFlags: 0
@@ -5786,7 +5789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 1.2, y: 14.77}
+  m_AnchoredPosition: {x: 1.2, y: 6.9}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1783151458
@@ -6170,12 +6173,9 @@ MonoBehaviour:
   canvasGroup: {fileID: 531803310}
   pauseMenu: {fileID: 108702521}
   dungeonLevelList:
-  - {fileID: 11400000, guid: 4ac8db6a59ef4394ab0f067493ea5091, type: 2}
+  - {fileID: 11400000, guid: e82f066453cf28a478c7ce04a411c419, type: 2}
   - {fileID: 11400000, guid: e3336bff00318d743a3a4a4e587d0a35, type: 2}
   - {fileID: 11400000, guid: aea548e0d781aa842a868bb7e028abbe, type: 2}
-  - {fileID: 11400000, guid: 940a9a11734d256498956e8b6c75f31e, type: 2}
-  - {fileID: 11400000, guid: ddd00cce305819944991e758a3271889, type: 2}
-  - {fileID: 11400000, guid: fa49fc731a5c7754484c929b0b486778, type: 2}
   currentDungeonLevelListIndex: 0
   canPauseGameStates: 01000000050000000200000003000000040000000900000008000000
   canToggleMapGameStates: 01000000030000000500000009000000

@@ -36,6 +36,7 @@ public class WeaponStatusUI : MonoBehaviour
     private void Start()
     {
         SetActiveWeapon(player.activeWeapon.GetCurrentWEapon());
+        ammoRemainingText.text = "";
     }
 
     private void OnEnable()
@@ -190,18 +191,18 @@ public class WeaponStatusUI : MonoBehaviour
 
     private void UpdateAmmoText(Weapon weapon)
     {
-        if(weapon.weaponDetails.hasInfiniteClipCapacity)
-        {
-            ammoRemainingText.text = "INFINITE AMMO";
-        }
-        else if(weapon.weaponDetails.hasInfiniteAmmo)
-        {
-            ammoRemainingText.text = weapon.weaponClipRemainingAmmo.ToString() + " / INFINITE";
-        }
-        else
-        {
-            ammoRemainingText.text = weapon.weaponClipRemainingAmmo.ToString() + " / " + weapon.weaponRemainingAmmo.ToString();
-        }
+        //if(weapon.weaponDetails.hasInfiniteClipCapacity)
+        //{
+        //    ammoRemainingText.text = "INFINITE AMMO";
+        //}
+        //else if(weapon.weaponDetails.hasInfiniteAmmo)
+        //{
+        //    ammoRemainingText.text = weapon.weaponClipRemainingAmmo.ToString(); //+ " / INFINITE";
+        //}
+        //else
+        //{
+        //    ammoRemainingText.text = weapon.weaponClipRemainingAmmo.ToString(); //+ " / " + weapon.weaponRemainingAmmo.ToString();
+        //}
     }
 
     private void SetActiveWeaponEvent_OnSetActiveWeapon(SetWeaponActiveEvent setWeaponActiveEvent, SetActiveWeaponEventArgs setActiveWeaponEventArgs)

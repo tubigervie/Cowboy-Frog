@@ -90,7 +90,7 @@ PrefabInstance:
     - target: {fileID: 4704709918933731218, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
       propertyPath: weaponSpawnByLevelList.Array.data[0].dungeonLevel
       value: 
-      objectReference: {fileID: 11400000, guid: 4ac8db6a59ef4394ab0f067493ea5091, type: 2}
+      objectReference: {fileID: 11400000, guid: e82f066453cf28a478c7ce04a411c419, type: 2}
     - target: {fileID: 4704709918933731218, guid: 067dd6c57aa7d2341928dcb889f11685, type: 3}
       propertyPath: weaponSpawnByLevelList.Array.data[2].dungeonLevel
       value: 

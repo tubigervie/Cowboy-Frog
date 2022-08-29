@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1259553125582662196}
   - component: {fileID: 2120544792228906603}
   - component: {fileID: 8039456005735406441}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: EnemyAmmo4x4
   m_TagString: playerAmmo
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1725630379131377523}
   - component: {fileID: 3118627601789195083}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -194,6 +194,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             StopCoroutine(fadeCoroutine);
         fadeCoroutine = StartCoroutine(Fade(.4f, 0f, .5f, new Color(0f, 0f, 0f, 0.4f)));
         yield return fadeCoroutine;
+        ClearMessageText();
     }
 
     private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs roomChangedEventArgs)
@@ -371,7 +372,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
         if (messageCoroutine != null)
             StopCoroutine(messageCoroutine);
-        messageCoroutine = StartCoroutine(DisplayMessageRoutine("YOU HAVE BEEN SLAYED...", Color.white, 3f));
+        messageCoroutine = StartCoroutine(DisplayMessageRoutine("AFTER SCORING " + gameScore + " POINTS, YOU DIED...", Color.white, 3f));
         yield return messageCoroutine;
 
         if (messageCoroutine != null)
@@ -461,6 +462,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             StopCoroutine(fadeCoroutine);
         fadeCoroutine = StartCoroutine(Fade(1f, 0f, 2f, Color.black));
         yield return fadeCoroutine;
+        ClearMessageText();
     }
 
     private IEnumerator DisplayMessageRoutine(string messageText, Color messageColor, float displaySeconds)

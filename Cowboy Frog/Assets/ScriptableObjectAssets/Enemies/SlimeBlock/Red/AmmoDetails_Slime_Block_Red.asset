@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88c64c49be4c87946a23a78078beeb31, type: 3}
+  m_Name: AmmoDetails_Slime_Block_Red
+  m_EditorClassIdentifier: 
+  ammoName: Slime Block Green Ammo
+  isPlayerAmmo: 0
+  ammoSprite: {fileID: 21300000, guid: e36e8bbd18074d341b170885ac002038, type: 3}
+  ammoPrefabArray:
+  - {fileID: 4555858420671037347, guid: 3632c5728d0c02e41b05131af0f10c77, type: 3}
+  ammoMaterial: {fileID: 2100000, guid: a8f373dc317a30d40a68b73a78ce1d09, type: 2}
+  ammoChargeTime: 0.1
+  ammoChargeMaterial: {fileID: 2100000, guid: 2203edc4d7bb7d54d902153ccd995f5c, type: 2}
+  ammoHitEffect: {fileID: 11400000, guid: f517b1c9decc3ad459045351590a2ba3, type: 2}
+  ammoDamage: 1
+  ammoSpeed: 15
+  ammoRange: 20
+  ammoRotationSpeed: 1
+  minSpread: 0
+  maxSpread: 0
+  ammoSpawnAmount: 1
+  ammoSpawnInterval: 0
+  isAmmoTrail: 0
+  ammoTrailTime: 3
+  ammoTrailMaterial: {fileID: 0}
+  ammoTrailStartWidth: 0
+  ammoTrailEndWidth: 0
