@@ -131,7 +131,6 @@ public class ChestSpawner : MonoBehaviour
 
     private int GetHealthToSpawn(int healthNum)
     {
-        Debug.Log("Health num: " + healthNum);
         if (healthNum == 0) return 0;
 
         foreach(RangeByLevel spawnPercentByLevel in healthSpawnByLevelList)

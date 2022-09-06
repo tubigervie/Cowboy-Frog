@@ -44,8 +44,6 @@ public class DestroyableItem : MonoBehaviour
     {
         if(healthEventArgs.healthAmount <= 0f)
         {
-
-            Debug.Log("current health: " + healthEventArgs.healthAmount);
             StartCoroutine(PlayAnimation());
         }
     }

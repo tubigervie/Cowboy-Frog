@@ -28,7 +28,7 @@ public class CinemachineTarget : SingletonMonobehaviour<CinemachineTarget>
         cursorTarget.position = HelperUtilities.GetMouseWorldPosition();
     }
 
-    private void SetCinemachineTargetGroupToPlayer()
+    public void SetCinemachineTargetGroupToPlayer()
     {
         CinemachineTargetGroup.Target cinemachineGroupTarget_player = new CinemachineTargetGroup.Target { weight = 1f, radius = 2.5f, target = GameManager.Instance.GetPlayer().transform };
         CinemachineTargetGroup.Target cinemachineGroupTarget_cursor = new CinemachineTargetGroup.Target { weight = 1f, radius = 1f, target = cursorTarget };
@@ -36,7 +36,7 @@ public class CinemachineTarget : SingletonMonobehaviour<CinemachineTarget>
         cinemachineTargetGroup.m_Targets = cinemachineTargetArray;
     }
 
-    private void SetCinemachineTarget(Transform targetToAdd)
+    public void SetCinemachineTarget(Transform targetToAdd)
     {
         CinemachineTargetGroup.Target cinemachineGroupTarget = new CinemachineTargetGroup.Target { weight = 1f, radius = 1f, target = targetToAdd };
         CinemachineTargetGroup.Target[] cinemachineTargetArray = new CinemachineTargetGroup.Target[] { cinemachineGroupTarget };
@@ -49,7 +49,7 @@ public class CinemachineTarget : SingletonMonobehaviour<CinemachineTarget>
         cinemachineTargetGroup.m_Targets = targets.ToArray();
     }
 
-    public void AddToTargetGroup(Transform targetToAdd)
+    private void AddToTargetGroup(Transform targetToAdd)
     {
         if (CheckIfContains(targetToAdd)) return;
         CinemachineTargetGroup.Target cinemachineGroupTarget_toAdd = new CinemachineTargetGroup.Target { weight = 1f, radius = 1f, target = targetToAdd };

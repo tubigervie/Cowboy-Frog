@@ -88,9 +88,13 @@ public class EnemySpawner : SingletonMonobehaviour<EnemySpawner>
                 Vector3Int cellPosition = (Vector3Int)currentRoom.spawnPositionArray[UnityEngine.Random.Range(0, currentRoom.spawnPositionArray.Length)];
 
                 CreateBoss(randomEnemyHelperClass.GetItem(), grid.CellToWorld(cellPosition));
+                GameManager.Instance.GetPlayer().playerControl.DisablePlayer();
+                yield return new WaitForSeconds(4f);
                 yield return new WaitForSeconds(GetEnemySpawnInterval() / (GameManager.Instance.GetCurrentDungeonIndex() + 1));
             }
         }
+        CinemachineTarget.Instance.SetCinemachineTargetGroupToPlayer();
+        GameManager.Instance.GetPlayer().playerControl.EnablePlayer();
     }
 
     private IEnumerator SpawnEnemiesRoutine()
@@ -126,9 +130,19 @@ public class EnemySpawner : SingletonMonobehaviour<EnemySpawner>
         DungeonLevelSO dungeonLevel = GameManager.Instance.GetCurrentDungeonLevel();
 
         GameObject boss = Instantiate(enemyDetailsSO.enemyPrefab, position, Quaternion.identity, transform);
-
-        boss.GetComponent<BossAI>().Initialization(enemyDetailsSO, dungeonLevel);
-        boss.GetComponent<DestroyedEvent>().OnDestroyed += Enemy_OnDestroyed;
+        CinemachineTarget.Instance.SetCinemachineTarget(boss.transform);
+        BossAI bossAI = boss.GetComponent<BossAI>();
+        if(bossAI != null)
+        {
+            boss.GetComponent<BossAI>().Initialization(enemyDetailsSO, dungeonLevel);
+            boss.GetComponent<DestroyedEvent>().OnDestroyed += Enemy_OnDestroyed;
+        }
+        Enemy enemy = boss.GetComponent<Enemy>();
+        if(enemy != null)
+        {
+            enemy.GetComponent<Enemy>().Initialization(enemyDetailsSO, enemiesSpawnedSoFar, dungeonLevel, currentRoom);
+            enemy.GetComponent<DestroyedEvent>().OnDestroyed += Enemy_OnDestroyed;
+        }
     }
 
     private void CreateEnemy(EnemyDetailsSO enemyDetailsSO, Vector3 position, Room currentRoom)

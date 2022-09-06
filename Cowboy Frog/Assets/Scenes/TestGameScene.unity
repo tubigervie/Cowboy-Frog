@@ -1870,7 +1870,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
+    width: 0.9998679
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -2297,7 +2297,7 @@ MonoBehaviour:
     ModeOverride: 1
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7775768, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5146,7 +5146,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7775768, y: 1}
+    m_SensorSize: {x: 1.7780126, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -6181,6 +6181,7 @@ MonoBehaviour:
   dungeonLevelList:
   - {fileID: 11400000, guid: e82f066453cf28a478c7ce04a411c419, type: 2}
   - {fileID: 11400000, guid: e3336bff00318d743a3a4a4e587d0a35, type: 2}
+  - {fileID: 11400000, guid: aea548e0d781aa842a868bb7e028abbe, type: 2}
   currentDungeonLevelListIndex: 0
   canPauseGameStates: 01000000050000000200000003000000040000000900000008000000
   canToggleMapGameStates: 01000000030000000500000009000000
