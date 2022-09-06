@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8039456005735406441}
   m_Layer: 16
   m_Name: EnemyAmmo4x4
-  m_TagString: playerAmmo
+  m_TagString: enemyAmmo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

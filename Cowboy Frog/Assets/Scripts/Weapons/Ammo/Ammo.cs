@@ -14,7 +14,7 @@ public class Ammo : MonoBehaviour, IFireable
     private Vector3 fireDirectionVector;
     private float fireDirectionAngle;
     private SpriteRenderer spriteRenderer;
-    private AmmoDetailsSO ammoDetails;
+    public AmmoDetailsSO ammoDetails;
     private float ammoChargeTimer;
     private bool isAmmoMaterialSet = false;
     private bool overrideAmmoMovement;
@@ -101,6 +101,10 @@ public class Ammo : MonoBehaviour, IFireable
     public GameObject GetGameObject()
     {
         return gameObject;
+    }
+
+    public void InitializeAmmo(AmmoDetailsSO ammoDetails, Transform target)
+    {
     }
 
     public void InitializeAmmo(AmmoDetailsSO ammoDetails, float aimAngle, float weaponAimAngle, float ammoSpeed, Vector3 weaponAimDirectionVector, bool overrideAmmoMovement = false)

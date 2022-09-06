@@ -57,14 +57,40 @@ public class EnemySpawner : SingletonMonobehaviour<EnemySpawner>
         {
             GameManager.Instance.previousGameState = GameState.playingLevel;
             GameManager.Instance.gameState = GameState.engagingEnemies;
+            StartCoroutine(SpawnEnemiesRoutine());
         }
         else if(GameManager.Instance.gameState == GameState.bossStage)
         {
             GameManager.Instance.previousGameState = GameState.bossStage;
             GameManager.Instance.gameState = GameState.engagingBoss;
+            StartCoroutine(SpawnBossRoutine());
         }
+    }
 
-        StartCoroutine(SpawnEnemiesRoutine());
+    private IEnumerator SpawnBossRoutine()
+    {
+        Grid grid = currentRoom.instantiatedRoom.grid;
+
+        //Create an instance of the helper class used to select a random enemy
+        RandomSpawnableObject<EnemyDetailsSO> randomEnemyHelperClass = new RandomSpawnableObject<EnemyDetailsSO>(currentRoom.enemiesByLevelList);
+
+        //check we have somewhere to spawn the enemies
+        if (currentRoom.spawnPositionArray.Length > 0)
+        {
+            for (int i = 0; i < enemiesToSpawn; i++)
+            {
+                //wait until current enemy count is less than max concurrent enemies
+                while (currentEnemyCount >= enemyMaxConcurrentSpawnNumber)
+                {
+                    yield return null;
+                }
+
+                Vector3Int cellPosition = (Vector3Int)currentRoom.spawnPositionArray[UnityEngine.Random.Range(0, currentRoom.spawnPositionArray.Length)];
+
+                CreateBoss(randomEnemyHelperClass.GetItem(), grid.CellToWorld(cellPosition));
+                yield return new WaitForSeconds(GetEnemySpawnInterval() / (GameManager.Instance.GetCurrentDungeonIndex() + 1));
+            }
+        }
     }
 
     private IEnumerator SpawnEnemiesRoutine()
@@ -91,6 +117,18 @@ public class EnemySpawner : SingletonMonobehaviour<EnemySpawner>
                 yield return new WaitForSeconds(GetEnemySpawnInterval() / (GameManager.Instance.GetCurrentDungeonIndex() + 1));
             }
         }
+    }
+
+    private void CreateBoss(EnemyDetailsSO enemyDetailsSO, Vector3 position)
+    {
+        enemiesSpawnedSoFar++;
+        currentEnemyCount++;
+        DungeonLevelSO dungeonLevel = GameManager.Instance.GetCurrentDungeonLevel();
+
+        GameObject boss = Instantiate(enemyDetailsSO.enemyPrefab, position, Quaternion.identity, transform);
+
+        boss.GetComponent<BossAI>().Initialization(enemyDetailsSO, dungeonLevel);
+        boss.GetComponent<DestroyedEvent>().OnDestroyed += Enemy_OnDestroyed;
     }
 
     private void CreateEnemy(EnemyDetailsSO enemyDetailsSO, Vector3 position, Room currentRoom)

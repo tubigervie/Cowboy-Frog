@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public static class Settings
 {
@@ -34,8 +35,22 @@ public static class Settings
     public static int rollLeft = Animator.StringToHash("rollLeft");
     public static int rollRight = Animator.StringToHash("rollRight");
 
+    //Animator parameters - Doors
     public static int open = Animator.StringToHash("open");
+    
+    //Animator parameters - Chests/Tables
     public static int use = Animator.StringToHash("use");
+
+    //Animator parameters - DamageableDecorations
+    public static int destroy = Animator.StringToHash("destroy");
+    public static String stateDestroyed = "Destroyed";
+
+    //Animator parameters - Boss
+    public static int spawn = Animator.StringToHash("spawn");
+    public static int attack1 = Animator.StringToHash("attack1");
+    public static int attack2 = Animator.StringToHash("attack2");
+    public static int idle = Animator.StringToHash("Idle");
+    public static int die = Animator.StringToHash("die");
 
     public static float baseSpeedForPlayerAnimations = 10f;
     public static float baseSpeedForEnemyAnimations = 3f;
@@ -43,6 +58,7 @@ public static class Settings
 
     #region GAMEOBJECT TAGS
     public const string playerTag = "Player";
+    public const string playerAmmo = "playerAmmo";
     public const string enemyTag = "Enemy";
     public const string playerWeapon = "playerWeapon";
     public const string groundTag = "groundTilemap";
@@ -80,6 +96,6 @@ public static class Settings
     #endregion
 
     #region CONTACT DAMAGE PARAMETERS
-    public const float contactDamageCollisionResetDelay = 0.5f;
+    public const float contactDamageCollisionResetDelay = 0.05f;
     #endregion
 }

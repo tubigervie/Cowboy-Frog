@@ -21,6 +21,10 @@ public class InstantiatedRoom : MonoBehaviour
     [HideInInspector] public Bounds roomColliderBounds;
     [HideInInspector] public int[,] aStarMovementPenalty;
 
+    [Header("OBJECT REFERENCES")]
+    [Tooltip("Populate with the environment child placeholder gameobject")]
+    [SerializeField] private GameObject environmentGameObject;
+
     private BoxCollider2D boxCollider2D;
 
 
@@ -56,6 +60,18 @@ public class InstantiatedRoom : MonoBehaviour
         if (roomArg.room.roomNodeType.isBossRoom && roomArg.room.isClearedOfEnemies) return;
 
         MusicManager.Instance.PlayMusic(roomArg.room.musicTrack, 0.2f, 1f);
+    }
+
+    public void ActivateEnvironmentGameObjects()
+    {
+        if (environmentGameObject != null)
+            environmentGameObject.SetActive(true);
+    }
+
+    public void DeactivateEnvironmentGameObjects()
+    {
+        if (environmentGameObject != null)
+            environmentGameObject.SetActive(false);
     }
 
     //Update obsctacles by AStar pathfinding

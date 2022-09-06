@@ -63,6 +63,7 @@ public class PoolManager : SingletonMonobehaviour<PoolManager>
         int poolKey = prefab.GetInstanceID();
         if(poolDictionary.ContainsKey(poolKey))
         {
+            Debug.Log(prefab + " being used");
             Component componentToReuse = GetComponentFromPool(poolKey);
             ResetObject(position, rotation, componentToReuse, prefab);
             return componentToReuse;

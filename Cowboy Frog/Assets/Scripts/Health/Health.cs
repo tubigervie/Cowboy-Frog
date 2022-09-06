@@ -7,9 +7,9 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class Health : MonoBehaviour
 {
-    private int startingHealth;
-    private int currentHealth;
-    public HealthEvent healthEvent;
+    private int startingHealth = 10;
+    [SerializeField] private int currentHealth;
+    [HideInInspector] public HealthEvent healthEvent;
     private Player player;
     private Coroutine immunityCoroutine;
     private bool isImmuneAfterHit = false;
@@ -19,9 +19,10 @@ public class Health : MonoBehaviour
     private WaitForSeconds WaitForSecondsSpriteFlashInterval = new WaitForSeconds(spriteFlashInterval);
 
     [HideInInspector] public HealthBar healthBar;
-    [HideInInspector] public bool alwaysDisplayHealthBar = false;
+    public bool alwaysDisplayHealthBar = false;
     [HideInInspector] public bool isDamageable = true;
     [HideInInspector] public Enemy enemy;
+
     private void Awake()
     {
         healthEvent = GetComponent<HealthEvent>();
@@ -60,6 +61,11 @@ public class Health : MonoBehaviour
                 alwaysDisplayHealthBar = true;
             }
         }
+    }
+
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
     }
 
     public void TakeDamage(int damageAmount)
@@ -126,7 +132,7 @@ public class Health : MonoBehaviour
     {
         this.startingHealth = startingHealth;
         currentHealth = startingHealth;
-        if(alwaysDisplayHealthBar && healthBar != null)
+        if (healthBar != null)
         {
             healthBar.SetBarAlwaysEnabledFlag(true);
             healthBar.EnableHealthBar(GetHealthPercent());

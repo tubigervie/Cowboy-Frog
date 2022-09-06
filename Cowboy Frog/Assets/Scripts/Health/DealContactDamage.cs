@@ -29,6 +29,11 @@ public class DealContactDamage : MonoBehaviour
         ContactDamage(collision);
     }
 
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    isColliding = false;
+    //}
+
     private void ContactDamage(Collider2D collision)
     {
         //if the collision object isn't in specified layer then return using bitwise comparison

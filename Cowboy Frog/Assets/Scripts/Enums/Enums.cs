@@ -7,6 +7,16 @@
     none
 }
 
+public enum AIStateType
+{
+    Spawn,
+    Idle,
+    Move,
+    Die,
+    Attack1,
+    Attack2
+}
+
 public enum ChestSpawnEvent
 {
     onRoomEntry,

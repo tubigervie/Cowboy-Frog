@@ -386,7 +386,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1084350817
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -2445,6 +2445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ed9f76b2ffd9146a91e48fe84ceeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paintMap: {fileID: 0}
   grid: {fileID: 0}
   groundTilemap: {fileID: 0}
   decoration1Tilemap: {fileID: 0}
@@ -2452,9 +2453,11 @@ MonoBehaviour:
   frontTilemap: {fileID: 0}
   collisionTilemap: {fileID: 0}
   minimapTilemap: {fileID: 0}
+  puddleTilemap: {fileID: 0}
   roomColliderBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
+  environmentGameObject: {fileID: 7881035549861721104}
 --- !u!114 &-947916346633577627
 MonoBehaviour:
   m_ObjectHideFlags: 0

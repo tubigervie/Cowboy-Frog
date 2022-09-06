@@ -13,7 +13,7 @@ public static class AStar
     /// <param name="startGridPosition"></param>
     /// <param name="endGridPosition"></param>
     /// <returns></returns>
-    public static Stack<Vector3> BuildPath(Room room, Vector3Int startGridPosition, Vector3Int endGridPosition, bool useDungeonBuilderGrid = false)
+    public static Stack<Vector3> BuildPath(Room room, Vector3Int startGridPosition, Vector3Int endGridPosition, bool useDungeonBuilderGrid = false, bool ignoreMovementPenalty = false)
     {
         Vector2Int lowerBoundsToUse = (useDungeonBuilderGrid) ? DungeonBuilder.Instance.dungeonLowerBounds : room.templateLowerBounds;
         Vector2Int upperBoundsToUse = (useDungeonBuilderGrid) ? DungeonBuilder.Instance.dungeonUpperBounds : room.templateUpperBounds;
@@ -40,7 +40,7 @@ public static class AStar
         Node startNode = gridNodes.GetGridNode(startGridPosition.x, startGridPosition.y);
         Node targetNode = gridNodes.GetGridNode(endGridPosition.x, endGridPosition.y);
 
-        Node endPathNode = FindShortestPath(startNode, targetNode, gridNodes, minHeap, closedNodeHashSet, room.instantiatedRoom, useDungeonBuilderGrid);
+        Node endPathNode = FindShortestPath(startNode, targetNode, gridNodes, minHeap, closedNodeHashSet, room.instantiatedRoom, useDungeonBuilderGrid, ignoreMovementPenalty);
         if(endPathNode != null)
         {
             return CreatePathStack(endPathNode, room);
@@ -86,7 +86,7 @@ public static class AStar
     /// <param name="instantiatedRoom1"></param>
     /// <param name="instantiatedRoom2"></param>
     /// <returns></returns>
-    private static Node FindShortestPath(Node startNode, Node targetNode, GridNodes gridNodes, NativeHeap openNodeHeap, HashSet<Node> closedNodeHashSet, InstantiatedRoom instantiatedRoom, bool useDungeonBuilderGrid)
+    private static Node FindShortestPath(Node startNode, Node targetNode, GridNodes gridNodes, NativeHeap openNodeHeap, HashSet<Node> closedNodeHashSet, InstantiatedRoom instantiatedRoom, bool useDungeonBuilderGrid, bool ignoreMovementPenalty)
     {
         openNodeHeap.Enqueue(startNode);
         while(openNodeHeap.GetCount() > 0)
@@ -103,12 +103,12 @@ public static class AStar
             
             closedNodeHashSet.Add(currentNode);
 
-            EvaluateCurrentNodeNeighbors(currentNode, targetNode, gridNodes, openNodeHeap, closedNodeHashSet, instantiatedRoom, useDungeonBuilderGrid);
+            EvaluateCurrentNodeNeighbors(currentNode, targetNode, gridNodes, openNodeHeap, closedNodeHashSet, instantiatedRoom, useDungeonBuilderGrid, ignoreMovementPenalty);
         }
         return null;
     }
 
-    private static void EvaluateCurrentNodeNeighbors(Node currentNode, Node targetNode, GridNodes gridNodes, NativeHeap openNodeHeap, HashSet<Node> closedNodeHashSet, InstantiatedRoom instantiatedRoom, bool useDungeonBuilderGrid)
+    private static void EvaluateCurrentNodeNeighbors(Node currentNode, Node targetNode, GridNodes gridNodes, NativeHeap openNodeHeap, HashSet<Node> closedNodeHashSet, InstantiatedRoom instantiatedRoom, bool useDungeonBuilderGrid, bool ignoreMovementPenalty)
     {
         Vector2Int currentNodeGridPosition = currentNode.gridPosition;
         Node validNeighborNode;
@@ -119,7 +119,7 @@ public static class AStar
             for(int j = -1; j <= 1; j++)
             {
                 if (i == 0 && j == 0) continue; //current node
-                validNeighborNode = GetValidNeighbor(currentNodeGridPosition.x + i, currentNodeGridPosition.y + j, gridNodes, closedNodeHashSet, instantiatedRoom, useDungeonBuilderGrid);
+                validNeighborNode = GetValidNeighbor(currentNodeGridPosition.x + i, currentNodeGridPosition.y + j, gridNodes, closedNodeHashSet, instantiatedRoom, useDungeonBuilderGrid, ignoreMovementPenalty);
                 if(validNeighborNode != null)
                 {
                     //calculate new gcost for neighbor
@@ -128,9 +128,13 @@ public static class AStar
                     // Get the movement penalty
                     // Unwalkable paths have a value of 0. Default movement penalty is set in
                     // Settings and applies to other grid squares.
-                    int movementPenaltyForGridSpace = (useDungeonBuilderGrid) ? DungeonBuilder.Instance.aStarMovementPenalty[validNeighborNode.gridPosition.x, validNeighborNode.gridPosition.y] : instantiatedRoom.aStarMovementPenalty[validNeighborNode.gridPosition.x, validNeighborNode.gridPosition.y];
 
-                    newCostToNeighbor = currentNode.gCost + GetDistance(currentNode, validNeighborNode) + movementPenaltyForGridSpace;
+                    newCostToNeighbor = currentNode.gCost + GetDistance(currentNode, validNeighborNode);
+                    if(!ignoreMovementPenalty)
+                    {
+                        int movementPenaltyForGridSpace = (useDungeonBuilderGrid) ? DungeonBuilder.Instance.aStarMovementPenalty[validNeighborNode.gridPosition.x, validNeighborNode.gridPosition.y] : instantiatedRoom.aStarMovementPenalty[validNeighborNode.gridPosition.x, validNeighborNode.gridPosition.y];
+                        newCostToNeighbor += movementPenaltyForGridSpace;
+                    }
                     bool isValidNeighborNodeInOpenList = openNodeHeap.Contains(validNeighborNode);
                     if(newCostToNeighbor < validNeighborNode.gCost || !isValidNeighborNodeInOpenList)
                     {
@@ -169,7 +173,7 @@ public static class AStar
     /// <param name="closedNodeHashSet"></param>
     /// <param name="instantiatedRoom"></param>
     /// <returns></returns>
-    private static Node GetValidNeighbor(int neighborNodeXPosition, int neighborNodeYPosition, GridNodes gridNodes, HashSet<Node> closedNodeHashSet, InstantiatedRoom instantiatedRoom, bool useDungeonBuilderGrid)
+    private static Node GetValidNeighbor(int neighborNodeXPosition, int neighborNodeYPosition, GridNodes gridNodes, HashSet<Node> closedNodeHashSet, InstantiatedRoom instantiatedRoom, bool useDungeonBuilderGrid, bool ignoreMovementPenalty)
     {
         Vector2Int lowerBoundsToUse = (useDungeonBuilderGrid) ? DungeonBuilder.Instance.dungeonLowerBounds : instantiatedRoom.room.templateLowerBounds;
         Vector2Int upperBoundsToUse = (useDungeonBuilderGrid) ? DungeonBuilder.Instance.dungeonUpperBounds : instantiatedRoom.room.templateUpperBounds;
@@ -184,7 +188,7 @@ public static class AStar
 
         int movementPenaltyForGridSpace = (useDungeonBuilderGrid) ? DungeonBuilder.Instance.aStarMovementPenalty[neighborNodeXPosition, neighborNodeYPosition] : instantiatedRoom.aStarMovementPenalty[neighborNodeXPosition, neighborNodeYPosition];
 
-        if (movementPenaltyForGridSpace == 0 || closedNodeHashSet.Contains(neighborNode))
+        if ((!ignoreMovementPenalty && movementPenaltyForGridSpace == 0) || closedNodeHashSet.Contains(neighborNode))
         {
             return null;
         }
