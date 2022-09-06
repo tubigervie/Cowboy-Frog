@@ -7,9 +7,7 @@ public class WindDemonBeastAttack2State : AIState
     [SerializeField] float castTime = 5f;
     float castTimer = 0f;
     [SerializeField] GameObject lightningPrefab;
-    [SerializeField] float minDistance = 0f;
-    [SerializeField] float maxDistance = 99f;
-    [SerializeField] float minHealthPercent;
+    [SerializeField] SoundEffectSO castSFX;
 
     Coroutine stateRoutine;
 
@@ -27,6 +25,14 @@ public class WindDemonBeastAttack2State : AIState
         return stateCost;
     }
 
+    private void WeaponSoundEffect()
+    {
+        if (castSFX != null)
+        {
+            SoundEffectManager.Instance.PlaySoundEffect(castSFX);
+        }
+    }
+
     public override void OnEnter()
     {
         castTimer = castTime;
@@ -36,6 +42,7 @@ public class WindDemonBeastAttack2State : AIState
     private IEnumerator CastAbility()
     {
         owner.animator.Play(Settings.attack2);
+        WeaponSoundEffect();
         while (castTimer > 0)
         {
             float random = Random.Range(0f, 1f);

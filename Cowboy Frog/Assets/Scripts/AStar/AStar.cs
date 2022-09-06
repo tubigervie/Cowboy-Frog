@@ -97,7 +97,6 @@ public static class AStar
 
             if(currentNode == targetNode)
             {
-                Debug.Log("found shortest path");
                 return currentNode;
             }
             

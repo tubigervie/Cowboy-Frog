@@ -7,13 +7,11 @@ using UnityEngine;
 public class MoveState : AIState
 {
     [HideInInspector] public MovementToPositionEvent movementToPositionEvent;
-    [HideInInspector] public float moveSpeed;
     [HideInInspector] public int updateFrameNumber = 1; //default value. This is set by the enemy spawner
 
     [SerializeField] MovementDetailsSO movementDetailsSO;
-    [SerializeField] float stopDistance = 2f;
-    [SerializeField] float chaseDistance = 10f;
 
+    private float moveSpeed;
     private Stack<Vector3> movementSteps = new Stack<Vector3>();
     private Vector3 playerReferencePosition;
     private Coroutine moveEnemyRoutine;
@@ -60,11 +58,7 @@ public class MoveState : AIState
         //Only process A Star path rebuild on certain frames to spread the load between enemies
         if (Time.frameCount % Settings.targetFrameRateToSpreadPathFindingOver != updateFrameNumber) return;
 
-        if (Vector3.Distance(transform.position, GameManager.Instance.GetPlayer().GetPlayerPosition()) < stopDistance)
-        {
-            OnExit();
-            owner.ChooseState();
-        }
+        owner.ChooseState();
 
         //if the movement cooldown timer reached or player has moved more than required distance
         //then rebuild the enemy path and move the enemy
@@ -165,11 +159,11 @@ public class MoveState : AIState
     {
         int cost = int.MaxValue;
         float distToPlayer = Vector3.Distance(transform.position, GameManager.Instance.GetPlayer().GetPlayerPosition());
-        if (distToPlayer > chaseDistance)
+        if (distToPlayer > maxDistance)
         {
             cost = 0;
         }
-        else if(distToPlayer > stopDistance)
+        else if(distToPlayer <= maxDistance && distToPlayer > minDistance)
         {
             cost = 1;
         }

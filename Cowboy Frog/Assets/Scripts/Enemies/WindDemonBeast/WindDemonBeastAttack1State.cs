@@ -5,9 +5,8 @@ using UnityEngine;
 public class WindDemonBeastAttack1State : AIState
 {
     [SerializeField] Transform shootPosition;
-    [SerializeField] float minDistance = 0f;
-    [SerializeField] float maxDistance = 99f;
     [SerializeField] AmmoDetailsSO ammoDetails;
+    [SerializeField] SoundEffectSO shootSFX;
 
     Coroutine stateRoutine;
 
@@ -29,30 +28,50 @@ public class WindDemonBeastAttack1State : AIState
     {
         if (ammoDetails == null) return;
 
-        stateRoutine = StartCoroutine(FireAmmoRoutine(ammoDetails));
+        StartCoroutine(FireAmmoRoutine(ammoDetails));
     }
 
     public override void OnEnter()
     {
-        owner.animator.Play(Settings.attack1);
+        stateRoutine = StartCoroutine(AnimationRoutine()); 
+    }
+
+    private IEnumerator AnimationRoutine()
+    {
+        int spawnAmount = 1;
+        int ammoCounter = 0;
+        if (owner.health.GetHealthPercent() <= .5f) spawnAmount = 2;
+        while(ammoCounter < spawnAmount)
+        {
+            owner.animator.Play(Settings.attack1);
+            ammoCounter++;
+            yield return new WaitForSeconds(1.5f);
+        }
+        stateCooldownTimer = Random.Range(stateCooldownMin, stateCooldownMax);
+        owner.ChooseState();
+    }
+
+    private void WeaponSoundEffect()
+    {
+        if (shootSFX != null)
+        {
+            SoundEffectManager.Instance.PlaySoundEffect(shootSFX);
+        }
     }
 
     private IEnumerator FireAmmoRoutine(AmmoDetailsSO currentAmmo)
     {
         int ammoCounter = 0;
-        while (ammoCounter < currentAmmo.ammoSpawnAmount)
+        int spawnAmount = 1;
+        while (ammoCounter < spawnAmount)
         {
             ammoCounter++;
             GameObject ammoPrefab = currentAmmo.ammoPrefabArray[UnityEngine.Random.Range(0, currentAmmo.ammoPrefabArray.Length)];
             IFireable ammo = (IFireable)PoolManager.Instance.ReuseComponent(ammoPrefab, shootPosition.position, Quaternion.identity);
             ammo.InitializeAmmo(currentAmmo, GameManager.Instance.GetPlayer().transform);
+            WeaponSoundEffect();
             yield return new WaitForSeconds(currentAmmo.ammoSpawnInterval);
         }
-        yield return new WaitForSeconds(1f);
-        stateCooldownTimer = Random.Range(stateCooldownMin, stateCooldownMax);
-        owner.ChooseState();
-        //WeaponShootEffect(aimAngle);
-        //WeaponSoundEffect();
     }
 
     public override void OnExit()

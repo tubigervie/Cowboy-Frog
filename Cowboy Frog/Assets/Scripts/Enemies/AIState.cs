@@ -7,9 +7,17 @@ public abstract class AIState : MonoBehaviour
 {
     protected BossAI owner;
 
+    [Space(10)]
+    [Header("AI STATE PARAMETERS")]
     [SerializeField] AIStateType state;
     [SerializeField] protected float stateCooldownMin;
     [SerializeField] protected float stateCooldownMax;
+
+    [Space(10)]
+    [Header("AI CONDITIONAL PARAMETERS")]
+    [SerializeField] protected float minDistance = 0f;
+    [SerializeField] protected float maxDistance = 99f;
+    [SerializeField] protected float minHealthPercent;
 
     protected float stateCooldownTimer;
     

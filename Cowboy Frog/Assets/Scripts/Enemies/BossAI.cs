@@ -18,7 +18,9 @@ public class BossAI : MonoBehaviour
     [HideInInspector] public Health health;
     [HideInInspector] public HealthEvent healthEvent;
     [HideInInspector] public Animator animator;
-    [SerializeField] AIState currentState;
+    public Transform Center;
+
+    AIState currentState;
     Dictionary<AIStateType, AIState> stateMap = new Dictionary<AIStateType, AIState>();
     
     BoxCollider2D boxCollider2D;
@@ -81,24 +83,35 @@ public class BossAI : MonoBehaviour
 
     public void ChooseState()
     {
-        AIState chosenState = null;
+        List<AIState> availableStates = new List<AIState>();
         int minCost = int.MaxValue;
         foreach(AIState state in stateMap.Values)
         {
             int stateCost = state.CalculateStateCost(); 
             if(stateCost < minCost)
             {
+                availableStates.Clear();
+                availableStates.Add(state);
                 minCost = stateCost;
-                chosenState = state;
+            }
+            else if(stateCost == minCost)
+            {
+                availableStates.Add(state);
             }
         }
-        ChangeState(chosenState.GetStateType());
+        if (availableStates.Count > 0)
+        {
+            AIState chosenState = availableStates[Random.Range(0, availableStates.Count)];
+            ChangeState(chosenState.GetStateType());
+        }
+
     }
 
     public void ChangeState(AIStateType newState)
     {
         if(currentState != null)
         {
+            if (currentState.GetStateType() == newState) return;
             currentState.OnExit();
         }
 

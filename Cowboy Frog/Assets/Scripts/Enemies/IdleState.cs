@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class IdleState : AIState
 {
-
     public override void OnEnter()
     {
         stateCooldownTimer = Random.Range(stateCooldownMin, stateCooldownMax);
@@ -27,7 +26,12 @@ public class IdleState : AIState
 
     public override int CalculateStateCost()
     {
-        int cost = int.MaxValue - 1;
+        int cost = int.MaxValue;
+        float distToPlayer = Vector3.Distance(transform.position, GameManager.Instance.GetPlayer().GetPlayerPosition());
+        if (distToPlayer < maxDistance && distToPlayer > minDistance)
+        {
+            cost = 1;
+        }
         return cost;
     }
 }

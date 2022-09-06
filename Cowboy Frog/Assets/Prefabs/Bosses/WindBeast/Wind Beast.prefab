@@ -48,6 +48,7 @@ Transform:
   m_Children:
   - {fileID: 1180194568482372202}
   - {fileID: 1136418705741906163}
+  - {fileID: 2690527902196633802}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -136,7 +137,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.05213034, y: 4.54832}
+  m_Offset: {x: 0.052130222, y: 4.09397}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -147,7 +148,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.223215, y: 3.0879517}
+  m_Size: {x: 4.223215, y: 3.9966514}
   m_EdgeRadius: 0
 --- !u!114 &5342517756334999046
 MonoBehaviour:
@@ -196,7 +197,7 @@ MonoBehaviour:
   health: {fileID: 0}
   healthEvent: {fileID: 0}
   animator: {fileID: 0}
-  currentState: {fileID: 0}
+  Center: {fileID: 2690527902196633802}
 --- !u!50 &3993953026503907651
 Rigidbody2D:
   serializedVersion: 4
@@ -257,12 +258,12 @@ MonoBehaviour:
   state: 2
   stateCooldownMin: 0
   stateCooldownMax: 0
+  minDistance: 2
+  maxDistance: 99
+  minHealthPercent: 0
   movementToPositionEvent: {fileID: 0}
-  moveSpeed: 0
   updateFrameNumber: 1
   movementDetailsSO: {fileID: 11400000, guid: 7a1962ebbb84f7b46bd473cc60aa37b3, type: 2}
-  stopDistance: 3.5
-  chaseDistance: 8
 --- !u!70 &1842596515100177842
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -294,6 +295,9 @@ MonoBehaviour:
   state: 1
   stateCooldownMin: 0.25
   stateCooldownMax: 0.75
+  minDistance: 0
+  maxDistance: 4
+  minHealthPercent: 0
 --- !u!114 &7618126843821005229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,6 +313,9 @@ MonoBehaviour:
   state: 0
   stateCooldownMin: 0
   stateCooldownMax: 0
+  minDistance: 0
+  maxDistance: 99
+  minHealthPercent: 0
   additionalTimeToWait: 5
 --- !u!114 &8071216963366708434
 MonoBehaviour:
@@ -323,12 +330,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 4
-  stateCooldownMin: 1.5
-  stateCooldownMax: 3.5
-  shootPosition: {fileID: 1180194568482372202}
-  minDistance: 1
+  stateCooldownMin: 0.75
+  stateCooldownMax: 1.5
+  minDistance: 0
   maxDistance: 8
+  minHealthPercent: 0
+  shootPosition: {fileID: 1180194568482372202}
   ammoDetails: {fileID: 11400000, guid: fb88ae92b8ae021439efa70ed3c53f2f, type: 2}
+  shootSFX: {fileID: 11400000, guid: 9a09dd3bda5b875489de4c3c0862cdce, type: 2}
 --- !u!114 &4633879260254337778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,11 +353,12 @@ MonoBehaviour:
   state: 5
   stateCooldownMin: 3
   stateCooldownMax: 5
+  minDistance: 0
+  maxDistance: 15
+  minHealthPercent: 0.5
   castTime: 5
   lightningPrefab: {fileID: 1346064565798555537, guid: 5dde22bf6d94a4f4ebb33a08e6ace72e, type: 3}
-  minDistance: 1
-  maxDistance: 10
-  minHealthPercent: 0.5
+  castSFX: {fileID: 11400000, guid: 1a786717a4804d5408a55c29025116a6, type: 2}
 --- !u!114 &1166126489053460912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +390,9 @@ MonoBehaviour:
   state: 3
   stateCooldownMin: 0
   stateCooldownMax: 0
+  minDistance: 0
+  maxDistance: 99
+  minHealthPercent: 0
 --- !u!114 &3713879994269534607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,6 +435,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000013935522190}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6793810483718651157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2690527902196633802}
+  m_Layer: 15
+  m_Name: Center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2690527902196633802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6793810483718651157}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4000013935522190}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7050113623595893969
 PrefabInstance:

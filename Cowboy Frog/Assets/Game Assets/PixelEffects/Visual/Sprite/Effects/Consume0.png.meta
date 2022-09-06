@@ -405,7 +405,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Consume0_0: 21300000
-      Consume0_5: 21300010
+      Consume0_1: 21300002
       Consume0_10: 21300020
       Consume0_8: 21300016
       Consume0_6: 21300012
@@ -416,7 +416,7 @@ TextureImporter:
       Consume0_11: 21300022
       Consume0_12: 21300024
       Consume0_3: 21300006
-      Consume0_1: 21300002
+      Consume0_5: 21300010
   spritePackingTag: All
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

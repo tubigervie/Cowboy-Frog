@@ -17,7 +17,6 @@ public class ReceiveContactDamage : MonoBehaviour
 
     public void TakeContactDamage(int damageAmount = 0)
     {
-        Debug.Log(this.gameObject.name + " is receiving " + damageAmount + " damage.");
         if (contactDamageAmount > 0)
             damageAmount = contactDamageAmount;
         health.TakeDamage(damageAmount);
